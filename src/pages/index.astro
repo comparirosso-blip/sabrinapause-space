@@ -1,11 +1,41 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Sabrina's Pause" description="Moments Between">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-4 text-gray-900">
+        Sabrina's Pause
+      </h1>
+      <p class="text-xl text-gray-600 mb-8">
+        Moments Between
+      </p>
+      
+      <div class="bg-white rounded-lg shadow-lg p-8 text-left">
+        <h2 class="text-2xl font-bold mb-4">🚧 Milestone 1 Complete</h2>
+        
+        <p class="text-gray-700 mb-4">
+          The Notion pipeline integration is complete. Content will be automatically fetched
+          from Notion and rendered here once Milestone 2 templates are built.
+        </p>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+          <p class="text-sm text-blue-900">
+            <strong>Test the pipeline:</strong> Run <code class="bg-blue-100 px-2 py-1 rounded">npm run test:pipeline</code>
+          </p>
+        </div>
+        
+        <h3 class="font-bold mb-2">Status:</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li>✅ Notion API connection</li>
+          <li>✅ Data transformation pipeline</li>
+          <li>✅ Block rendering system</li>
+          <li>🚧 Page templates (coming in Milestone 2)</li>
+          <li>🚧 Navigation (coming in Milestone 2)</li>
+          <li>🚧 Responsive design (coming in Milestone 2)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </Layout>
