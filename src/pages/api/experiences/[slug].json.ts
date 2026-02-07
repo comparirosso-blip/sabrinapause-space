@@ -73,14 +73,24 @@ export const GET: APIRoute = async ({ params }) => {
 
 // Generate static paths for all slugs at build time
 export async function getStaticPaths() {
-  const loader = new NotionLoader(
-    process.env.NOTION_API_KEY!,
-    process.env.NOTION_DATABASE_ID!
-  );
+  try {
+    // Use import.meta.env in dev mode, process.env in build mode
+    const apiKey = import.meta.env.NOTION_API_KEY || process.env.NOTION_API_KEY;
+    const databaseId = import.meta.env.NOTION_DATABASE_ID || process.env.NOTION_DATABASE_ID;
+    
+    if (!apiKey || !databaseId) {
+      console.error('Missing Notion credentials in getStaticPaths');
+      return [];
+    }
 
-  const content = await loader.getAll();
+    const loader = new NotionLoader(apiKey, databaseId);
+    const content = await loader.getAll();
 
-  return content.map((item) => ({
-    params: { slug: item.slug },
-  }));
+    return content.map((item) => ({
+      params: { slug: item.slug },
+    }));
+  } catch (error) {
+    console.error('Error in getStaticPaths:', error);
+    return [];
+  }
 }
