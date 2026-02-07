@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-07T09:04:35.719Z",
+  "backup_date": "2026-02-07T12:39:42.982Z",
   "data": {
     "id": "2fc9a263-c5bb-804d-ab34-dbb447aa2d2f",
     "contentType": "article",
@@ -17,7 +17,12 @@
     "concepts": [],
     "intentVector": "",
     "sdIndex": 0,
-    "heroImage": "https://prod-files-secure.s3.us-west-2.amazonaws.com/67059428-b570-4cc5-9030-2dd8ed256cff/fe75b0f4-55b5-4fc2-a003-b436313f20d4/Screenshot_2026-02-07_at_09.13.35.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665ZMJ4KIB%2F20260207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260207T090433Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIE%2BTvLXokT1PInliPIIxlhC%2BwQFjnSWI8rupFfSK8yf3AiEAwAkdZowEBdcsur%2FEVX1CU4rSMf43gEaqtr7BeyzwicYq%2FwMIWRAAGgw2Mzc0MjMxODM4MDUiDKiR3jZe2NNYQnR%2BZircA1FxWHoOQu9Cmz1OUOFoslRZIoZxYpf7CyZma4rwAwvEN7iQBcVgoJN6RJ%2F4UPdWGysvD%2FVBYEnyxn%2F7AEZdYKnJs4ndC%2FPeDym64EOX7Bs0rC2aI2jgoA0vmmYngG%2Bf0iMzWxJcuIO18N1VrW7XNPf6bSMTJmhRcmnj6%2Bmt5112GF391RLYpvbX2ZTzRFKTM%2BInM%2BjNBsdUQufGFnTQ7VtbuD89J3%2F6XvspxrIZg3Zd8%2BLONJzu6u4gZcnKZC7XntCREyghynGALZwpL6mh3y8Ij4JdFATYfMSsVBnbp1rpLXMqk%2Fa9KJiOUGFPJbTYZ8UDHUEpnrebTr6u8zP%2Bdg9jhFxAn0tHHMsyCGQ6%2B0fJxpdUVA%2B9OYnls%2BKy80pLpnend5iTvkambUmK%2FKzwnTE6l%2BLcjqrrErivoOSkQX77peARx0HLZWEf3327cvEZQlBEBtgIG3VbKLn9%2BNd7BmLnEGyI%2BDuzav6L%2B35XlUmTdIrml%2B9eocUHcFg4tY9GJKiZF3NhcqzW1O9RyLViYEJZui2tUKA8acpDoR3tNkNmZU6QwmbFqK0bddwFt8VkZKygWsrjLtEbGgztTQ%2BiEyt%2FDHBTYE9Nu102boTS1KsIJPXXZCBVgHGkdtchMLjem8wGOqUB9FDrpen2HXTrNfKU%2BZwCzgrNde1vMdyZhhRZS14HQ5sskAn7ckt5ib2A0REbTAlT29iMsAR4QnZlOdUa69SKS5Lh9oTNCPhVhXsqRIhcQV%2FMuFtTdG6jz8%2BpadL9yc%2BWHyr3w5Y%2B4msjunzwp2uRFlePTssm%2FSAS2kPviP3EviZLKB0UOaw8Qq%2B%2FGDF5YzhjWUwY7MVcuySEqRsEPxzNuTWewd99&X-Amz-Signature=abb1f2b0dd5e0c7fdee24b12ea4b640976e82d4795207e99538d356956992737&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "lux": null,
+    "texture": null,
+    "noiseLevel": null,
+    "spacePattern": null,
+    "timeVelocity": null,
+    "heroImage": "https://prod-files-secure.s3.us-west-2.amazonaws.com/67059428-b570-4cc5-9030-2dd8ed256cff/fe75b0f4-55b5-4fc2-a003-b436313f20d4/Screenshot_2026-02-07_at_09.13.35.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466522TTO37%2F20260207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260207T123941Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDHisZSoNUan1UGY7lzewfgqTEW80vDNT6p%2F%2FkN5s5qSAIganZBYxt2TUJDUz%2FjH%2BfpGMBUAEokLr1VI8Rnp4P7ld0q%2FwMIXRAAGgw2Mzc0MjMxODM4MDUiDL%2Fmoz0JJqNfctg6CCrcA%2Fd3y8nmSMwYlDDqiZ7pX9B9uoPkccVkbzrzBdCe4vkgGTicZmQWuccI2pchkQlhGOkjLeUrOZ1p%2BAI%2BPA2H%2FXkeUkaqmcdqmsyKwjAf2r2BfUnIu04uX%2FABaEZ5WwC6ClriKzn%2BWyyrZ9g%2BGczrgFChNw8dYcXDOnuYtoFLyL27G2hCZeRYlwRusP%2BVfpO0NzQWTRWyYA3xK6Qzjm2Ausg4JBUxyVMhsrjyFa0BvbhUic12hrd1HEVRbcu2G5LJHQ2uJv0J0wHk49f%2F7FMr1ZFAd%2F7fqSY%2FxrT8oJA68ijopPDBuOUJXBkv%2B8rS22GbGWTdff%2Fy1ftPbQAtA5vqYpxCe1G3%2B4rX623pHAfNdIu%2BGL4CUkB9hJOV0Thl8mgEd50t%2F9D0rF6He2flkBPASmQBy7X7tojMSm2OooQFfOmCSBhImrQHma0H10K8F7BbkjTQ4iTYigZLvWLeI7G9wm5GTgAS6G5bYy48zCEqk6waqueh4MVcmvyCEfgvbS03kuT2DQr2KvvW3%2BoVRx09F9Tp07Jh7tCZo1j6iBTuPWU9H7K1KzEQsCcPOEa1TxMaaYPBone5%2FY2%2Bc4N2VUtpi3d1XDY3K0kkCHFzqjuKjY9szbczXiMZ%2F1VXeaSIMPnQnMwGOqUB3HDkXqCgLOCrA0Qkh%2FotTnP%2Fr%2FQn%2BZzoe6xnRgW3shRK44QVPc%2FitdRAByR%2B6ZDGJlPkQn1JfnZIPdz4lykM2TgFOrt8nn%2B0bjFxtT9I%2BBvmAjK86KuYo%2FhkpJBycY2CJiNNmz%2Bj0o2N0YedT%2BH7IecQHorscUdMJGyECZ%2Bq%2FmoXRG3RG9WrA45ug3xuouhS4wIBQ7RhiOshY4FLMIroukHmClNJ&X-Amz-Signature=f8098ca322f8b58f091a5b50db8234ccd3d9940a57e77fc5d1b8338e0f411b6d&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
     "blocks": [
       {
         "object": "block",
@@ -4817,7 +4822,7 @@
     "emotion_trajectory": {},
     "embedding": null,
     "schema_version": "1.0",
-    "last_updated": "2026-02-07T09:04:35.715Z",
+    "last_updated": "2026-02-07T12:39:42.977Z",
     "language": "en",
     "excerpt": "Here is a podcast script structured as a dialogue between two intellectuals, following the specific flow and metaphors from your source material.",
     "readingTime": 9
