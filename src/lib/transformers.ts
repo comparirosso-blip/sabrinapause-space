@@ -91,6 +91,13 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
   const sdIndex = extractNumber(props['SD-Index™'] || props['SD-Index']);
   const heroImage = extractFileUrl(props['Hero Image']);
   
+  // Extract Hidden Sensor Fields (Milestone 2)
+  const lux = props.Lux ? extractNumber(props.Lux) : null;
+  const texture = props.Texture ? extractRichText(props.Texture) : null;
+  const noiseLevel = props['Noise Level'] ? extractNumber(props['Noise Level']) : null;
+  const spacePattern = props['Space Pattern'] ? extractRichText(props['Space Pattern']) : null;
+  const timeVelocity = props['Time Velocity'] ? extractNumber(props['Time Velocity']) : null;
+  
   // Infer language (default to 'en' for now, can be enhanced)
   const language: 'zh' | 'en' = 'en';
   
@@ -108,6 +115,12 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
     concepts,
     intentVector,
     sdIndex,
+    // Hidden Sensor Fields (Milestone 2)
+    lux,
+    texture,
+    noiseLevel,
+    spacePattern,
+    timeVelocity,
     heroImage,
     blocks,
     // AGI-First Metadata (v2.1) - Always include with defaults for consistent schema

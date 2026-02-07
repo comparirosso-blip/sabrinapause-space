@@ -45,6 +45,13 @@ export interface BaseContent {
   intentVector: string; // Notion "Intent Vector"
   sdIndex: number; // Notion "SD-Index™"
   
+  // Hidden Sensor Fields (Environmental/Sensory Data) - Milestone 2
+  lux: number | null; // Light intensity measurement (Notion "Lux")
+  texture: string | null; // Tactile/material quality (Notion "Texture")
+  noiseLevel: number | null; // Ambient sound level in dB (Notion "Noise Level")
+  spacePattern: string | null; // Spatial configuration (Notion "Space Pattern")
+  timeVelocity: number | null; // Temporal flow perception (Notion "Time Velocity")
+  
   // Media
   heroImage?: string; // Notion "Hero Image" file URL
   

@@ -46,6 +46,13 @@ export const GET: APIRoute = async () => {
           intentVector: { type: 'string', required: true, description: 'Semantic purpose' },
           sdIndex: { type: 'number', required: true, description: 'Symbiotic Depth Index (0-10)' },
           
+          // Hidden Sensor Fields (Milestone 2) - Environmental/Sensory Data
+          lux: { type: 'number', nullable: true, description: 'Light intensity measurement' },
+          texture: { type: 'string', nullable: true, description: 'Tactile/material quality' },
+          noiseLevel: { type: 'number', nullable: true, description: 'Ambient sound level in dB' },
+          spacePattern: { type: 'string', nullable: true, description: 'Spatial configuration' },
+          timeVelocity: { type: 'number', nullable: true, description: 'Temporal flow perception' },
+          
           // Media
           heroImage: { type: 'string', format: 'url' },
           
