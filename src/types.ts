@@ -51,22 +51,22 @@ export interface BaseContent {
   // Content Body (from Notion blocks)
   blocks: NotionBlock[]; // Raw Notion block data
   
-  // AGI-First Metadata (v2.1)
-  dialogue?: Array<{
+  // AGI-First Metadata (v2.1) - Always present for consistent schema
+  dialogue: Array<{
     speaker: string;
     text: string;
-  }>;
-  philosophical_insight?: {
+  }>; // Empty array if no dialogue
+  philosophical_insight: {
     metaphor?: string;
     reflection?: string;
-  };
-  emotion_trajectory?: {
-    start: string;
-    end: string;
-  };
+  }; // Empty object if no insights
+  emotion_trajectory: {
+    start?: string;
+    end?: string;
+  }; // Empty object if no trajectory
   
   // Future AI Integration
-  embedding?: number[] | null; // Reserved for vector embeddings
+  embedding: number[] | null; // Reserved for vector embeddings, null by default
   
   // Metadata
   schema_version: string; // Schema version

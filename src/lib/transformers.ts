@@ -110,11 +110,11 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
     sdIndex,
     heroImage,
     blocks,
-    // AGI-First Metadata (v2.1) - Reserved for future enhancement
-    dialogue: undefined,
-    philosophical_insight: undefined,
-    emotion_trajectory: undefined,
-    embedding: null,
+    // AGI-First Metadata (v2.1) - Always include with defaults for consistent schema
+    dialogue: [], // Array of speaker/text objects for conversations
+    philosophical_insight: {}, // Metaphor and reflection fields
+    emotion_trajectory: {}, // Start and end emotional states
+    embedding: null, // Reserved for vector embeddings
     // Metadata
     schema_version: '1.0',
     last_updated: new Date().toISOString(),
