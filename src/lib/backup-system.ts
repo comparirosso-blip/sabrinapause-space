@@ -9,11 +9,82 @@ import type { Content } from '../types';
 
 export class BackupSystem {
   private backupDir: string;
+  private baseDir: string;
+  private today: string;
 
   constructor(baseDir: string = 'data/backup') {
-    // Create backup directory with today's date
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-    this.backupDir = path.join(process.cwd(), baseDir, today);
+    this.baseDir = path.join(process.cwd(), baseDir);
+    this.today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    this.backupDir = path.join(this.baseDir, this.today);
+  }
+
+  /**
+   * Check if content has changed since last backup
+   */
+  private hasContentChanged(content: Content[]): boolean {
+    // Get the latest backup directory
+    if (!fs.existsSync(this.baseDir)) {
+      return true; // No backups exist yet
+    }
+
+    const backupDirs = fs.readdirSync(this.baseDir)
+      .filter(dir => /^\d{4}-\d{2}-\d{2}$/.test(dir))
+      .sort()
+      .reverse();
+
+    if (backupDirs.length === 0) {
+      return true; // No previous backups
+    }
+
+    // Check if today's backup already exists
+    const latestDir = backupDirs[0];
+    if (latestDir === this.today) {
+      console.log(`ℹ️  Backup for ${this.today} already exists - checking for changes...`);
+    }
+
+    const latestBackupPath = path.join(this.baseDir, latestDir, 'all-experiences.json');
+    
+    if (!fs.existsSync(latestBackupPath)) {
+      return true; // Previous backup incomplete
+    }
+
+    try {
+      const previousBackup = JSON.parse(fs.readFileSync(latestBackupPath, 'utf-8'));
+      const previousData = previousBackup.data || [];
+      
+      // Compare content count and slugs
+      const currentSlugs = new Set(content.map(c => c.slug));
+      const previousSlugs = new Set(previousData.map((c: any) => c.slug));
+      
+      if (currentSlugs.size !== previousSlugs.size) {
+        console.log(`📊 Content count changed: ${previousSlugs.size} → ${currentSlugs.size}`);
+        return true;
+      }
+      
+      // Check if any slugs are different
+      for (const slug of currentSlugs) {
+        if (!previousSlugs.has(slug)) {
+          console.log(`🆕 New content detected: "${slug}"`);
+          return true;
+        }
+      }
+      
+      // Check if any content was updated (compare last_updated timestamps)
+      const currentLastUpdated = Math.max(...content.map(c => new Date(c.last_updated).getTime()));
+      const previousLastUpdated = Math.max(...previousData.map((c: any) => new Date(c.last_updated).getTime()));
+      
+      if (currentLastUpdated > previousLastUpdated) {
+        console.log(`📝 Content has been updated`);
+        return true;
+      }
+      
+      console.log(`✅ No changes detected - skipping backup`);
+      return false;
+      
+    } catch (error) {
+      console.log(`⚠️  Could not read previous backup - creating new one`);
+      return true;
+    }
   }
 
   /**
@@ -169,11 +240,20 @@ export class BackupSystem {
   }
 
   /**
-   * Full backup - saves all, individual files, and metadata
+   * Full backup - saves all, individual files, and metadata (only if changes detected)
    */
   async performFullBackup(content: Content[]): Promise<void> {
     console.log('\n🔄 Starting GitHub backup system...');
-    console.log(`   Backing up ${content.length} items to ${this.backupDir}`);
+    console.log(`   Checking ${content.length} items for changes...`);
+
+    // Check if backup is needed
+    if (!this.hasContentChanged(content)) {
+      console.log('\n✅ Backup skipped - no changes detected');
+      console.log('   Using existing backup data');
+      return;
+    }
+
+    console.log(`\n💾 Creating new backup in: ${this.backupDir}`);
 
     await this.saveAllContent(content);
     await this.saveIndividualContent(content);
@@ -181,6 +261,6 @@ export class BackupSystem {
 
     console.log('\n✅ Backup complete!');
     console.log(`   📂 Location: ${this.backupDir}`);
-    console.log('   💡 Commit these files to GitHub for data independence');
+    console.log('   💡 Files will be auto-committed to GitHub');
   }
 }

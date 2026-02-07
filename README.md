@@ -1,303 +1,431 @@
 # Sabrina's Pause
 
-A dual-layer content platform powered by Notion, Astro, and Tailwind CSS.
+**AGI-First Content Archive** — A Notion-powered static website prioritizing structured data for AI consumption.
 
-## Project Overview
+> *"We are building for AGI first, and humans second."*  
+> — Sabrina Lin, v2.1 Pivot
 
-This is a Notion-powered static website that automatically syncs content from a Notion database and renders it as a beautiful, responsive website. Content includes articles, comics (vertical webtoon format), and podcasts.
+---
 
-**Key Features:**
-- 🔗 Direct Notion API integration (zero-friction publishing)
-- 🎨 Three content types: Articles, Comics, Podcasts
-- 📊 Dual-layer architecture (Human presentation + AI-readable data)
-- 🏛️ Cultural legacy markers (Intent Vector, SD-Index™)
-- 📱 Fully responsive design
-- ⚡ Static site generation (fast, SEO-friendly)
+## 🎯 Project Philosophy
 
-## Tech Stack
+This is a **Data Engine**, not just a website. The core focus is creating machine-readable, semantically rich JSON archives of content, with a human-friendly viewer as a secondary layer.
 
-- **Framework:** Astro 5.x
-- **Styling:** Tailwind CSS 4.x
-- **Content Source:** Notion API
-- **Language:** TypeScript
-- **Hosting:** Vercel/Netlify (TBD)
+**Priority Order:**
+1. **Data Rigor** - Structured, versioned JSON with AGI-ready metadata
+2. **Data Independence** - Full ownership via GitHub backups
+3. **Automation** - Zero-friction publishing from Notion → GitHub → Web
+4. **Visual Presentation** - Functional, clean UI (not over-engineered)
 
-## Getting Started
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ installed
-- A Notion account with a database set up
-- Notion integration created (get API key from https://www.notion.so/my-integrations)
+- Node.js 18+
+- Notion account with integration access
+- Git repository
 
 ### Installation
 
-1. Clone the repository:
 ```bash
+# 1. Clone repository
 git clone <repository-url>
 cd sabrina-pause
-```
 
-2. Install dependencies:
-```bash
+# 2. Install dependencies
 npm install
-```
 
-3. Create a `.env` file in the root directory:
-```env
-NOTION_API_KEY=ntn_xxx
-NOTION_DATABASE_ID=xxx
-```
+# 3. Configure Notion API
+# Create .env file with your credentials:
+echo "NOTION_API_KEY=secret_your_notion_token" > .env
+echo "NOTION_DATABASE_ID=your_database_id" >> .env
 
-4. Share your Notion database with the integration:
-   - Open your Notion database
-   - Click the `...` menu (top right)
-   - Click "Add connections"
-   - Select your integration
+# 4. Connect Notion Database
+# In Notion: ... menu → Connections → Add your integration
 
-5. Ensure your Notion database has the required properties:
-   - **Name** or **Title** (title)
-   - **Status** (select: Draft, Ready for Web, Published)
-   - **Slug** (text)
-   - **Content Type** (select: article, comic, podcast)
-   - **Web Category** (select: journal, episodes, podcast)
-   - **Date** (date)
-   - **Location** (text)
-   - **Project** (multi-select)
-   - **Intent Vector** (text)
-   - **SD-Index** or **SD-Index™** (number)
-   - **Concepts** (multi-select)
-   - **Hero Image** (files)
-
-### Commands
-
-| Command | Action |
-|:---|:---|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | **Build site (includes auto-backup)** |
-| `npm run preview` | Preview production build locally |
-| `npm run test` | Test Notion connection |
-| `npm run sample` | **Generate sample JSON output** |
-| `npm run backup` | **Run GitHub backup system** |
-
-## Development Progress
-
-### ✅ Milestone 1: AGI-First Data Engine (COMPLETE)
-
-**Duration:** 6-7 hours  
-**Status:** ✅ COMPLETE (Updated for v2.1 AGI-First Pivot)
-
-**Original Deliverables:**
-- ✅ Astro + Tailwind CSS setup
-- ✅ Notion API integration
-- ✅ ContentLoader abstraction layer
-- ✅ NotionLoader implementation
-- ✅ Data transformation pipeline
-- ✅ Block rendering system
-- ✅ Test script with real data
-
-**NEW: AGI-First Additions (v2.1):**
-- ✅ JSON API Endpoints (`/api/experiences.json`, `/api/experiences/{slug}.json`, `/api/schemas.json`)
-- ✅ GitHub Backup System (saves JSON to `/data/backup/YYYY-MM-DD/`)
-- ✅ Enhanced Schema with AGI-first metadata fields
-- ✅ Sample JSON generator
-
-**Acceptance Criteria:**
-- ✅ Console logs show structured content from Notion
-- ✅ All required properties mapped correctly
-- ✅ Block rendering pipeline functional
-- ✅ **NEW:** JSON API endpoints accessible
-- ✅ **NEW:** GitHub backup files generated
-- ✅ **NEW:** Enhanced schema with dialogue, philosophical_insight, emotion_trajectory
-
-**To verify Milestone 1:**
-```bash
-# Test Notion connection
+# 5. Test connection
 npm run test
 
-# Generate sample JSON (shows SD-Index™ and Intent Vector)
-npm run sample
-
-# Test backup system
-npm run backup
-
-# Build and test API endpoints
-npm run build
-npm run preview
-# Then: curl http://localhost:4321/api/experiences.json
+# 6. Start development server
+npm run dev
 ```
 
-**Documentation:** See [MILESTONE1-AGI-FIRST.md](./MILESTONE1-AGI-FIRST.md)
+---
 
-### 🚧 Milestone 2: Templates & Rendering (NEXT)
+## 📋 Milestone 1: AGI-First Data Engine ✅
 
-**Duration:** 6-7 hours  
-**Budget:** $465-$540
+**Status:** COMPLETE  
+**Budget:** $960  
+**Delivery:** Raw JSON data flowing + GitHub backup
 
-Coming next:
-- Article detail page template
-- Comic episode viewer (vertical scroll)
-- Podcast player page
-- Dynamic navigation component
-- Category and project archive pages
-- Homepage with mixed content grid
-- Responsive design implementation
-- Cultural legacy marker displays
+### Core Deliverables
 
-### 📅 Milestone 3: Polish & Deployment (PLANNED)
+#### 1. JSON API Endpoints ✅
+Public HTTP endpoints for AI consumption:
 
-- Final responsive adjustments
-- SEO optimization (JSON-LD structured data)
-- Live sync setup (webhook or cron)
-- Deployment to Vercel/Netlify
-- Performance optimization
-- Lighthouse scores > 90
+```
+GET /api/experiences.json         → All published content
+GET /api/experiences/{slug}.json  → Single content item
+GET /api/schemas.json             → Schema definition
+```
 
-## Project Structure
+**Usage:**
+```bash
+curl https://yoursite.com/api/experiences.json
+```
+
+#### 2. GitHub Backup System ✅
+**Data Independence** - Full ownership of content outside Notion.
+
+**Auto-triggers on every build:**
+- Fetches all "Ready for Web" content
+- Saves to `data/backup/YYYY-MM-DD/`
+  - `all-experiences.json` - Master list
+  - `metadata.json` - Statistics & index
+  - `articles/` - Individual article files
+  - `comics/` - Individual comic files
+  - `podcasts/` - Individual podcast files
+- **Auto-commits to git**
+- **Auto-pushes to GitHub**
+
+**Smart Detection:** Only creates new backup if content changed.
+
+#### 3. Enhanced JSON Schema ✅
+AGI-ready metadata fields (v2.1):
+
+```json
+{
+  "dialogue": [],                    // For comics/scripts
+  "philosophical_insight": {},       // Metaphors & reflections
+  "emotion_trajectory": {},          // Emotional arc
+  "embedding": null,                 // Reserved for vector embeddings
+  "schema_version": "1.0",           // Schema versioning
+  "last_updated": "2026-02-07...",   // ISO timestamp
+  "language": "zh" | "en"            // Inferred language
+}
+```
+
+#### 4. Auto-Status Update ✅
+After successful build, automatically updates Notion:
+```
+"Ready for Web" → "Published"
+```
+
+#### 5. Gallery Website ✅
+Minimal, functional viewer:
+- Clean gallery-style homepage
+- Individual content pages
+- Hero images from Notion
+- Clickable navigation
+- Responsive design
+
+---
+
+## 🔄 Publishing Workflow
+
+### Development Mode
+```bash
+npm run dev
+```
+- Live preview at `localhost:4321`
+- Fetches from Notion on each page load
+- **No backup, no commits**
+
+### Production Build
+```bash
+npm run build
+```
+
+**Automated pipeline:**
+```
+1. Fetch content (Status = "Ready for Web" OR "Published")
+   ↓
+2. Save JSON backups → data/backup/YYYY-MM-DD/
+   ↓
+3. git add + commit + push (🔒 GitHub backup!)
+   ↓
+4. Build static site
+   ↓
+5. Update Notion: "Ready for Web" → "Published"
+```
+
+### Deploy
+```bash
+# Upload dist/ folder to your hosting platform
+# (Vercel, Netlify, etc.)
+```
+
+---
+
+## 📁 Project Structure
 
 ```
 sabrina-pause/
-├── src/                            # Source code
-│   ├── lib/                        # Core business logic
-│   │   ├── notion-loader.ts        # Notion API implementation
+├── src/
+│   ├── lib/
+│   │   ├── notion-loader.ts        # Notion API client
 │   │   ├── transformers.ts         # Data transformation
-│   │   └── block-renderer.ts       # Block to HTML rendering
-│   ├── interfaces/                 # TypeScript interfaces
+│   │   ├── block-renderer.ts       # Block → HTML
+│   │   └── backup-system.ts        # GitHub backup logic
+│   ├── interfaces/
 │   │   └── content-loader.ts       # ContentLoader interface
-│   ├── types.ts                    # TypeScript type definitions
-│   ├── layouts/                    # Astro layouts
+│   ├── pages/
+│   │   ├── index.astro             # Gallery homepage
+│   │   ├── [slug].astro            # Individual content pages
+│   │   └── api/
+│   │       ├── experiences.json.ts     # All content endpoint
+│   │       ├── experiences/[slug].json.ts  # Single content endpoint
+│   │       └── schemas.json.ts     # Schema definition endpoint
+│   ├── layouts/
 │   │   └── Layout.astro            # Base layout
-│   ├── pages/                      # Astro pages (routes)
-│   │   └── index.astro             # Homepage
-│   └── styles/                     # Global styles
-│       └── global.css              # Tailwind imports
-├── tests/                          # Test files
-│   └── notion-connection.test.js   # Notion API connection test
-├── context.md                      # Full technical specification
-├── .env                            # Environment variables (not in git)
-├── .gitignore                      # Git ignore rules
-├── astro.config.mjs                # Astro configuration
-├── package.json                    # Dependencies & scripts
-├── tsconfig.json                   # TypeScript configuration
-└── README.md                       # This file
+│   ├── styles/
+│   │   └── global.css              # Tailwind imports
+│   └── types.ts                    # TypeScript definitions
+├── scripts/
+│   ├── generate-backup.ts          # Backup + auto-commit script
+│   ├── auto-publish-status.ts      # Auto-status updater
+│   └── generate-sample-json.ts     # Sample JSON generator
+├── tests/
+│   └── notion-connection.test.js   # Notion API test
+├── data/backup/                    # JSON backups (committed to git)
+│   └── YYYY-MM-DD/
+│       ├── all-experiences.json
+│       ├── metadata.json
+│       └── articles/
+├── context.md                      # Technical specification
+└── .env                            # API credentials (not committed)
 ```
 
-## Content Management
+---
 
-All content is managed in Notion. To publish content:
+## 🎨 Content Management
 
-1. Create or edit a page in your Notion database
-2. Fill in all required properties
-3. Set **Status** to **"Ready for Web"**
-4. Wait for automatic rebuild (or trigger manually)
+### Notion Database Schema
 
-**No code editing required!**
+**Required Properties:**
 
-The content will automatically appear on your website after the next build.
+| Property | Type | Description |
+|----------|------|-------------|
+| Name/Title | Title | Content title |
+| Status | Select | Draft, Ready for Web, Published, In Progress, Archived |
+| Slug | Text | URL-safe identifier (e.g., "my-article") |
+| Content Type | Select | article, comic, podcast |
+| Web Category | Select | journal, episodes, podcast |
+| Date | Date | Publication date |
+| Location | Text | Geographic location |
+| Project | Multi-select | Project tags |
+| Intent Vector | Text | Semantic purpose statement |
+| SD-Index™ | Number | Symbiotic Depth Index (0-10) |
+| Concepts | Multi-select | Concept tags |
+| Hero Image | Files | Cover image |
 
-## Architecture
+### Publishing Flow
 
-This project follows a **two-layer paradigm**:
+1. **Create** content in Notion
+2. **Set Status** → "Ready for Web"
+3. **Build** → `npm run build`
+4. **Auto-magic:**
+   - Content appears on site
+   - JSON backed up to GitHub
+   - Status changes to "Published"
 
-### Layer 1: Human Presentation
-- Beautiful UI/UX
-- Responsive design
-- SEO-optimized HTML
-- Fast static generation
+---
 
-### Layer 2: AI-Readable Data
-- Structured metadata
-- Cultural legacy markers (Intent Vector, SD-Index™)
-- Semantic relationships
-- Future-proof for AI ingestion
+## 🔧 Commands Reference
 
-**Content Flow:**
-```
-Notion Database → Notion API → NotionLoader → Transformers → Astro Pages → Static HTML
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server (live preview, no backup) |
+| `npm run build` | **Production build** (full automation pipeline) |
+| `npm run preview` | Preview built site locally |
+| `npm run test` | Test Notion API connection |
+| `npm run backup` | Manual backup (without build) |
+| `npm run sample` | Generate sample JSON output |
+| `npm run publish-status` | Manual status update (without build) |
 
-The content source (Notion) is the **single source of truth**. The website is generated from Notion data during build time.
+---
 
-## Key Components
-
-### NotionLoader
-Fetches content from Notion API with filtering and transformation:
-- `getAll()` - Fetch all content (filtered by Status)
-- `getBySlug()` - Fetch single page by slug
-- `getByProject()` - Fetch pages by project tag
-- `getByCategory()` - Fetch pages by web category
-
-### Transformers
-Convert Notion pages to internal schema:
-- `transformToBaseContent()` - Universal properties
-- `transformToArticleContent()` - Article-specific
-- `transformToComicContent()` - Comic/webtoon-specific
-- `transformToPodcastContent()` - Podcast-specific
-
-### Block Renderer
-Converts Notion blocks to HTML:
-- Paragraphs, Headings (H1-H3)
-- Lists (bulleted, numbered)
-- Images, Quotes, Callouts
-- Code blocks, Dividers
-
-## Testing
+## 🧪 Testing
 
 ### Test Notion Connection
 ```bash
 npm run test
 ```
+Shows all "Ready for Web" pages with their properties.
 
-This will:
-1. Connect to your Notion database
-2. Fetch pages with Status = "Ready for Web"
-3. Display all properties and values
-4. Verify data transformation works
-
-### Test Site Locally
+### Test JSON API Endpoints
 ```bash
 npm run dev
+# Then:
+curl http://localhost:4321/api/experiences.json
+curl http://localhost:4321/api/schemas.json
 ```
 
-Visit `http://localhost:4321` to see the site.
+### Test Backup System
+```bash
+npm run backup
+# Check: data/backup/YYYY-MM-DD/ folder created
+```
 
-## Troubleshooting
+### Test Full Pipeline
+```bash
+npm run build
+# Checks:
+# ✅ Backup files in data/backup/
+# ✅ Git commit created
+# ✅ dist/ folder generated
+# ✅ Notion status updated
+```
 
-### "Could not find database" error
-1. Verify `NOTION_DATABASE_ID` in `.env` is correct
-2. Ensure your integration has access to the database
-3. Go to Notion → ... menu → Connections → Add your integration
+---
 
-### "Unauthorized" error
-1. Check `NOTION_API_KEY` in `.env` is correct
-2. Verify the integration token hasn't expired
-3. Create a new integration if needed
+## 📦 M1 Delivery Checklist
 
-### No pages found
-1. Ensure at least one page has Status = "Ready for Web"
-2. Check that all required properties exist in your database
-3. Run `npm run test` to see what Notion returns
+**What Sabrina expects to see:**
 
-## Documentation
+- [ ] **JSON API endpoints accessible**
+  - Show working `/api/experiences.json`
+  - Show working `/api/schemas.json`
+  
+- [ ] **GitHub backup visible in repo**
+  - Point to `data/backup/` folder
+  - Show organized structure (articles/, metadata.json)
+  
+- [ ] **Enhanced schema with AGI fields**
+  - Run `npm run sample` to show output
+  - Demonstrate `dialogue`, `embedding`, `schema_version`
+  
+- [ ] **Auto-publishing works**
+  - Create test page in Notion
+  - Set Status = "Ready for Web"
+  - Run `npm run build`
+  - Show page appears on site
+  - Show status changed to "Published"
 
-- [Technical Specification](./context.md) - Full project spec (v2.0)
-- [Notion API Documentation](https://developers.notion.com)
+**Payment Release Trigger:**  
+> "I will release this payment when I see the raw JSON data flowing."
+
+---
+
+## 🚧 Milestone 2: The Viewer (NEXT)
+
+**Focus:** Enhanced JSON schema mapping + clean content rendering
+
+- Page templates for articles/comics/podcasts
+- Proper metadata display
+- Comic image stacking (seamless vertical flow)
+- Toggle blocks for author notes
+- Navigation system
+
+**Updated from original:** Comic viewer simplified (no text-to-comic engine needed).
+
+---
+
+## 🎯 Milestone 3: Launch (PLANNED)
+
+- Mobile responsiveness
+- Lighthouse score >85
+- Auto-rebuild stability
+- SEO optimization
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Astro 5.x (Static Site Generation)
+- **Styling:** Tailwind CSS 4.x (Utility-first)
+- **Content:** Notion API 2.x
+- **Language:** TypeScript + ES Modules
+- **Build:** Node.js 18+
+- **Hosting:** Vercel/Netlify (TBD)
+
+---
+
+## 📚 Documentation
+
+- [Technical Specification](./context.md) - Full project spec
+- [M1 AGI-First Details](./MILESTONE1-AGI-FIRST.md) - Pivot documentation
+- [Notion API Docs](https://developers.notion.com)
 - [Astro Documentation](https://docs.astro.build)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
-## Budget & Timeline
+---
 
-- **Milestone 1:** 6-7 hours ($465-$540) - ✅ COMPLETE
-- **Milestone 2:** 6-7 hours ($465-$540) - 🚧 NEXT
-- **Milestone 3:** 3-4 hours ($230-$310) - 📅 PLANNED
+## 🐛 Troubleshooting
 
-**Total:** 15-18 hours ($1,200-$1,400)
+### API Token Invalid
+```bash
+# 1. Go to https://www.notion.so/my-integrations
+# 2. Copy your Internal Integration Token
+# 3. Update .env:
+NOTION_API_KEY=secret_your_new_token_here
+```
 
-## License
+### Pages Not Appearing
+Check Notion database:
+- Status must be "Ready for Web" or "Published"
+- All required properties filled
+- Database shared with integration
 
-Private project for Sabrina Lin.
+### Backup Not Creating
+```bash
+# Check last backup date:
+ls -la data/backup/
 
-## Support
+# If no changes detected, backup is skipped
+# Add new content or edit existing to trigger backup
+```
+
+---
+
+## 📊 Project Status
+
+| Milestone | Status | Budget | Description |
+|-----------|--------|--------|-------------|
+| **M1: Data Engine** | ✅ COMPLETE | $960 | JSON APIs + GitHub backup + Auto-status |
+| **M2: The Viewer** | 🚧 NEXT | $960 | Templates + Enhanced schema mapping |
+| **M3: Launch** | 📅 PLANNED | $480 | Mobile + SEO + Auto-rebuild |
+
+**Total:** $2,400
+
+---
+
+## 🔐 Environment Variables
+
+Create `.env` in project root:
+
+```env
+NOTION_API_KEY=secret_xxxxxxxxxxxxx
+NOTION_DATABASE_ID=xxxxxxxxxxxxxxxx
+```
+
+**Security:** Never commit `.env` to git (already in `.gitignore`).
+
+---
+
+## 💡 Key Concepts
+
+### SD-Index™ (Symbiotic Depth Index)
+Scale 0-10 measuring content depth and philosophical resonance.
+
+### Intent Vector
+Semantic purpose statement capturing the "why" of the content.
+
+### AGI-First Architecture
+Data structure designed for machine learning consumption:
+- Versioned schemas
+- Reserved embedding fields
+- Structured dialogue format
+- Emotion trajectory tracking
+
+---
+
+## 📞 Support
 
 For questions or issues, contact the developer.
+
+---
+
+**Built with data rigor over visual perfection.**  
+*Sabrina's Pause — Moments Between*

@@ -1,4 +1,4 @@
-/**
+  /**
  * Auto-Publish Status Script
  * 
  * After content is published to the site, automatically updates
