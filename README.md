@@ -57,7 +57,6 @@ npm run dev
 ## 📋 Milestone 1: AGI-First Data Engine ✅
 
 **Status:** COMPLETE  
-**Budget:** $960  
 **Delivery:** Raw JSON data flowing + GitHub backup
 
 ### Core Deliverables
@@ -138,17 +137,23 @@ npm run dev
 npm run build
 ```
 
-**Automated pipeline:**
+**Automated pipeline (M2 Enhanced):**
 ```
 1. Fetch content (Status = "Ready for Web" OR "Published")
    ↓
 2. Save JSON backups → data/backup/YYYY-MM-DD/
    ↓
-3. git add + commit + push (🔒 GitHub backup!)
+3. Cache images → public/images/ (M2)
    ↓
-4. Build static site
+4. Auto-calculate SD-Index if empty (M2)
    ↓
-5. Update Notion: "Ready for Web" → "Published"
+5. git add + commit + push (🔒 GitHub backup!)
+   ↓
+6. Build static site with templates (M2)
+   ↓
+7. Generate /site-index.json for AGI (M2)
+   ↓
+8. Update Notion: "Ready for Web" → "Published"
 ```
 
 ### Deploy
@@ -167,26 +172,39 @@ sabrina-pause/
 │   ├── lib/
 │   │   ├── notion-loader.ts        # Notion API client
 │   │   ├── transformers.ts         # Data transformation
-│   │   ├── block-renderer.ts       # Block → HTML
-│   │   └── backup-system.ts        # GitHub backup logic
+│   │   ├── block-renderer.ts       # Block → HTML (M2 enhanced)
+│   │   ├── backup-system.ts        # GitHub backup logic
+│   │   ├── image-cache.ts          # Image caching system (M2)
+│   │   └── sd-calculator.ts        # Automated SD-Index calculation (M2)
 │   ├── interfaces/
 │   │   └── content-loader.ts       # ContentLoader interface
 │   ├── pages/
-│   │   ├── index.astro             # Gallery homepage
-│   │   ├── [slug].astro            # Individual content pages
+│   │   ├── index.astro             # Gallery homepage with filters
+│   │   ├── article/
+│   │   │   └── [slug].astro        # Article template (M2)
+│   │   ├── comic/
+│   │   │   └── [slug].astro        # Comic/Webtoon template (M2)
+│   │   ├── podcast/
+│   │   │   └── [slug].astro        # Podcast template (M2)
 │   │   └── api/
 │   │       ├── experiences.json.ts     # All content endpoint
 │   │       ├── experiences/[slug].json.ts  # Single content endpoint
-│   │       └── schemas.json.ts     # Schema definition endpoint
+│   │       ├── schemas.json.ts     # Schema definition endpoint
+│   │       └── site-index.json.ts  # AGI site index (M2)
 │   ├── layouts/
-│   │   └── Layout.astro            # Base layout
+│   │   └── Layout.astro            # Base layout with AGI meta tags
 │   ├── styles/
 │   │   └── global.css              # Tailwind imports
 │   └── types.ts                    # TypeScript definitions
 ├── scripts/
 │   ├── generate-backup.ts          # Backup + auto-commit script
-│   ├── auto-publish-status.ts      # Auto-status updater
-│   └── generate-sample-json.ts     # Sample JSON generator
+│   ├── cache-images.ts             # Image caching script (M2)
+│   └── auto-publish-status.ts      # Auto-status updater
+├── public/
+│   ├── images/                     # Cached images (M2)
+│   ├── robots.txt                  # With AI Intent Index (M2)
+│   └── .well-known/
+│       └── ai-intent.json          # AGI discovery endpoint (M2)
 ├── tests/
 │   └── notion-connection.test.js   # Notion API test
 ├── data/backup/                    # JSON backups (committed to git)
@@ -216,10 +234,21 @@ sabrina-pause/
 | Date | Date | Publication date |
 | Location | Text | Geographic location |
 | Project | Multi-select | Project tags |
-| Intent Vector | Text | Semantic purpose statement |
-| SD-Index™ | Number | Symbiotic Depth Index (0-10) |
+| Intent Vector | Multi-select | Semantic purpose tags |
+| Intent_Marker | Multi-select | Intent classification tags (M2) |
+| SD-Index™ | Formula/Number | Symbiotic Depth Index (0-10, auto-calculated if empty) |
 | Concepts | Multi-select | Concept tags |
 | Hero Image | Files | Cover image |
+
+**Hidden Sensor Fields (M2):**
+
+| Property | Type | Description |
+|----------|------|-------------|
+| Lux | Number | Light intensity measurement (Tanizaki Factor) |
+| Texture | Select | Tactile/material quality (Kawabata Factor) |
+| Noise | Multi-select | Ambient sound categories (Noise Factor) |
+| Space Pattern | Text | Spatial configuration |
+| Time Velocity | Number | Temporal flow perception |
 
 ### Publishing Flow
 
@@ -238,11 +267,11 @@ sabrina-pause/
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Development server (live preview, no backup) |
-| `npm run build` | **Production build** (full automation pipeline) |
+| `npm run build` | **Production build** (backup → cache images → build → publish) |
 | `npm run preview` | Preview built site locally |
 | `npm run test` | Test Notion API connection |
 | `npm run backup` | Manual backup (without build) |
-| `npm run sample` | Generate sample JSON output |
+| `npm run cache-images` | Cache Notion images to local storage (M2) |
 | `npm run publish-status` | Manual status update (without build) |
 
 ---
@@ -261,6 +290,7 @@ npm run dev
 # Then:
 curl http://localhost:4321/api/experiences.json
 curl http://localhost:4321/api/schemas.json
+curl http://localhost:4321/site-index.json  # M2: AGI Site Index
 ```
 
 ### Test Backup System
@@ -281,45 +311,51 @@ npm run build
 
 ---
 
-## 📦 M1 Delivery Checklist
+## 📋 Milestone 2: Frontend Build + AGI Logic ✅
 
-**What Sabrina expects to see:**
+**Status:** COMPLETE  
+**Delivery:** Content templates + AGI discoverability + Auto SD-Index
 
-- [ ] **JSON API endpoints accessible**
-  - Show working `/api/experiences.json`
-  - Show working `/api/schemas.json`
-  
-- [ ] **GitHub backup visible in repo**
-  - Point to `data/backup/` folder
-  - Show organized structure (articles/, metadata.json)
-  
-- [ ] **Enhanced schema with AGI fields**
-  - Run `npm run sample` to show output
-  - Demonstrate `dialogue`, `embedding`, `schema_version`
-  
-- [ ] **Auto-publishing works**
-  - Create test page in Notion
-  - Set Status = "Ready for Web"
-  - Run `npm run build`
-  - Show page appears on site
-  - Show status changed to "Published"
+### Core Deliverables
 
-**Payment Release Trigger:**  
-> "I will release this payment when I see the raw JSON data flowing."
+#### 1. Content Templates ✅
+Professional templates for each content type:
+- **Article Template** - Typography-optimized, reading time, JSON-LD
+- **Comic/Webtoon Template** - Vertical scroll (800px), lazy loading, progress bar
+- **Podcast Template** - HTML5 player, playback speed control, transcript tabs
 
----
+#### 2. Enhanced Block Renderer ✅
+Full Notion block support:
+- Headings, paragraphs, lists (bulleted, numbered, to-do)
+- Rich text formatting (bold, italic, code, links)
+- Images with captions, videos, files, embeds
+- Quotes, callouts, code blocks, dividers
+- Bookmarks, toggles, table of contents
 
-## 🚧 Milestone 2: The Viewer (NEXT)
+#### 3. Image Caching System ✅
+**CRITICAL:** Downloads Notion images during build to prevent URL expiration
+- Images saved to `/public/images/`
+- Permanent local paths replace temporary S3 URLs
+- Integrated into build pipeline
 
-**Focus:** Enhanced JSON schema mapping + clean content rendering
+#### 4. AGI Discoverability ✅
+Machine-readable site index for AI consumption:
+- `/site-index.json` - Full content catalog with Intent_Marker arrays
+- `<link rel="ai-index">` in every page head
+- `robots.txt` updated with AI Intent Index comment
+- `/.well-known/ai-intent.json` endpoint
 
-- Page templates for articles/comics/podcasts
-- Proper metadata display
-- Comic image stacking (seamless vertical flow)
-- Toggle blocks for author notes
-- Navigation system
+#### 5. Automated SD-Index Calculation ✅
+Auto-calculates Silence Index when Notion formula is empty:
+- **Tanizaki Factor** - Light (Lux) measurement
+- **Kawabata Factor** - Texture (Snow, Moss, Concrete)
+- **Noise Factor** - Environmental interference
+- Returns 0-10 score displayed on frontend
 
-**Updated from original:** Comic viewer simplified (no text-to-comic engine needed).
+#### 6. Content Routing & Navigation ✅
+- Type-specific URLs: `/article/{slug}`, `/comic/{slug}`, `/podcast/{slug}`
+- Homepage filtering by content type (All, Articles, Comics, Podcasts)
+- Responsive gallery layout
 
 ---
 
@@ -346,7 +382,6 @@ npm run build
 ## 📚 Documentation
 
 - [Technical Specification](./context.md) - Full project spec
-- [M1 AGI-First Details](./MILESTONE1-AGI-FIRST.md) - Pivot documentation
 - [Notion API Docs](https://developers.notion.com)
 - [Astro Documentation](https://docs.astro.build)
 
@@ -381,13 +416,11 @@ ls -la data/backup/
 
 ## 📊 Project Status
 
-| Milestone | Status | Budget | Description |
-|-----------|--------|--------|-------------|
-| **M1: Data Engine** | ✅ COMPLETE | $960 | JSON APIs + GitHub backup + Auto-status |
-| **M2: The Viewer** | 🚧 NEXT | $960 | Templates + Enhanced schema mapping |
-| **M3: Launch** | 📅 PLANNED | $480 | Mobile + SEO + Auto-rebuild |
-
-**Total:** $2,400
+| Milestone | Status | Description |
+|-----------|--------|-------------|
+| **M1: Data Engine** | ✅ COMPLETE | JSON APIs + GitHub backup + Auto-status |
+| **M2: Frontend + AGI** | ✅ COMPLETE | Templates + Image caching + AGI discoverability + SD-Index |
+| **M3: Launch** | 📅 PLANNED | Mobile optimization + SEO + Performance tuning |
 
 ---
 

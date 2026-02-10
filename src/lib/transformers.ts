@@ -4,6 +4,7 @@
  */
 
 import type { NotionPage, NotionBlock, BaseContent, ArticleContent, ComicContent, PodcastContent, Content } from '../types';
+import { getSDIndex } from './sd-calculator';
 
 /**
  * Extract text from Notion rich text property
@@ -87,16 +88,20 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
   const webCategory = extractSelect(props['Web Category']);
   const project = extractMultiSelect(props.Project);
   const concepts = extractMultiSelect(props.Concepts);
-  const intentVector = extractRichText(props['Intent Vector']);
-  const sdIndex = extractNumber(props['SD-Index™'] || props['SD-Index']);
+  const intentVector = extractMultiSelect(props['Intent Vector']); // Actually multi_select in Notion
+  const Intent_Marker = extractMultiSelect(props['Intent_Marker']); // M2: Required array field
   const heroImage = extractFileUrl(props['Hero Image']);
   
   // Extract Hidden Sensor Fields (Milestone 2)
   const lux = props.Lux ? extractNumber(props.Lux) : null;
-  const texture = props.Texture ? extractRichText(props.Texture) : null;
-  const noiseLevel = props['Noise Level'] ? extractNumber(props['Noise Level']) : null;
+  const texture = props.Texture ? extractSelect(props.Texture) : null; // Select in Notion
+  const noise = extractMultiSelect(props.Noise); // Actually multi_select in Notion
   const spacePattern = props['Space Pattern'] ? extractRichText(props['Space Pattern']) : null;
   const timeVelocity = props['Time Velocity'] ? extractNumber(props['Time Velocity']) : null;
+  
+  // SD-Index™ - Auto-calculate if Notion formula is empty (M2 requirement)
+  const notionSDIndex = extractNumber(props['SD-Index™'] || props['SD-Index']); // Formula type
+  const sdIndex = getSDIndex(notionSDIndex, { lux, texture, noise });
   
   // Infer language (default to 'en' for now, can be enhanced)
   const language: 'zh' | 'en' = 'en';
@@ -115,10 +120,11 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
     concepts,
     intentVector,
     sdIndex,
+    Intent_Marker,
     // Hidden Sensor Fields (Milestone 2)
     lux,
     texture,
-    noiseLevel,
+    noise,
     spacePattern,
     timeVelocity,
     heroImage,

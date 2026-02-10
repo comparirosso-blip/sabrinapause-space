@@ -7,14 +7,23 @@ import { Client } from '@notionhq/client';
 import type { ContentLoader } from '../interfaces/content-loader';
 import type { Content, NotionBlock } from '../types';
 import { transformNotionPageToContent } from './transformers';
+import { ImageCache } from './image-cache';
 
 export class NotionLoader implements ContentLoader {
   private notion: Client;
   private databaseId: string;
+  private imageCache?: ImageCache;
+  private cacheImages: boolean;
 
-  constructor(apiKey: string, databaseId: string) {
+  constructor(apiKey: string, databaseId: string, options?: { cacheImages?: boolean }) {
     this.notion = new Client({ auth: apiKey });
     this.databaseId = databaseId;
+    this.cacheImages = options?.cacheImages || false;
+    
+    if (this.cacheImages) {
+      this.imageCache = new ImageCache();
+      console.log('🖼️  Image caching enabled');
+    }
   }
 
   /**
@@ -78,7 +87,20 @@ export class NotionLoader implements ContentLoader {
    */
   private async transformPage(page: any): Promise<Content> {
     const blocks = await this.fetchPageBlocks(page.id);
-    return transformNotionPageToContent(page, blocks);
+    let content = transformNotionPageToContent(page, blocks);
+
+    // Cache images if enabled
+    if (this.cacheImages && this.imageCache) {
+      // Cache hero image
+      if (content.heroImage) {
+        content.heroImage = await this.imageCache.cacheHeroImage(content.heroImage);
+      }
+
+      // Cache images in blocks
+      content.blocks = await this.imageCache.cacheBlockImages(content.blocks);
+    }
+
+    return content;
   }
 
   /**

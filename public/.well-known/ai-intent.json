@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Sabrina Pause",
+  "url": "https://sabrinapause.space",
+  "description": "AGI-First digital archive of philosophical experiences",
+  "version": "2.1",
+  
+  "aiIndex": {
+    "@type": "DataCatalog",
+    "url": "https://sabrinapause.space/site-index.json",
+    "description": "Machine-readable content index optimized for AI consumption",
+    "format": "application/json",
+    "aiReadable": true
+  },
+  
+  "apis": [
+    {
+      "@type": "WebAPI",
+      "name": "Content API",
+      "url": "https://sabrinapause.space/api/experiences.json",
+      "description": "All published content with metadata",
+      "format": "application/json"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "Schema API",
+      "url": "https://sabrinapause.space/api/schemas.json",
+      "description": "Content schema definition",
+      "format": "application/json"
+    }
+  ],
+  
+  "intentSystem": {
+    "enabled": true,
+    "fields": ["intentVector", "Intent_Marker"],
+    "description": "Semantic intent classification for AI understanding"
+  },
+  
+  "culturalDepth": {
+    "sdIndex": {
+      "name": "SD-Index™ (Symbiotic Depth Index)",
+      "range": [0, 10],
+      "description": "Measures silence depth and contemplative quality"
+    }
+  },
+  
+  "sensors": {
+    "environmental": true,
+    "fields": ["lux", "texture", "noise", "spacePattern", "timeVelocity"],
+    "description": "Environmental and sensory metadata for context understanding"
+  },
+  
+  "contentTypes": ["article", "comic", "podcast"],
+  "languages": ["en", "zh"],
+  "schemaVersion": "1.0",
+  "lastUpdated": "2026-02-10"
+}

@@ -1,0 +1,278 @@
+---
+/**
+ * Comic/Webtoon Template
+ * Vertical scrolling format (like LINE Webtoon)
+ * 800px max width, lazy loading, mobile-first
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import { NotionLoader } from '../../lib/notion-loader';
+
+const { slug } = Astro.params;
+
+const loader = new NotionLoader(
+  import.meta.env.NOTION_API_KEY,
+  import.meta.env.NOTION_DATABASE_ID,
+  { cacheImages: false }
+);
+
+const content = await loader.getBySlug(slug as string);
+
+if (!content || content.contentType !== 'comic') {
+  return Astro.redirect('/404');
+}
+
+// Extract image blocks only for comic format
+const imageBlocks = content.blocks.filter(block => block.type === 'image');
+
+// Generate JSON-LD for ComicIssue
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ComicIssue',
+  name: content.title,
+  description: content.intentVector.join(', '),
+  image: content.heroImage || '',
+  datePublished: content.date,
+  creator: {
+    '@type': 'Person',
+    name: 'Sabrina Lin',
+    url: 'https://sabrinapause.space'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Sabrina Pause'
+  },
+  inLanguage: content.language,
+  about: content.concepts.map(c => ({
+    '@type': 'Thing',
+    name: c
+  }))
+};
+
+export async function getStaticPaths() {
+  const loader = new NotionLoader(
+    import.meta.env.NOTION_API_KEY,
+    import.meta.env.NOTION_DATABASE_ID
+  );
+  
+  const comics = await loader.getAll('comic');
+  
+  return comics.map((comic) => ({
+    params: { slug: comic.slug },
+  }));
+}
+---
+
+<Layout title={content.title} description={content.intentVector.join(' · ')}>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="comic-reader min-h-screen bg-black">
+    
+    <!-- Comic Header (Fixed) -->
+    <header class="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-neutral-800">
+      <div class="max-w-[800px] mx-auto px-4 py-4">
+        <!-- Back Button -->
+        <nav class="mb-3">
+          <a href="/" class="text-sm text-neutral-400 hover:text-white inline-flex items-center gap-2 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back to gallery
+          </a>
+        </nav>
+        
+        <!-- Title & Metadata -->
+        <div>
+          <h1 class="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+            {content.title}
+          </h1>
+          <div class="flex items-center gap-3 text-sm text-neutral-400">
+            <span class="uppercase tracking-wide font-medium">{content.webCategory}</span>
+            <span>·</span>
+            <time datetime={content.date}>{content.date}</time>
+            <span>·</span>
+            <span>{imageBlocks.length} panels</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Comic Content - Vertical Scroll -->
+    <main class="max-w-[800px] mx-auto px-0 pb-16">
+      
+      <!-- Hero/Cover Image -->
+      {content.heroImage && (
+        <div class="w-full bg-neutral-900">
+          <img 
+            src={content.heroImage} 
+            alt={content.title}
+            class="w-full h-auto"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      )}
+      
+      <!-- Comic Panels -->
+      <div class="comic-panels">
+        {imageBlocks.map((block, index) => {
+          const imageUrl = block.image?.file?.url || block.image?.external?.url;
+          const caption = block.image?.caption?.[0]?.plain_text;
+          
+          return (
+            <div class="comic-panel" data-panel={index + 1}>
+              <img 
+                src={imageUrl} 
+                alt={caption || `Panel ${index + 1}`}
+                loading={index < 3 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="w-full h-auto block"
+              />
+              {caption && (
+                <div class="panel-caption">
+                  {caption}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      
+      <!-- End Card -->
+      <div class="mt-8 px-4">
+        <div class="bg-neutral-900 rounded-lg p-8 text-center border border-neutral-800">
+          <div class="text-4xl mb-4">✨</div>
+          <h2 class="text-xl font-bold text-white mb-2">End of Episode</h2>
+          <p class="text-neutral-400 mb-6">Thanks for reading!</p>
+          
+          <!-- Metadata -->
+          {content.concepts.length > 0 && (
+            <div class="flex gap-2 flex-wrap justify-center mb-6">
+              {content.concepts.map((concept) => (
+                <span class="text-xs px-3 py-1.5 bg-neutral-800 text-neutral-300 rounded-full border border-neutral-700">
+                  {concept}
+                </span>
+              ))}
+            </div>
+          )}
+          
+          <div class="flex flex-col gap-3 text-sm text-neutral-500">
+            <div>
+              <span class="font-medium">Location:</span> {content.location.name}
+            </div>
+            <div>
+              <span class="font-medium">SD-Index™:</span> {content.sdIndex}/10
+            </div>
+          </div>
+          
+          <!-- Navigation -->
+          <div class="mt-8 pt-6 border-t border-neutral-800">
+            <a 
+              href="/" 
+              class="inline-block px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-neutral-100 transition-colors"
+            >
+              Back to Gallery
+            </a>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+    
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-white z-50 transition-all duration-200" style="width: 0%"></div>
+    
+  </div>
+</Layout>
+
+<style>
+  /* Comic Reader Styling */
+  .comic-reader {
+    background: #000;
+    color: #fff;
+  }
+  
+  .comic-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* No gap between panels for seamless scroll */
+  }
+  
+  .comic-panel {
+    width: 100%;
+    background: #000;
+    position: relative;
+  }
+  
+  .comic-panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .panel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 2rem 1rem 1rem;
+    font-size: 0.875rem;
+    color: #d4d4d4;
+    text-align: center;
+  }
+  
+  /* Mobile optimization */
+  @media (max-width: 800px) {
+    .comic-panel img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) {
+      progressBar.style.width = scrolled + '%';
+    }
+  });
+  
+  // Lazy loading intersection observer (for older browsers)
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            observer.unobserve(img);
+          }
+        }
+      });
+    }, {
+      rootMargin: '50px 0px', // Start loading 50px before entering viewport
+      threshold: 0.01
+    });
+    
+    // Observe all comic panel images
+    document.querySelectorAll('.comic-panel img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+</script>

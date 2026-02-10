@@ -1106,3 +1106,376 @@ deeper analytics.
 But Phase 1 must be rock-solid before we proceed.
 Questions? Ask early and often. Clarity now = smooth execution later.
 Document End
+---
+
+# MILESTONE 2: FRONTEND BUILD + AGI LOGIC
+
+**Version:** 2.1  
+**Date:** February 10, 2026  
+**Status:** IN PROGRESS  
+**Budget:** $960.00  
+**Domain:** sabrinapause.space  
+**GitHub:** https://github.com/comparirosso-blip/sabrinapause-space
+
+---
+
+## 🔍 PRE-FLIGHT CHECK (Step 0) - COMPLETED ✅
+
+### Task A: Connect API with New Notion Credentials ✅
+- [x] API Key: `ntn_q6692876308VVBb2c7ueemappU8N9Aaw9HwAubWuuD946l`
+- [x] Database ID: `dec5c73579234088acae2553c3614788`
+- [x] Connection verified and working
+
+### Task B: Add Hidden Sensor Fields to Schema ✅
+- [x] **lux** (number) - Light intensity measurement
+- [x] **texture** (select) - Tactile/material quality  
+- [x] **noise** (multi_select) - Ambient sound categories
+- [x] **spacePattern** (string) - Spatial configuration
+- [x] **timeVelocity** (number) - Temporal flow perception
+
+### Schema Mapping Fixes ✅
+- [x] **intentVector** - Changed from `string` to `string[]` (multi_select in Notion)
+- [x] **noise** - Changed from `string` to `string[]` (multi_select in Notion)
+- [x] **sdIndex** - Mapped correctly (formula type in Notion)
+- [x] **Intent_Marker** - Added as `string[]` (multi_select) - **REQUIRED FOR M2**
+
+### Backup System ✅
+- [x] New backup generated: `data/backup/2026-02-10/`
+- [x] Schema reflects all M2 changes
+- [x] Git commit ready
+
+> ⚠️ **Note:** `Intent_Marker` property needs to be added to Notion database by Sabrina
+
+---
+
+## 🏗️ LAYER 1: CORE DELIVERABLES (Foundation)
+
+### 1. Templates & Rendering
+
+#### Article Template
+- [ ] Clean, readable layout
+- [ ] Typography optimized for long-form content
+- [ ] Metadata display (date, location, SD-Index™, Intent Vector)
+- [ ] Responsive design
+      
+#### Webtoon/Comic Template (Vertical Scroll)
+- [ ] 800px fixed width
+- [ ] Seamless vertical scroll
+- [ ] Image panels in sequence
+- [ ] Lazy loading for performance
+- [ ] Author notes in collapsible sections
+      
+#### Podcast Template
+- [ ] Native HTML5 audio player
+- [ ] Show notes below player
+- [ ] Timestamp navigation
+- [ ] Transcript display
+
+---
+
+### 2. Block Renderer
+
+#### Notion Block Types to HTML
+- [ ] Headings (H1, H2, H3)
+- [ ] Paragraphs
+- [ ] Images (with captions)
+- [ ] Bulleted lists
+- [ ] Numbered lists
+- [ ] Quotes/Callouts
+- [ ] Code blocks
+- [ ] Dividers
+      
+#### Render Quality
+- [ ] Proper spacing and typography
+- [ ] Responsive images
+- [ ] Semantic HTML structure
+
+---
+
+### 3. JSON-LD Structured Data
+
+#### Schema.org Implementation
+- [ ] Add `<script type="application/ld+json">` in `<head>`
+- [ ] Article schema for articles
+- [ ] CreativeWork schema for comics/podcasts
+- [ ] Include metadata: author, datePublished, description, keywords
+
+---
+
+### 4. Image Caching System ⚠️ **CRITICAL**
+
+**Problem:** Notion API image URLs expire after ~1 hour
+
+#### Solution Required
+- [ ] Download all images during build to `/public/images/`
+- [ ] Generate permanent URLs
+- [ ] Replace temporary S3 URLs in content
+- [ ] Alternative: Upload to CDN (Cloudflare R2, AWS S3)
+      
+#### Implementation
+- [ ] Create image download script
+- [ ] Run during build process
+- [ ] Update image URLs in JSON before rendering
+
+---
+
+### 5. Routing & Navigation
+
+#### Basic Routing
+- [ ] Homepage: `/` (all content grid)
+- [ ] Article pages: `/article/[slug]`
+- [ ] Comic pages: `/comic/[slug]`
+- [ ] Podcast pages: `/podcast/[slug]`
+- [ ] Archive pages: `/archive/[category]`
+      
+#### Navigation Component
+- [ ] Header with logo and main nav
+- [ ] Filter by content type (Article, Comic, Podcast)
+- [ ] Filter by project/concept tags
+      
+#### Archive Filtering
+- [ ] By date (newest first)
+- [ ] By category (Journal, Travel, Wine, etc.)
+- [ ] By SD-Index™ (silence density scale)
+
+---
+
+## 🧠 LAYER 2: AGI LOGIC (The "Soul")
+
+### 1. Site Index Generation (The Memory)
+
+- [ ] Generate `/site-index.json` during build
+
+**Required Structure:**
+
+```json
+{
+  "version": "1.0",
+  "generated_at": "2026-02-10T12:00:00Z",
+  "total_content": 42,
+  "content_index": [
+    {
+      "id": "page-id",
+      "slug": "hello-world",
+      "title": "Hello World",
+      "contentType": "article",
+      "date": "2026-02-04",
+      "intentVector": ["Explore", "Reflect"],
+      "Intent_Marker": ["intent_clarified"],
+      "sdIndex": 8.5,
+      "concepts": ["Philosophy", "Travel"],
+      "url": "/article/hello-world"
+    }
+  ]
+}
+```
+
+> ⚠️ **Critical:** `Intent_Marker` MUST be an Array (not string)
+
+---
+
+### 2. AGI Discoverability (The Signal)
+
+#### In `<head>` of EVERY page
+- [ ] Add meta tag:
+```html
+<link rel="ai-index" href="/site-index.json">
+```
+      
+#### In `robots.txt`
+- [ ] Add AI index reference:
+```
+# AI Intent Index: /site-index.json
+User-agent: *
+Allow: /
+```
+      
+#### Create `/.well-known/ai-intent.json`
+- [ ] Create file with content:
+```json
+{
+  "index_url": "/site-index.json",
+  "format": "sabrina-pause-v1",
+  "description": "Digital Twin Intent Index"
+}
+```
+
+---
+
+### 3. Automated SD Index Calculation (The Logic)
+
+- [ ] Implement calculation function in build script
+
+**JavaScript Logic to Use:**
+
+```javascript
+// Input: Notion Properties
+// Output: sdIndex (Float, 0.0 - 10.0)
+
+function calculateSDIndex(post) {
+  let score = 5.0; // Base Score (Scale 0-10)
+  
+  // 1. Tanizaki Factor (Light) - Requires 'Lux' (Number)
+  const lux = post.properties.Lux || 1000;
+  if (lux < 100) score *= 1.2;      // Candle light
+  else if (lux < 500) score *= 1.1; // Dim room
+  else if (lux > 2000) score *= 0.9;// Harsh sunlight
+  
+  // 2. Kawabata Factor (Texture) - Requires 'Texture' (Select/Multi-select)
+  const texture = post.properties.Texture || "";
+  const textureStr = Array.isArray(texture) 
+    ? texture.join(" ") 
+    : texture;
+  
+  if (textureStr.includes("Snow")) score *= 1.3;
+  if (textureStr.includes("Moss")) score *= 1.2;
+  if (textureStr.includes("Concrete")) score *= 0.8; // Penalty
+  
+  // 3. Noise Factor (Interference)
+  const noise = post.properties.Noise || "";
+  const noiseStr = Array.isArray(noise) 
+    ? noise.join(" ") 
+    : noise;
+  
+  if (noiseStr.includes("Construction") || 
+      noiseStr.includes("Traffic")) {
+    score *= 0.6; // Heavy Penalty
+  }
+  
+  // Cap result between 0 and 10
+  return Math.min(Math.max(score, 0), 10).toFixed(1);
+}
+```
+
+**Integration Steps:**
+- [ ] Run during build for each content item
+- [ ] Use calculated sdIndex if Notion field is empty
+- [ ] Display calculated value on frontend
+
+---
+
+## 🎯 ACCEPTANCE CRITERIA
+
+When Sabrina returns from Japan, she will verify:
+
+### 1. Content Rendering ✅
+- [ ] Does a Notion page with mixed blocks render correctly?
+- [ ] Are headings, paragraphs, images, quotes all properly styled?
+
+### 2. Data Access ✅
+- [ ] Can I access `/site-index.json`?
+- [ ] Does it show calculated sdIndex (0-10)?
+- [ ] Is `Intent_Marker` displayed as an array?
+
+### 3. Images ✅
+- [ ] Do images load correctly?
+- [ ] Are they NOT broken due to URL expiration?
+
+### 4. Discoverability ✅
+- [ ] Do robots.txt and `<head>` tags point to `/site-index.json`?
+- [ ] Does `/.well-known/ai-intent.json` exist?
+
+### 5. Comic/Webtoon Format ✅
+- [ ] Does vertical scrolling work smoothly?
+- [ ] Are images seamlessly stacked?
+- [ ] Does lazy loading work?
+
+### 6. Routing & Navigation ✅
+- [ ] Do all page types render correctly?
+- [ ] Does filtering work?
+- [ ] Is navigation intuitive?
+
+---
+
+## 📦 DEPLOYMENT
+
+**Domain:** sabrinapause.space  
+**Registrar:** Porkbun (DNS access provided)
+
+### Deployment Options:
+
+1. **Vercel (Recommended)**
+   - Auto-deploy from GitHub
+   - Sabrina will send Vercel project invite
+   
+2. **Static Host Alternative**
+   - Upload `dist/` folder to any static host
+   - Configure DNS to point to host
+
+**Build Command:** `npm run build`  
+**Output Directory:** `dist/`
+
+---
+
+## 🔧 TECHNICAL NOTES
+
+### Property Name Mapping
+
+**Important:** Per Sabrina's clarification:
+- "Intent Vector" in Notion → Maps to **`Intent_Marker`** in JSON output
+- Must be an array: `["intent_clarified", "intent_drifted"]`
+
+### SD-Index™ Behavior
+
+- **Frontend is READ-ONLY**
+- Calculation happens via Protocol Panthera (Sabrina's external script)
+- Website simply fetches and displays the number from Notion
+- **Optional:** If Notion field is empty, calculate using provided JS logic
+
+### Image Expiration Issue ⚠️
+
+- **Problem:** Notion S3 URLs expire after ~1 hour
+- **Solution:** MUST implement image caching/downloading system
+- **Priority:** CRITICAL for production
+
+---
+
+## ✅ MILESTONE 1 COMPLETION SUMMARY
+
+### Completed Features:
+- [x] Astro + Tailwind setup
+- [x] Notion API integration
+- [x] ContentLoader abstraction layer
+- [x] NotionLoader implementation
+- [x] Data transformation pipeline
+- [x] Block rendering system
+- [x] JSON API Endpoints:
+  - `/api/experiences.json` (all content)
+  - `/api/experiences/[slug].json` (single content)
+  - `/api/schemas.json` (schema definition)
+- [x] GitHub Backup System
+  - Smart detection (only backup if changed)
+  - Auto-commit to git
+  - Organized folder structure by content type
+- [x] Enhanced Schema with AGI-first metadata
+  - dialogue, philosophical_insight, emotion_trajectory
+  - embedding (reserved for vectors)
+  - schema_version, last_updated, language
+- [x] Auto-Status Update System
+  - "Ready for Web" → "Published" after build
+- [x] Gallery-style homepage
+- [x] Individual content pages with hero images
+- [x] Connected to Sabrina's Notion database
+
+**Payment Status:** $960 received ✅
+
+---
+
+## 📊 PROJECT STATUS
+
+**GitHub Repository:** https://github.com/comparirosso-blip/sabrinapause-space  
+**Collaborator:** d4nielm7@gmail.com (Daniel)
+
+**Notion Access:**
+- Email invited: d4nielm7@gmail.com
+- Integration connected: ✅
+- Database ID: `dec5c73579234088acae2553c3614788`
+
+**Communication:**
+- Primary: Upwork Messages
+- Sabrina Status: In Japan (Feb 9 onwards)
+- Response Time: May be slower during skiing trip
+
+---
+
+**End of Milestone 2 Specifications**

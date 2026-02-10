@@ -42,13 +42,14 @@ export interface BaseContent {
   concepts: string[]; // Notion "Concepts" multi-select
   
   // Cultural Legacy Markers
-  intentVector: string; // Notion "Intent Vector"
-  sdIndex: number; // Notion "SD-Index™"
+  intentVector: string[]; // Notion "Intent Vector" (multi_select in Notion)
+  sdIndex: number; // Notion "SD-Index™" (formula type, can be auto-calculated in M2)
+  Intent_Marker: string[]; // Notion "Intent_Marker" (multi-select) - REQUIRED for M2
   
   // Hidden Sensor Fields (Environmental/Sensory Data) - Milestone 2
   lux: number | null; // Light intensity measurement (Notion "Lux")
-  texture: string | null; // Tactile/material quality (Notion "Texture")
-  noiseLevel: number | null; // Ambient sound level in dB (Notion "Noise Level")
+  texture: string | null; // Tactile/material quality (Notion "Texture" - select)
+  noise: string[]; // Ambient sound categories (Notion "Noise" - multi_select)
   spacePattern: string | null; // Spatial configuration (Notion "Space Pattern")
   timeVelocity: number | null; // Temporal flow perception (Notion "Time Velocity")
   

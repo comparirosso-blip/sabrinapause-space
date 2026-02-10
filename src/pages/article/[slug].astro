@@ -1,0 +1,298 @@
+---
+/**
+ * Article Template
+ * For blog posts, essays, and written content
+ * Features: Proper typography, reading time, JSON-LD
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import { NotionLoader } from '../../lib/notion-loader';
+import { renderBlocks } from '../../lib/block-renderer';
+
+const { slug } = Astro.params;
+
+const loader = new NotionLoader(
+  import.meta.env.NOTION_API_KEY,
+  import.meta.env.NOTION_DATABASE_ID,
+  { cacheImages: false } // Images are cached during build
+);
+
+const content = await loader.getBySlug(slug as string);
+
+if (!content || content.contentType !== 'article') {
+  return Astro.redirect('/404');
+}
+
+const renderedContent = renderBlocks(content.blocks);
+
+// Estimate reading time (avg 200 words/min)
+const wordCount = content.blocks
+  .filter(b => b.type === 'paragraph')
+  .reduce((acc, b) => acc + (b.paragraph?.rich_text[0]?.plain_text || '').split(' ').length, 0);
+const readingTime = Math.ceil(wordCount / 200);
+
+// Generate JSON-LD structured data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: content.title,
+  description: content.intentVector.join(', '),
+  image: content.heroImage || '',
+  datePublished: content.date,
+  author: {
+    '@type': 'Person',
+    name: 'Sabrina Lin',
+    url: 'https://sabrinapause.space'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Sabrina Pause',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://sabrinapause.space/logo.png'
+    }
+  },
+  keywords: [...content.concepts, ...content.intentVector],
+  about: content.concepts.map(c => ({
+    '@type': 'Thing',
+    name: c
+  }))
+};
+
+export async function getStaticPaths() {
+  const loader = new NotionLoader(
+    import.meta.env.NOTION_API_KEY,
+    import.meta.env.NOTION_DATABASE_ID
+  );
+  
+  const articles = await loader.getAll('article');
+  
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+  }));
+}
+---
+
+<Layout title={content.title} description={content.intentVector.join(' · ')}>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="min-h-screen bg-white">
+    
+    <!-- Hero Image -->
+    {content.heroImage && (
+      <div class="w-full h-[60vh] bg-neutral-100 relative">
+        <img 
+          src={content.heroImage} 
+          alt={content.title}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <!-- Gradient overlay for better text contrast -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60"></div>
+      </div>
+    )}
+    
+    <!-- Article Content -->
+    <div class="max-w-3xl mx-auto px-6 py-16">
+      
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-neutral-500 hover:text-neutral-900 mb-8">
+        <a href="/" class="inline-flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to all experiences
+        </a>
+      </nav>
+      
+      <!-- Metadata Bar -->
+      <div class="flex items-center gap-3 mb-6 text-sm text-neutral-500">
+        <span class="font-medium uppercase tracking-wide text-xs px-2 py-1 bg-neutral-100 text-neutral-700 rounded">
+          {content.webCategory}
+        </span>
+        <span>·</span>
+        <time datetime={content.date}>{content.date}</time>
+        <span>·</span>
+        <span>{readingTime} min read</span>
+      </div>
+      
+      <!-- Title -->
+      <h1 class="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 leading-tight tracking-tight">
+        {content.title}
+      </h1>
+      
+      <!-- Intent Vector as subtitle -->
+      {content.intentVector.length > 0 && (
+        <p class="text-xl text-neutral-600 mb-8 leading-relaxed font-light">
+          {content.intentVector.join(' · ')}
+        </p>
+      )}
+      
+      <!-- Metadata Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 mb-12 border-y border-neutral-200 text-sm">
+        <div>
+          <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Location</div>
+          <div class="text-neutral-900 font-medium">{content.location.name}</div>
+        </div>
+        <div>
+          <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">SD-Index™</div>
+          <div class="text-neutral-900 font-medium">{content.sdIndex}/10</div>
+        </div>
+        {content.lux !== null && (
+          <div>
+            <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Lux</div>
+            <div class="text-neutral-900 font-medium">{content.lux}</div>
+          </div>
+        )}
+        {content.texture && (
+          <div>
+            <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Texture</div>
+            <div class="text-neutral-900 font-medium capitalize">{content.texture}</div>
+          </div>
+        )}
+      </div>
+      
+      <!-- Concepts/Tags -->
+      {content.concepts.length > 0 && (
+        <div class="flex gap-2 flex-wrap mb-12">
+          {content.concepts.map((concept) => (
+            <span class="text-xs px-3 py-1.5 bg-neutral-50 text-neutral-700 rounded-full border border-neutral-200 hover:bg-neutral-100 transition-colors">
+              {concept}
+            </span>
+          ))}
+        </div>
+      )}
+      
+      <!-- Main Content -->
+      <div class="prose prose-lg prose-neutral max-w-none article-content">
+        <Fragment set:html={renderedContent} />
+      </div>
+      
+      <!-- Footer Metadata -->
+      <footer class="mt-16 pt-8 border-t border-neutral-200">
+        <div class="flex flex-wrap gap-4 text-sm text-neutral-500">
+          <div>
+            <span class="font-medium">Last updated:</span>
+            <time datetime={content.last_updated}>{new Date(content.last_updated).toLocaleDateString()}</time>
+          </div>
+          <div>
+            <span class="font-medium">Schema version:</span>
+            {content.schema_version}
+          </div>
+        </div>
+      </footer>
+      
+    </div>
+    
+  </article>
+</Layout>
+
+<style>
+  /* Article Typography - Optimized for reading */
+  .article-content {
+    color: #404040;
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  
+  .article-content :global(h1),
+  .article-content :global(h2),
+  .article-content :global(h3),
+  .article-content :global(h4) {
+    color: #171717;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+  
+  .article-content :global(h1) { font-size: 2.25rem; }
+  .article-content :global(h2) { font-size: 1.875rem; }
+  .article-content :global(h3) { font-size: 1.5rem; }
+  .article-content :global(h4) { font-size: 1.25rem; }
+  
+  .article-content :global(p) {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  
+  .article-content :global(p:first-child) {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #525252;
+  }
+  
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+  }
+  
+  .article-content :global(li) {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+  }
+  
+  .article-content :global(img) {
+    border-radius: 0.5rem;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    width: 100%;
+    height: auto;
+  }
+  
+  .article-content :global(blockquote) {
+    border-left: 4px solid #d4d4d4;
+    padding-left: 1.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-style: italic;
+    color: #737373;
+    margin: 2em 0;
+    font-size: 1.125rem;
+  }
+  
+  .article-content :global(code) {
+    background: #f5f5f5;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  }
+  
+  .article-content :global(pre) {
+    background: #171717;
+    color: #fafafa;
+    padding: 1.5em;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 2em 0;
+  }
+  
+  .article-content :global(pre code) {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+  }
+  
+  .article-content :global(a) {
+    color: #404040;
+    text-decoration: underline;
+    text-decoration-color: #d4d4d4;
+    text-underline-offset: 0.2em;
+    transition: all 0.2s;
+  }
+  
+  .article-content :global(a:hover) {
+    text-decoration-color: #404040;
+  }
+  
+  .article-content :global(hr) {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 3em 0;
+  }
+</style>
