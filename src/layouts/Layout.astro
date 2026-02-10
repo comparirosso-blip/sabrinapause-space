@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -20,9 +21,14 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     
     <!-- AGI Discoverability - Milestone 2 -->
     <link rel="ai-index" href="/site-index.json" type="application/json" />
+    
+    <!-- Instant Page Transitions -->
+    <ClientRouter />
   </head>
   <body class="bg-gray-50">
     <slot />

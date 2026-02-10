@@ -1,8 +1,7 @@
 ---
 /**
- * Podcast Template
- * Native HTML5 audio player with transcript
- * Optimized for audio content consumption
+ * Podcast Template - Overhauled for M2 Refinement
+ * Supports multiple audio files, accurate durations, and simplified layout.
  */
 
 import Layout from '../../layouts/Layout.astro';
@@ -14,7 +13,7 @@ const { slug } = Astro.params;
 const loader = new NotionLoader(
   import.meta.env.NOTION_API_KEY,
   import.meta.env.NOTION_DATABASE_ID,
-  { cacheImages: false }
+  { cacheImages: true }
 );
 
 const content = await loader.getBySlug(slug as string);
@@ -23,14 +22,18 @@ if (!content || content.contentType !== 'podcast') {
   return Astro.redirect('/404');
 }
 
-const renderedContent = renderBlocks(content.blocks);
+// Filter blocks to exclude audio files that are already displayed in the top list
+const audioUrls = content.audioFiles.map(f => f.url);
+const filteredBlocks = content.blocks.filter(b => {
+  if (['audio', 'video', 'file'].includes(b.type)) {
+    const url = b.audio?.file?.url || b.audio?.external?.url || b.file?.file?.url || b.video?.file?.url;
+    // If this URL is already in our top list, filter it out
+    return !audioUrls.includes(url);
+  }
+  return true;
+});
 
-// Extract audio file if exists (from Notion file blocks)
-// For now, we'll use a placeholder. In production, you'd extract from Notion blocks
-const audioUrl = content.blocks.find(b => b.type === 'file')?.file?.url || '';
-
-// Estimate duration (placeholder - would come from audio metadata)
-const duration = '30:00'; 
+const renderedContent = renderBlocks(filteredBlocks);
 
 // Generate JSON-LD for PodcastEpisode
 const jsonLd = {
@@ -45,27 +48,16 @@ const jsonLd = {
     name: 'Sabrina Lin',
     url: 'https://sabrinapause.space'
   },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Sabrina Pause',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://sabrinapause.space/logo.png'
-    }
-  },
-  audio: audioUrl ? {
+  audio: content.audioFiles.length > 0 ? {
     '@type': 'AudioObject',
-    contentUrl: audioUrl,
-    duration: duration,
+    contentUrl: content.audioFiles[0].url,
     encodingFormat: 'audio/mpeg'
   } : undefined,
   partOfSeries: {
     '@type': 'PodcastSeries',
-    name: 'Sabrina Pause Podcast',
-    url: 'https://sabrinapause.space'
+    name: 'Sabrina Pause Podcast'
   },
-  inLanguage: content.language,
-  keywords: [...content.concepts, ...content.intentVector]
+  inLanguage: content.language
 };
 
 export async function getStaticPaths() {
@@ -73,35 +65,27 @@ export async function getStaticPaths() {
     import.meta.env.NOTION_API_KEY,
     import.meta.env.NOTION_DATABASE_ID
   );
-  
   const podcasts = await loader.getAll('podcast');
-  
-  return podcasts.map((podcast) => ({
-    params: { slug: podcast.slug },
-  }));
+  return podcasts.map((p) => ({ params: { slug: p.slug } }));
 }
 ---
 
 <Layout title={content.title} description={content.intentVector.join(' · ')}>
-  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <article class="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
+  <article class="min-h-screen bg-neutral-50 pb-20">
     
-    <!-- Podcast Header -->
-    <header class="max-w-4xl mx-auto px-6 pt-12 pb-8">
-      
-      <!-- Breadcrumb -->
-      <nav class="text-sm text-neutral-500 hover:text-neutral-900 mb-8">
-        <a href="/" class="inline-flex items-center gap-2">
+    <!-- Header -->
+    <header class="max-w-4xl mx-auto px-6 pt-12">
+      <nav class="text-sm text-neutral-500 mb-8">
+        <a href="/" class="inline-flex items-center gap-2 hover:text-neutral-900 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
           </svg>
           Back to all experiences
         </a>
       </nav>
-      
-      <!-- Metadata Badge -->
+
       <div class="flex items-center gap-3 mb-6 text-sm">
         <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-medium uppercase tracking-wide text-xs">
           🎙️ {content.webCategory}
@@ -110,252 +94,200 @@ export async function getStaticPaths() {
         <time datetime={content.date} class="text-neutral-600">{content.date}</time>
       </div>
       
-      <!-- Title -->
-      <h1 class="text-5xl md:text-6xl font-bold text-neutral-900 mb-4 leading-tight tracking-tight">
+      <h1 class="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 leading-tight tracking-tight">
         {content.title}
       </h1>
-      
-      <!-- Intent Vector -->
-      {content.intentVector.length > 0 && (
-        <p class="text-xl text-neutral-600 mb-8 leading-relaxed font-light">
-          {content.intentVector.join(' · ')}
-        </p>
-      )}
-      
     </header>
-    
-    <!-- Audio Player Card -->
-    <div class="max-w-4xl mx-auto px-6 mb-12">
-      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-neutral-200">
-        
-        <!-- Cover Art + Meta -->
-        <div class="flex flex-col md:flex-row gap-6 p-6 md:p-8">
-          
-          <!-- Cover Image -->
-          {content.heroImage && (
-            <div class="flex-shrink-0">
-              <img 
-                src={content.heroImage} 
-                alt={content.title}
-                class="w-full md:w-48 md:h-48 rounded-lg shadow-lg object-cover"
-                loading="eager"
-              />
-            </div>
-          )}
-          
-          <!-- Player Info -->
-          <div class="flex-1 flex flex-col justify-between">
-            <div>
-              <div class="text-sm text-neutral-500 uppercase tracking-wide mb-2">Episode</div>
-              <h2 class="text-2xl font-bold text-neutral-900 mb-3">{content.title}</h2>
-              <div class="flex items-center gap-4 text-sm text-neutral-600 mb-4">
-                <span>⏱️ {duration}</span>
-                <span>·</span>
-                <span>📍 {content.location.name}</span>
-              </div>
-            </div>
-            
-            <!-- Audio Player -->
-            {audioUrl ? (
-              <div class="space-y-3">
-                <audio 
-                  id="podcast-player"
-                  controls 
-                  preload="metadata"
-                  class="w-full"
-                  style="height: 48px;"
-                >
-                  <source src={audioUrl} type="audio/mpeg" />
-                  Your browser does not support the audio element.
-                </audio>
-                
-                <!-- Playback Speed -->
-                <div class="flex items-center gap-2 text-sm">
-                  <span class="text-neutral-500">Speed:</span>
-                  <button class="speed-btn px-2 py-1 rounded bg-neutral-100 hover:bg-neutral-200 transition-colors" data-speed="0.75">0.75×</button>
-                  <button class="speed-btn px-2 py-1 rounded bg-neutral-900 text-white" data-speed="1">1×</button>
-                  <button class="speed-btn px-2 py-1 rounded bg-neutral-100 hover:bg-neutral-200 transition-colors" data-speed="1.25">1.25×</button>
-                  <button class="speed-btn px-2 py-1 rounded bg-neutral-100 hover:bg-neutral-200 transition-colors" data-speed="1.5">1.5×</button>
-                  <button class="speed-btn px-2 py-1 rounded bg-neutral-100 hover:bg-neutral-200 transition-colors" data-speed="2">2×</button>
-                </div>
-              </div>
-            ) : (
-              <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
-                ⚠️ Audio file not yet uploaded to Notion
-              </div>
-            )}
-          </div>
-          
-        </div>
-        
-      </div>
-    </div>
-    
-    <!-- Content Tabs -->
-    <div class="max-w-4xl mx-auto px-6 pb-16">
+
+    <!-- Main Player & Metadata Section -->
+    <div class="max-w-4xl mx-auto px-6 space-y-8">
       
-      <!-- Tab Navigation -->
-      <div class="flex gap-4 border-b border-neutral-200 mb-8">
-        <button class="tab-btn active px-4 py-3 font-medium border-b-2 border-neutral-900 text-neutral-900 transition-colors" data-tab="transcript">
-          Transcript
-        </button>
-        <button class="tab-btn px-4 py-3 font-medium border-b-2 border-transparent text-neutral-500 hover:text-neutral-900 transition-colors" data-tab="metadata">
-          Metadata
-        </button>
-      </div>
-      
-      <!-- Tab Content -->
-      <div id="tab-content">
-        
-        <!-- Transcript Tab -->
-        <div class="tab-panel active" data-panel="transcript">
-          <div class="prose prose-lg prose-neutral max-w-none bg-white rounded-lg p-8 shadow-sm border border-neutral-100">
-            <Fragment set:html={renderedContent} />
-          </div>
-        </div>
-        
-        <!-- Metadata Tab -->
-        <div class="tab-panel hidden" data-panel="metadata">
-          <div class="bg-white rounded-lg p-8 shadow-sm border border-neutral-100 space-y-6">
-            
-            <div class="grid grid-cols-2 gap-6">
-              <div>
-                <div class="text-xs text-neutral-500 uppercase tracking-wide mb-2">Location</div>
-                <div class="text-neutral-900 font-medium">{content.location.name}</div>
-              </div>
-              <div>
-                <div class="text-xs text-neutral-500 uppercase tracking-wide mb-2">SD-Index™</div>
-                <div class="text-neutral-900 font-medium">{content.sdIndex}/10</div>
-              </div>
-              {content.lux !== null && (
-                <div>
-                  <div class="text-xs text-neutral-500 uppercase tracking-wide mb-2">Lux</div>
-                  <div class="text-neutral-900 font-medium">{content.lux}</div>
+      <!-- Audio Players List -->
+      <div class="space-y-4">
+        {content.audioFiles.length > 0 ? (
+          content.audioFiles.map((file, index) => (
+            <div class="bg-white rounded-2xl shadow-sm border border-neutral-200 p-6 flex flex-col md:flex-row gap-6 items-center">
+              {index === 0 && content.heroImage && (
+                <div class="flex-shrink-0 w-full md:w-32 h-32 bg-neutral-100 rounded-lg overflow-hidden border border-neutral-100 flex items-center justify-center">
+                  <img 
+                    src={content.heroImage} 
+                    alt="" 
+                    class="w-full h-full object-cover" 
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23f5f5f5\'/%3E%3Cpath d=\'M30 40 L50 60 L70 40\' stroke=\'%23ccc\' stroke-width=\'2\' fill=\'none\'/%3E%3C/svg%3E'; this.className='w-1/2 h-1/2 opacity-20';"
+                  />
                 </div>
               )}
-              {content.texture && (
-                <div>
-                  <div class="text-xs text-neutral-500 uppercase tracking-wide mb-2">Texture</div>
-                  <div class="text-neutral-900 font-medium capitalize">{content.texture}</div>
-                </div>
-              )}
-            </div>
-            
-            {content.concepts.length > 0 && (
-              <div>
-                <div class="text-xs text-neutral-500 uppercase tracking-wide mb-3">Topics</div>
-                <div class="flex gap-2 flex-wrap">
-                  {content.concepts.map((concept) => (
-                    <span class="text-sm px-3 py-1.5 bg-neutral-50 text-neutral-700 rounded-full border border-neutral-200">
-                      {concept}
+              <div class="flex-1 w-full space-y-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest block mb-1">
+                      {index === 0 ? "Main Feature" : `Clip ${index + 1}`}
                     </span>
-                  ))}
+                    <h3 class="text-xl font-bold text-neutral-800">{file.title || content.title}</h3>
+                  </div>
+                  <div class="text-sm font-mono text-neutral-400 bg-neutral-50 px-2 py-1 rounded duration-label" data-index={index}>
+                    --:--
+                  </div>
                 </div>
+                
+                <audio 
+                  controls 
+                  class="w-full podcast-player" 
+                  data-index={index}
+                >
+                  <source src={file.url} type="audio/mpeg" />
+                </audio>
+
+                {index === 0 && (
+                  <div class="flex items-center gap-3 text-sm">
+                    <span class="text-neutral-500 font-medium">Speed:</span>
+                    <div class="flex p-1 bg-neutral-100 rounded-lg">
+                      {[0.75, 1, 1.25, 1.5, 2].map(speed => (
+                        <button 
+                          class={`speed-btn px-3 py-1 rounded-md text-xs transition-all ${speed === 1 ? 'bg-white shadow-sm text-neutral-900' : 'text-neutral-500 hover:text-neutral-800'}`}
+                          data-speed={speed}
+                        >
+                          {speed}x
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-            
-            <div class="pt-6 border-t border-neutral-200">
-              <div class="text-xs text-neutral-500 mb-2">Last updated</div>
-              <time datetime={content.last_updated} class="text-neutral-700">
-                {new Date(content.last_updated).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </time>
             </div>
-            
+          ))
+        ) : (
+          <div class="bg-yellow-50 border border-yellow-200 p-8 rounded-2xl text-center">
+            <p class="text-yellow-800">⚠️ No audio clips attached in Notion yet.</p>
+          </div>
+        )}
+      </div>
+
+      <!-- Metadata Section - Full Width Horizontal Dashboard -->
+      <div class="space-y-8 pt-10 border-t border-neutral-200">
+        
+        <!-- Row 1: Full Width Observation Bar -->
+        <div class="bg-white rounded-3xl border border-neutral-200 shadow-sm overflow-hidden divide-y md:divide-y-0 md:divide-x divide-neutral-100 flex flex-col md:flex-row">
+          <!-- Label Section -->
+          <div class="bg-neutral-50/50 px-8 py-4 flex items-center justify-center md:justify-start">
+            <h4 class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest whitespace-nowrap">Observation Stats</h4>
+          </div>
+          
+          <!-- Metrix Section -->
+          <div class="flex-1 grid grid-cols-2 md:grid-cols-3 divide-x divide-neutral-100">
+            <div class="px-8 py-6 text-center md:text-left group">
+              <div class="text-[9px] text-neutral-400 uppercase mb-2 group-hover:text-neutral-600 transition-colors">SD-Index™</div>
+              <div class="text-4xl font-black text-neutral-900 leading-none">{content.sdIndex}<span class="text-sm text-neutral-300 font-normal ml-1">/10</span></div>
+            </div>
+            <div class="px-8 py-6 text-center md:text-left group">
+              <div class="text-[9px] text-neutral-400 uppercase mb-2 group-hover:text-neutral-600 transition-colors">Lux Level</div>
+              <div class="text-4xl font-black text-neutral-900 leading-none">{content.lux || "—"}</div>
+            </div>
+            <div class="px-8 py-6 text-center md:text-left group col-span-2 md:col-span-1 border-t md:border-t-0 border-neutral-100">
+              <div class="text-[9px] text-neutral-400 uppercase mb-2 group-hover:text-neutral-600 transition-colors">Point of Origin</div>
+              <div class="text-base font-bold text-neutral-800 flex items-center justify-center md:justify-start gap-3">
+                <div class="w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)] animate-pulse"></div>
+                {content.location.name || "Stationary"}
+              </div>
+            </div>
           </div>
         </div>
-        
+
+        <!-- Row 2: Full Width Cognitive Vector -->
+        {content.intentVector.length > 0 && (
+          <div class="bg-neutral-900 rounded-3xl p-8 text-white shadow-xl overflow-hidden relative group">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-700"></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-4 mb-8">
+                <div class="h-px bg-neutral-800 flex-1"></div>
+                <h4 class="text-[10px] font-bold text-neutral-500 uppercase tracking-widest opacity-70">Cognitive Vector Stream</h4>
+                <div class="h-px bg-neutral-800 flex-1"></div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {content.intentVector.map((v, i) => (
+                  <div class="flex gap-4 text-sm font-mono leading-relaxed group/item border-l border-neutral-800 pl-4 py-2 hover:border-purple-500 transition-all">
+                    <span class="text-purple-500 font-bold opacity-40">0{i + 1}</span>
+                    <span class="text-neutral-300 group-hover/item:text-white transition-colors">{v}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        <!-- Row 3: Tags Horizontal Strip -->
+        {content.concepts.length > 0 && (
+          <div class="flex flex-wrap items-center gap-3 py-6 px-8 bg-neutral-50 rounded-2xl border border-neutral-200 border-dashed">
+            <span class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mr-4">Tags</span>
+            {content.concepts.map(t => (
+              <span class="text-[11px] px-3 py-1.5 bg-white text-neutral-600 rounded-lg border border-neutral-200 uppercase font-bold tracking-wider hover:border-purple-300 hover:text-purple-600 transition-all cursor-default shadow-sm">
+                #{t}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <!-- Row 4: Main Content Area -->
+        <div class="prose prose-neutral max-w-none pt-10 pb-20">
+          <div set:html={renderedContent} />
+        </div>
+
       </div>
-      
+
     </div>
-    
   </article>
 </Layout>
 
 <style>
-  /* Podcast Typography */
-  .prose {
+  .prose :global(h1), .prose :global(h2), .prose :global(h3) {
+    color: #171717;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+  .prose :global(p) {
     color: #404040;
     line-height: 1.8;
   }
   
-  .prose :global(p) {
-    margin-top: 1.25em;
-    margin-bottom: 1.25em;
-  }
-  
-  .prose :global(strong) {
-    color: #171717;
-    font-weight: 600;
-  }
-  
-  /* Audio Player Styling */
-  audio {
-    border-radius: 8px;
-    background: #f5f5f5;
-  }
-  
   audio::-webkit-media-controls-panel {
-    background: #fafafa;
-  }
-  
-  /* Tab Styling */
-  .tab-panel.hidden {
-    display: none;
-  }
-  
-  .tab-panel.active {
-    display: block;
+    background: #f8fafc;
   }
 </style>
 
 <script>
-  // Playback speed controls
+  // Client-side Duration Detection
+  document.querySelectorAll('.podcast-player').forEach(player => {
+    const audio = player as HTMLAudioElement;
+    const index = player.getAttribute('data-index');
+    const label = document.querySelector(`.duration-label[data-index="${index}"]`);
+
+    audio.onloadedmetadata = () => {
+      if (label) {
+        const minutes = Math.floor(audio.duration / 60);
+        const seconds = Math.floor(audio.duration % 60);
+        label.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      }
+    };
+  });
+
+  // Unified Speed Control
   document.querySelectorAll('.speed-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const speed = parseFloat(btn.getAttribute('data-speed') || '1');
-      const player = document.getElementById('podcast-player') as HTMLAudioElement;
       
-      if (player) {
-        player.playbackRate = speed;
-        
-        // Update active state
-        document.querySelectorAll('.speed-btn').forEach(b => {
-          b.classList.remove('bg-neutral-900', 'text-white');
-          b.classList.add('bg-neutral-100');
-        });
-        btn.classList.remove('bg-neutral-100');
-        btn.classList.add('bg-neutral-900', 'text-white');
-      }
-    });
-  });
-  
-  // Tab switching
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tabName = btn.getAttribute('data-tab');
-      
-      // Update tab buttons
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('active', 'border-neutral-900', 'text-neutral-900');
-        b.classList.add('border-transparent', 'text-neutral-500');
+      // Update all players
+      document.querySelectorAll('audio').forEach(p => {
+        (p as HTMLAudioElement).playbackRate = speed;
       });
-      btn.classList.add('active', 'border-neutral-900', 'text-neutral-900');
-      btn.classList.remove('border-transparent', 'text-neutral-500');
-      
-      // Update panels
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        if (panel.getAttribute('data-panel') === tabName) {
-          panel.classList.remove('hidden');
-          panel.classList.add('active');
-        } else {
-          panel.classList.add('hidden');
-          panel.classList.remove('active');
-        }
+
+      // Update UI active state
+      document.querySelectorAll('.speed-btn').forEach(b => {
+        b.classList.remove('bg-white', 'shadow-sm', 'text-neutral-900');
+        b.classList.add('text-neutral-500');
       });
+      btn.classList.add('bg-white', 'shadow-sm', 'text-neutral-900');
+      btn.classList.remove('text-neutral-500');
     });
   });
 </script>

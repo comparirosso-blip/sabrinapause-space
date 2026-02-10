@@ -78,7 +78,7 @@ function extractFileUrl(property: any): string | undefined {
  */
 export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]): BaseContent {
   const props = page.properties;
-  
+
   // Extract required fields (handle both "Title" and "Name" properties)
   const title = extractTitle(props.Title || props.Name);
   const slug = extractRichText(props.Slug);
@@ -91,21 +91,21 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
   const intentVector = extractMultiSelect(props['Intent Vector']); // Actually multi_select in Notion
   const Intent_Marker = extractMultiSelect(props['Intent_Marker']); // M2: Required array field
   const heroImage = extractFileUrl(props['Hero Image']);
-  
+
   // Extract Hidden Sensor Fields (Milestone 2)
   const lux = props.Lux ? extractNumber(props.Lux) : null;
   const texture = props.Texture ? extractSelect(props.Texture) : null; // Select in Notion
   const noise = extractMultiSelect(props.Noise); // Actually multi_select in Notion
   const spacePattern = props['Space Pattern'] ? extractRichText(props['Space Pattern']) : null;
   const timeVelocity = props['Time Velocity'] ? extractNumber(props['Time Velocity']) : null;
-  
+
   // SD-Index™ - Auto-calculate if Notion formula is empty (M2 requirement)
   const notionSDIndex = extractNumber(props['SD-Index™'] || props['SD-Index']); // Formula type
   const sdIndex = getSDIndex(notionSDIndex, { lux, texture, noise });
-  
+
   // Infer language (default to 'en' for now, can be enhanced)
   const language: 'zh' | 'en' = 'en';
-  
+
   return {
     id: page.id,
     contentType,
@@ -154,7 +154,7 @@ export function transformToArticleContent(base: BaseContent, blocks: NotionBlock
       .join('') || '';
     excerpt = text.substring(0, 200);
   }
-  
+
   // Calculate reading time (average 200 words per minute)
   const wordCount = blocks
     .filter(b => b.type === 'paragraph')
@@ -165,7 +165,7 @@ export function transformToArticleContent(base: BaseContent, blocks: NotionBlock
       return count + text.split(/\s+/).length;
     }, 0);
   const readingTime = Math.ceil(wordCount / 200);
-  
+
   return {
     ...base,
     contentType: 'article',
@@ -181,14 +181,14 @@ export function transformToComicContent(base: BaseContent, blocks: NotionBlock[]
   // Extract panels from image blocks
   const panels: ComicContent['panels'] = [];
   let panelNumber = 1;
-  
+
   blocks.forEach((block, index) => {
     if (block.type === 'image') {
       const imageUrl = block.image?.file?.url || block.image?.external?.url || '';
       const caption = block.image?.caption
         ?.map((item: any) => item.plain_text || '')
         .join('') || '';
-      
+
       // Get narration from next paragraph block
       let narration: string | undefined;
       if (index < blocks.length - 1 && blocks[index + 1].type === 'paragraph') {
@@ -196,7 +196,7 @@ export function transformToComicContent(base: BaseContent, blocks: NotionBlock[]
           ?.map((item: any) => item.plain_text || '')
           .join('');
       }
-      
+
       panels.push({
         panelNumber: panelNumber++,
         imageUrl,
@@ -207,15 +207,15 @@ export function transformToComicContent(base: BaseContent, blocks: NotionBlock[]
       });
     }
   });
-  
+
   // Extract episode number from slug or title (fallback to 1)
   const episodeNumber = 1; // TODO: Extract from Notion property if available
-  
+
   // Extract sensory memory from callout blocks
   let sensoryMemory: ComicContent['sensoryMemory'] | undefined;
   const calloutBlocks = blocks.filter(b => b.type === 'callout');
   // TODO: Parse callout structure to extract sensory memory
-  
+
   return {
     ...base,
     contentType: 'comic',
@@ -229,21 +229,23 @@ export function transformToComicContent(base: BaseContent, blocks: NotionBlock[]
  * Transform to PodcastContent
  */
 export function transformToPodcastContent(base: BaseContent, blocks: NotionBlock[]): PodcastContent {
-  // Extract audio file from file blocks
-  let audioFile: PodcastContent['audioFile'] = {
-    url: '',
-    duration: '0:00',
-  };
-  
-  const fileBlock = blocks.find(b => b.type === 'file' || b.type === 'video');
-  if (fileBlock) {
-    const url = fileBlock.file?.file?.url || fileBlock.video?.file?.url || '';
-    audioFile = {
+  // Extract all audio blocks (M2 refinement)
+  const audioBlocks = blocks.filter(b => b.type === 'file' || b.type === 'video' || b.type === 'audio');
+  const audioFiles = audioBlocks.map(block => {
+    const url = block.audio?.file?.url || block.audio?.external?.url ||
+      block.file?.file?.url || block.video?.file?.url || '';
+
+    // Extract title from caption if available
+    const caption = block.audio?.caption || block.file?.caption || block.video?.caption || [];
+    const title = caption.length > 0 ? extractRichText(caption) : '';
+
+    return {
       url,
-      duration: '0:00', // TODO: Extract duration from Notion if available
+      duration: '0:00', // Still placeholder, actual duration handled client-side
+      title: title || undefined
     };
-  }
-  
+  }).filter(f => f.url);
+
   // Extract transcript from all text blocks
   const transcript = blocks
     .filter(b => ['paragraph', 'heading_1', 'heading_2', 'heading_3'].includes(b.type))
@@ -260,18 +262,18 @@ export function transformToPodcastContent(base: BaseContent, blocks: NotionBlock
         .join('') || '';
     })
     .join('\n');
-  
+
   // Extract structure from headings (simplified)
   const structure: PodcastContent['structure'] = {
     intro: { timestamp: '0:00', summary: '' },
     mainContent: { timestamp: '0:00', topics: [] },
     outro: { timestamp: '0:00', summary: '' },
   };
-  
+
   return {
     ...base,
     contentType: 'podcast',
-    audioFile,
+    audioFiles,
     structure,
     transcript,
   };
@@ -282,7 +284,7 @@ export function transformToPodcastContent(base: BaseContent, blocks: NotionBlock
  */
 export function transformNotionPageToContent(page: NotionPage, blocks: NotionBlock[]): Content {
   const base = transformToBaseContent(page, blocks);
-  
+
   switch (base.contentType) {
     case 'article':
       return transformToArticleContent(base, blocks);

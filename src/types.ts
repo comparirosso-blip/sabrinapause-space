@@ -26,7 +26,7 @@ export interface BaseContent {
   title: string;
   date: string; // ISO 8601 format (YYYY-MM-DD)
   slug: string; // From Notion "Slug" property
-  
+
   // Location Data
   location: {
     name: string; // e.g., "Lake Tanuki, Shizuoka"
@@ -35,30 +35,30 @@ export interface BaseContent {
       lng: number;
     };
   };
-  
+
   // Taxonomy (from Notion properties)
   webCategory: string; // Notion "Web Category"
   project: string[]; // Notion "Project" multi-select
   concepts: string[]; // Notion "Concepts" multi-select
-  
+
   // Cultural Legacy Markers
   intentVector: string[]; // Notion "Intent Vector" (multi_select in Notion)
   sdIndex: number; // Notion "SD-Index™" (formula type, can be auto-calculated in M2)
   Intent_Marker: string[]; // Notion "Intent_Marker" (multi-select) - REQUIRED for M2
-  
+
   // Hidden Sensor Fields (Environmental/Sensory Data) - Milestone 2
   lux: number | null; // Light intensity measurement (Notion "Lux")
   texture: string | null; // Tactile/material quality (Notion "Texture" - select)
   noise: string[]; // Ambient sound categories (Notion "Noise" - multi_select)
   spacePattern: string | null; // Spatial configuration (Notion "Space Pattern")
   timeVelocity: number | null; // Temporal flow perception (Notion "Time Velocity")
-  
+
   // Media
   heroImage?: string; // Notion "Hero Image" file URL
-  
+
   // Content Body (from Notion blocks)
   blocks: NotionBlock[]; // Raw Notion block data
-  
+
   // AGI-First Metadata (v2.1) - Always present for consistent schema
   dialogue: Array<{
     speaker: string;
@@ -72,14 +72,14 @@ export interface BaseContent {
     start?: string;
     end?: string;
   }; // Empty object if no trajectory
-  
+
   // Future AI Integration
   embedding: number[] | null; // Reserved for vector embeddings, null by default
-  
+
   // Metadata
   schema_version: string; // Schema version
   last_updated: string; // ISO 8601 timestamp
-  
+
   // Language Support
   language: 'zh' | 'en'; // Inferred or default
 }
@@ -129,11 +129,12 @@ export interface ComicContent extends BaseContent {
 
 export interface PodcastContent extends BaseContent {
   contentType: 'podcast';
-  // Audio File (embedded in Notion)
-  audioFile: {
-    url: string; // Notion hosted audio URL
+  // Audio Files (embedded in Notion)
+  audioFiles: Array<{
+    url: string;
     duration: string; // "28:34"
-  };
+    title?: string; // From caption
+  }>;
   // Three-Part Structure (from Notion headings/sections)
   structure: {
     intro: {

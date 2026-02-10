@@ -24,7 +24,7 @@ export class ImageCache {
     this.publicDir = path.join(process.cwd(), 'public', 'images');
     this.cacheDir = this.publicDir;
     this.imageMap = new Map();
-    
+
     // Ensure directory exists
     if (!fs.existsSync(this.cacheDir)) {
       fs.mkdirSync(this.cacheDir, { recursive: true });
@@ -32,59 +32,58 @@ export class ImageCache {
   }
 
   /**
-   * Generate a stable filename from URL
+   * Generate a stable filename from URL or stableId
    */
-  private generateFilename(url: string): string {
-    // Create hash of URL for stable filename
-    const hash = crypto.createHash('md5').update(url).digest('hex');
-    
+  private generateFilename(url: string, stableId?: string): string {
+    // Use stableId if provided, otherwise hash the URL
+    const name = stableId || crypto.createHash('md5').update(url).digest('hex');
+
     // Extract extension from URL or default to .jpg
     let ext = '.jpg';
     try {
       const urlObj = new URL(url);
       const pathname = urlObj.pathname;
-      const match = pathname.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i);
+      const match = pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|m4a|mp3)$/i);
       if (match) {
         ext = match[0].toLowerCase();
       }
     } catch (e) {
       // Invalid URL, use default
     }
-    
-    return `${hash}${ext}`;
+
+    return `${name}${ext}`;
   }
 
   /**
-   * Download image from URL
+   * Download image/file from URL
    */
   private async downloadImage(url: string, filepath: string): Promise<boolean> {
     try {
-      // Use fetch to download
       const response = await fetch(url);
-      
+
       if (!response.ok) {
-        console.error(`   ❌ Failed to download: ${url} (${response.status})`);
+        console.error(`   ❌ Failed to download: ${url.substring(0, 40)}... (${response.status})`);
         return false;
       }
 
       const buffer = await response.arrayBuffer();
       fs.writeFileSync(filepath, Buffer.from(buffer));
-      
+
       return true;
     } catch (error) {
-      console.error(`   ❌ Error downloading ${url}:`, error);
+      console.error(`   ❌ Error downloading ${url.substring(0, 40)}...:`, error);
       return false;
     }
   }
 
   /**
-   * Cache a single image
+   * Cache a single image/file
    * Returns the local path (relative to /public)
    */
-  async cacheImage(url: string): Promise<string | null> {
+  async cacheImage(url: string, stableId?: string): Promise<string | null> {
     if (!url || url === '') return null;
 
-    // Check if already cached
+    // Check if already cached in memory
     if (this.imageMap.has(url)) {
       return this.imageMap.get(url)!;
     }
@@ -94,23 +93,21 @@ export class ImageCache {
       return url;
     }
 
-    const filename = this.generateFilename(url);
+    const filename = this.generateFilename(url, stableId);
     const filepath = path.join(this.cacheDir, filename);
     const publicPath = `/images/${filename}`;
 
-    // Check if file already exists
+    // Check if file already exists on disk
     if (fs.existsSync(filepath)) {
-      console.log(`   ♻️  Cached: ${filename}`);
       this.imageMap.set(url, publicPath);
       return publicPath;
     }
 
     // Download image
-    console.log(`   ⬇️  Downloading: ${url.substring(0, 60)}...`);
+    console.log(`   ⬇️  Syncing: ${filename}`);
     const success = await this.downloadImage(url, filepath);
 
     if (success) {
-      console.log(`   ✅ Saved: ${filename}`);
       this.imageMap.set(url, publicPath);
       return publicPath;
     }
@@ -140,7 +137,7 @@ export class ImageCache {
       if (block.type === 'image') {
         const imageUrl = block.image?.file?.url || block.image?.external?.url;
         if (imageUrl) {
-          const cachedUrl = await this.cacheImage(imageUrl);
+          const cachedUrl = await this.cacheImage(imageUrl, block.id);
           if (cachedUrl) {
             updatedBlock.image = {
               ...block.image,

@@ -14,7 +14,7 @@ const { slug } = Astro.params;
 const loader = new NotionLoader(
   import.meta.env.NOTION_API_KEY,
   import.meta.env.NOTION_DATABASE_ID,
-  { cacheImages: false } // Images are cached during build
+  { cacheImages: true } // Images are cached during build
 );
 
 const content = await loader.getBySlug(slug as string);

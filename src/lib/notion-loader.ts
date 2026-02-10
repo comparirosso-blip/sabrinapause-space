@@ -15,11 +15,15 @@ export class NotionLoader implements ContentLoader {
   private imageCache?: ImageCache;
   private cacheImages: boolean;
 
+  // Static memory cache for multi-session performance
+  private static pageCache: any[] | null = null;
+  private static contentCache: Map<string, Content> = new Map();
+
   constructor(apiKey: string, databaseId: string, options?: { cacheImages?: boolean }) {
     this.notion = new Client({ auth: apiKey });
     this.databaseId = databaseId;
     this.cacheImages = options?.cacheImages || false;
-    
+
     if (this.cacheImages) {
       this.imageCache = new ImageCache();
       console.log('🖼️  Image caching enabled');
@@ -50,6 +54,8 @@ export class NotionLoader implements ContentLoader {
    * Fetch all pages from WEB_PUBLISH_VIEW (Status = "Ready for Web" OR "Published")
    */
   private async fetchAllPages(): Promise<any[]> {
+    if (NotionLoader.pageCache) return NotionLoader.pageCache;
+
     const pages: any[] = [];
     let cursor: string | undefined = undefined;
 
@@ -79,6 +85,7 @@ export class NotionLoader implements ContentLoader {
       cursor = response.next_cursor || undefined;
     } while (cursor);
 
+    NotionLoader.pageCache = pages;
     return pages;
   }
 
@@ -86,20 +93,27 @@ export class NotionLoader implements ContentLoader {
    * Transform a Notion page to Content
    */
   private async transformPage(page: any): Promise<Content> {
+    const cacheKey = `${page.id}-${page.last_edited_time}`;
+    if (NotionLoader.contentCache.has(cacheKey)) {
+      return NotionLoader.contentCache.get(cacheKey)!;
+    }
+
     const blocks = await this.fetchPageBlocks(page.id);
     let content = transformNotionPageToContent(page, blocks);
 
     // Cache images if enabled
     if (this.cacheImages && this.imageCache) {
-      // Cache hero image
+      // Cache hero image using page ID as stable identifier
       if (content.heroImage) {
-        content.heroImage = await this.imageCache.cacheHeroImage(content.heroImage);
+        const cachedUrl = await this.imageCache.cacheImage(content.heroImage, page.id);
+        content.heroImage = cachedUrl || undefined;
       }
 
       // Cache images in blocks
       content.blocks = await this.imageCache.cacheBlockImages(content.blocks);
     }
 
+    NotionLoader.contentCache.set(cacheKey, content);
     return content;
   }
 
@@ -108,7 +122,7 @@ export class NotionLoader implements ContentLoader {
    */
   async getAll(contentType?: 'article' | 'comic' | 'podcast'): Promise<Content[]> {
     const pages = await this.fetchAllPages();
-    
+
     // Transform all pages
     const contents = await Promise.all(
       pages.map(page => this.transformPage(page))
@@ -127,7 +141,7 @@ export class NotionLoader implements ContentLoader {
    */
   async getBySlug(slug: string): Promise<Content | null> {
     const pages = await this.fetchAllPages();
-    
+
     // Find page with matching slug
     const page = pages.find(p => {
       const slugProperty = p.properties.Slug;
@@ -147,16 +161,16 @@ export class NotionLoader implements ContentLoader {
    */
   async getByProject(projectSlug: string): Promise<Content[]> {
     const pages = await this.fetchAllPages();
-    
+
     // Filter pages that have the project in their Project multi-select
     const matchingPages = pages.filter(p => {
       const projectProperty = p.properties.Project;
       if (!projectProperty?.multi_select) return false;
-      
-      const projects = projectProperty.multi_select.map((item: any) => 
+
+      const projects = projectProperty.multi_select.map((item: any) =>
         item.name.toLowerCase().replace(/\s+/g, '-')
       );
-      
+
       return projects.includes(projectSlug.toLowerCase());
     });
 
@@ -168,7 +182,7 @@ export class NotionLoader implements ContentLoader {
    */
   async getByCategory(category: string): Promise<Content[]> {
     const pages = await this.fetchAllPages();
-    
+
     // Filter pages with matching web category
     const matchingPages = pages.filter(p => {
       const categoryProperty = p.properties['Web Category'];

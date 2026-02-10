@@ -5,10 +5,14 @@ import { NotionLoader } from '../lib/notion-loader';
 // Fetch content to display
 const loader = new NotionLoader(
   import.meta.env.NOTION_API_KEY,
-  import.meta.env.NOTION_DATABASE_ID
+  import.meta.env.NOTION_DATABASE_ID,
+  { cacheImages: true }
 );
 
 const allContent = await loader.getAll();
+
+// Extract unique categories for dynamic navigation
+const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean))].sort();
 ---
 
 <Layout title="Sabrina's Pause" description="Moments Between — A Digital Archive">
@@ -29,21 +33,17 @@ const allContent = await loader.getAll();
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto px-6 py-16">
       
-      <!-- Filter Navigation -->
+      <!-- Filter Navigation - Dynamic from Category tags (M2 Requirement) -->
       {allContent.length > 0 && (
         <div class="flex flex-wrap gap-3 mb-12 pb-6 border-b border-neutral-200">
           <button class="filter-btn active px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium transition-colors" data-filter="all">
             All ({allContent.length})
           </button>
-          <button class="filter-btn px-4 py-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-sm font-medium transition-colors" data-filter="article">
-            Articles ({allContent.filter(c => c.contentType === 'article').length})
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-sm font-medium transition-colors" data-filter="comic">
-            Comics ({allContent.filter(c => c.contentType === 'comic').length})
-          </button>
-          <button class="filter-btn px-4 py-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-sm font-medium transition-colors" data-filter="podcast">
-            Podcasts ({allContent.filter(c => c.contentType === 'podcast').length})
-          </button>
+          {categories.map(category => (
+            <button class="filter-btn px-4 py-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-sm font-medium transition-colors" data-filter={category.toLowerCase()}>
+              {category} ({allContent.filter(c => c.webCategory === category).length})
+            </button>
+          ))}
         </div>
       )}
       
@@ -59,7 +59,7 @@ const allContent = await loader.getAll();
               // Route to content-type specific pages
               const contentUrl = `/${content.contentType}/${content.slug}`;
               return (
-              <article class="group content-item" data-type={content.contentType}>
+              <article class="group content-item" data-category={content.webCategory.toLowerCase()}>
                 <a href={contentUrl} class="block">
                   <div class="flex flex-col md:flex-row gap-8">
                     
@@ -182,10 +182,10 @@ const allContent = await loader.getAll();
       
       // Filter content
       document.querySelectorAll('.content-item').forEach(item => {
-        if (filter === 'all' || item.getAttribute('data-type') === filter) {
-          item.style.display = 'block';
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          (item as HTMLElement).style.display = 'block';
         } else {
-          item.style.display = 'none';
+          (item as HTMLElement).style.display = 'none';
         }
       });
     });

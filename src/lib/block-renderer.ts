@@ -11,10 +11,10 @@ import type { NotionBlock } from '../types';
  */
 function extractRichText(richText: any[]): string {
   if (!richText || !Array.isArray(richText)) return '';
-  
+
   return richText.map(item => {
     let text = item.plain_text || '';
-    
+
     // Apply text formatting
     if (item.annotations) {
       if (item.annotations.bold) text = `<strong>${text}</strong>`;
@@ -23,12 +23,12 @@ function extractRichText(richText: any[]): string {
       if (item.annotations.underline) text = `<u>${text}</u>`;
       if (item.annotations.code) text = `<code>${text}</code>`;
     }
-    
+
     // Handle links
     if (item.href) {
       text = `<a href="${item.href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
     }
-    
+
     return text;
   }).join('');
 }
@@ -125,6 +125,21 @@ export function renderBlock(block: NotionBlock): string {
         </figure>`;
 
     // Video
+    case 'audio':
+      const audioUrl = block.audio?.file?.url || block.audio?.external?.url;
+      if (!audioUrl) return '<!-- Missing audio URL -->';
+      return `
+        <div class="my-8 p-6 bg-neutral-50 rounded-xl border border-neutral-200">
+          <p class="text-sm font-medium text-neutral-500 mb-3 flex items-center gap-2">
+            <span>🎙️ Audio Clip</span>
+            ${block.audio.caption?.length ? `<span class="text-neutral-300">|</span> <span>${extractRichText(block.audio.caption)}</span>` : ''}
+          </p>
+          <audio controls class="w-full">
+            <source src="${audioUrl}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      `;
     case 'video':
       const videoUrl = block.video?.file?.url || block.video?.external?.url || '';
       return `
@@ -210,7 +225,7 @@ export function renderBlocks(blocks: NotionBlock[]): string {
         inBulletList = true;
       }
       html.push(renderBlock(block));
-      
+
       if (nextBlock?.type !== 'bulleted_list_item') {
         html.push('</ul>');
         inBulletList = false;
@@ -223,7 +238,7 @@ export function renderBlocks(blocks: NotionBlock[]): string {
         inNumberedList = true;
       }
       html.push(renderBlock(block));
-      
+
       if (nextBlock?.type !== 'numbered_list_item') {
         html.push('</ol>');
         inNumberedList = false;
