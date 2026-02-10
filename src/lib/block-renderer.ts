@@ -1,55 +1,5 @@
-/**
- * Block Rendering Pipeline - Milestone 2 Enhanced
- * Converts Notion blocks to HTML with full formatting support
- * Handles: text formatting, embeds, toggles, columns, tables, etc.
- */
-
 import type { NotionBlock } from '../types';
-
-/**
- * Extract and format rich text with styling (bold, italic, code, links)
- */
-function extractRichText(richText: any[]): string {
-  if (!richText || !Array.isArray(richText)) return '';
-
-  return richText.map(item => {
-    let text = item.plain_text || '';
-
-    // Apply text formatting
-    if (item.annotations) {
-      if (item.annotations.bold) text = `<strong>${text}</strong>`;
-      if (item.annotations.italic) text = `<em>${text}</em>`;
-      if (item.annotations.strikethrough) text = `<s>${text}</s>`;
-      if (item.annotations.underline) text = `<u>${text}</u>`;
-      if (item.annotations.code) text = `<code>${text}</code>`;
-    }
-
-    // Handle links
-    if (item.href) {
-      text = `<a href="${item.href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
-    }
-
-    return text;
-  }).join('');
-}
-
-/**
- * Escape HTML to prevent XSS
- */
-function escapeHtml(text: string): string {
-  const div = typeof document !== 'undefined' ? document.createElement('div') : null;
-  if (div) {
-    div.textContent = text;
-    return div.innerHTML;
-  }
-  // Fallback for server-side rendering
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+import { extractRichText, escapeHtml } from './utils';
 
 /**
  * Render a single Notion block to HTML - Enhanced for M2

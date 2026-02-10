@@ -1,76 +1,38 @@
-/**
- * Data transformation utilities
- * Transform Notion pages to internal content schema
- */
-
 import type { NotionPage, NotionBlock, BaseContent, ArticleContent, ComicContent, PodcastContent, Content } from '../types';
 import { getSDIndex } from './sd-calculator';
-
-/**
- * Extract text from Notion rich text property
- */
-function extractRichText(property: any): string {
-  if (!property || !property.rich_text) return '';
-  return property.rich_text
-    .map((item: any) => item.plain_text || '')
-    .join('');
-}
-
-/**
- * Extract title from Notion title property
- */
-function extractTitle(property: any): string {
-  if (!property) return '';
-  // Handle both 'title' and 'name' property types
-  const titleArray = property.title || property.name || [];
-  return titleArray
-    .map((item: any) => item.plain_text || '')
-    .join('');
-}
+import { extractRichText, extractTitleText } from './utils';
 
 /**
  * Extract multi-select values
  */
-function extractMultiSelect(property: any): string[] {
-  if (!property || !property.multi_select) return [];
-  return property.multi_select.map((item: any) => item.name);
-}
+const extractMultiSelect = (prop: any): string[] =>
+  prop?.multi_select?.map((m: any) => m.name) || [];
 
 /**
  * Extract select value
  */
-function extractSelect(property: any): string {
-  if (!property || !property.select) return '';
-  return property.select.name || '';
-}
+const extractSelect = (prop: any): string =>
+  prop?.select?.name || '';
 
 /**
- * Extract date value
+ * Extract date value (ISO 8601 format: YYYY-MM-DD)
  */
-function extractDate(property: any): string {
-  if (!property || !property.date) return '';
-  const date = property.date.start;
-  // Return ISO 8601 format (YYYY-MM-DD)
-  return date ? date.split('T')[0] : '';
-}
+const extractDate = (prop: any): string =>
+  prop?.date?.start?.split('T')[0] || '';
 
 /**
  * Extract number value
  */
-function extractNumber(property: any): number {
-  if (!property || property.number === null || property.number === undefined) return 0;
-  return property.number;
-}
+const extractNumber = (prop: any): number =>
+  prop?.number ?? 0;
 
 /**
  * Extract file URL from files property
  */
-function extractFileUrl(property: any): string | undefined {
-  if (!property || !property.files || property.files.length === 0) return undefined;
-  const file = property.files[0];
-  if (file.type === 'external') return file.external.url;
-  if (file.type === 'file') return file.file.url;
-  return undefined;
+function extractFileUrl(prop: any): string | undefined {
+  const file = prop?.files?.[0];
+  if (!file) return undefined;
+  return file.type === 'external' ? file.external.url : file.file.url;
 }
 
 /**
@@ -79,28 +41,28 @@ function extractFileUrl(property: any): string | undefined {
 export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]): BaseContent {
   const props = page.properties;
 
-  // Extract required fields (handle both "Title" and "Name" properties)
-  const title = extractTitle(props.Title || props.Name);
-  const slug = extractRichText(props.Slug);
+  // Extract required fields
+  const title = extractTitleText(props.Title || props.Name);
+  const slug = extractRichText(props.Slug?.rich_text, { plain: true });
   const contentType = extractSelect(props['Content Type']) as 'article' | 'comic' | 'podcast';
   const date = extractDate(props.Date);
-  const locationName = extractRichText(props.Location);
+  const locationName = extractRichText(props.Location?.rich_text, { plain: true });
   const webCategory = extractSelect(props['Web Category']);
   const project = extractMultiSelect(props.Project);
   const concepts = extractMultiSelect(props.Concepts);
-  const intentVector = extractMultiSelect(props['Intent Vector']); // Actually multi_select in Notion
-  const Intent_Marker = extractMultiSelect(props['Intent_Marker']); // M2: Required array field
+  const intentVector = extractMultiSelect(props['Intent Vector']);
+  const Intent_Marker = extractMultiSelect(props['Intent_Marker']);
   const heroImage = extractFileUrl(props['Hero Image']);
 
-  // Extract Hidden Sensor Fields (Milestone 2)
+  // Extract Hidden Sensor Fields
   const lux = props.Lux ? extractNumber(props.Lux) : null;
-  const texture = props.Texture ? extractSelect(props.Texture) : null; // Select in Notion
-  const noise = extractMultiSelect(props.Noise); // Actually multi_select in Notion
-  const spacePattern = props['Space Pattern'] ? extractRichText(props['Space Pattern']) : null;
+  const texture = props.Texture ? extractSelect(props.Texture) : null;
+  const noise = extractMultiSelect(props.Noise);
+  const spacePattern = extractRichText(props['Space Pattern']?.rich_text, { plain: true }) || null;
   const timeVelocity = props['Time Velocity'] ? extractNumber(props['Time Velocity']) : null;
 
-  // SD-Index™ - Auto-calculate if Notion formula is empty (M2 requirement)
-  const notionSDIndex = extractNumber(props['SD-Index™'] || props['SD-Index']); // Formula type
+  // SD-Index™
+  const notionSDIndex = extractNumber(props['SD-Index™'] || props['SD-Index']);
   const sdIndex = getSDIndex(notionSDIndex, { lux, texture, noise });
 
   // Infer language (default to 'en' for now, can be enhanced)

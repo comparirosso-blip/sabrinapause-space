@@ -87,16 +87,6 @@ export interface BaseContent {
 // Content-Specific Extensions
 export interface ArticleContent extends BaseContent {
   contentType: 'article';
-  // Wine-specific (from Notion page properties or inline data)
-  winery?: string;
-  vintage?: string;
-  grapeVariety?: string;
-  tastingNotes?: string;
-  wsetScore?: number;
-  // Travel-specific
-  tripDuration?: string;
-  accommodation?: string;
-  // Content
   excerpt: string; // First 200 chars of content
   readingTime?: number; // Auto-calculated from word count
 }
