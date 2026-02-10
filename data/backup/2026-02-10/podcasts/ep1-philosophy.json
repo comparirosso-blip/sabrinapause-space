@@ -1,0 +1,162 @@
+{
+  "version": "1.0",
+  "backup_date": "2026-02-10T10:45:12.285Z",
+  "data": {
+    "id": "2fc18eed-3014-8020-b11e-d5c81bbf1222",
+    "contentType": "podcast",
+    "title": "EP1.:philosophy of pause",
+    "date": "",
+    "slug": "ep1-philosophy",
+    "location": {
+      "name": ""
+    },
+    "webCategory": "Podcast",
+    "project": [],
+    "concepts": [],
+    "intentVector": [],
+    "sdIndex": 0,
+    "Intent_Marker": [],
+    "lux": 0,
+    "texture": "",
+    "noise": [],
+    "spacePattern": null,
+    "timeVelocity": null,
+    "heroImage": "https://prod-files-secure.s3.us-west-2.amazonaws.com/39118eed-3014-817f-b614-000386133549/88d0d10b-7b95-4b0d-955f-a7cce22b4e5d/PB170826-2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466VLJCDZG2%2F20260210%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260210T104511Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjENr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIGKmpYVmxtmk1ggZ4NF%2FNrJQqfwkeIc%2FvvJaNM0agsFoAiA7AGg9%2B56MjsuZan10MmHLf4Q5ZTasA4b0qdTrP%2F%2FtGSqIBAij%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMbggosRpBBBHczNw1KtwDPvLkfINMcIn2ApZwGUdwStnObZQTjmQ8y%2BaEQvuiLTjQ8OUOFMsImvPayT7viM%2FpuxOXTEVqyauPEKxYFY4HUMwFr411HJKETqF%2B%2FPOb3LWbT1LKFEVIExT8r6sd4h%2BmKjBS0%2Fdnftax9UISBargZ%2FPMmy%2BksTyM5NNR75p%2FIvWdvTvcMpYFoHDnzZNLmUlajZzLAEkIpcrstAT%2BYCqCY7rHzf1IqYOt8Q0z1paY%2B5SULLpEpvFUdajS6p%2FwVYbScJUrfFm9g75Vyk1uFl%2Bu85P2x0uP1BvSRevxS1P3MA%2BxdVLoi0S7Gsz2Z15HpVDaqumRIQfr0vyoc1lLMFmO7kgUggz3vXItdqMnstCG0xsbe3GEJg6uquaZnGUEuEbrbGLiJTTdlJNo%2FSVBVeDqW%2B%2F%2B4zjBS91ZwR00iyX77s3bxkK518UZlNtxyzWnJhb2kWrFZu7%2FEuAzn%2FA2CPSyKzkuxVgL00Bm0cv4j2r6cyTagxAgTB5ELI%2BiH%2F4QtVQ%2FQq9M7Os5B4RTbaUYP4O01l%2B%2F%2BuIOZ1daZRU5oZTkjex6T%2BAvQtM1wosDYuSeZ%2FcqLX3dBa7cnWwbKKf%2FfVDGNpJ%2BizdhzApOekvjKTuIZLYWii2f14YrmpYo6L4wgPmrzAY6pgFEA4aA6an7HkRoEkAh%2FEC0WdXB5fxx7czOdxZGxrER%2FXYvYCEjvXs4ORsnPBc%2B0iZM0LcgOSxl0%2FxEr83zHfJkvjQ5q6h%2FoD35PCsUZXzokuU9WBzO9YUXjKhLHf%2FqSmQ8mrGjftp6W1%2FU%2BSE6UwT6%2Bgf1jA7XrfLOBt9%2FIGW7Aa0xHDkfw1LWmVLqFOd59kYpCLDH6vWvcp1iSqA4bUd3HUpvIqfe&X-Amz-Signature=ca0ee4bf8494c8245f60c60f3a92c758732034fedb9987e1a083d8713b0228bf&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+    "blocks": [
+      {
+        "object": "block",
+        "id": "2fc18eed-3014-8064-8693-c6e289d548bc",
+        "parent": {
+          "type": "page_id",
+          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
+        },
+        "created_time": "2026-02-03T00:17:00.000Z",
+        "last_edited_time": "2026-02-03T00:17:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "2fc18eed-3014-809a-aba7-d7534c9f21df",
+        "parent": {
+          "type": "page_id",
+          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
+        },
+        "created_time": "2026-02-03T00:21:00.000Z",
+        "last_edited_time": "2026-02-03T00:21:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "audio",
+        "audio": {
+          "caption": [],
+          "type": "file",
+          "file": {
+            "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/39118eed-3014-817f-b614-000386133549/227b85ac-2d33-43f2-a27a-2155592b7422/AI_%E8%A7%A3%E6%9E%90%E4%BA%BA%E9%A1%9E%E6%AD%B8%E9%9B%B6%E7%84%A6%E6%85%AE%E7%9A%84%E7%B5%82%E6%A5%B5%E5%B0%8D%E8%A9%B1_%282%29.m4a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WNVEMJOZ%2F20260210%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260210T104511Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjENr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCNWXHEK0S44%2BEwrbaMqQ4maMhJ0UTMzttF7fKKmso8fgIgSXDfFVRxOErNbAs8up%2BFVNpP%2FzETKsktmPez3xe96xQqiAQIo%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDBgAVSjqgZw%2BVFD3VircA46cNlqaP64p7KU8s3yMEcsAzERTF1Po91J9DXWdTB%2BsQeSB3dxSIJy%2BpmV%2FTe6HeBrGGV9%2B1s0j7t1fDn8eBFb1BBVcmvlek1Y%2BoPpAMc1FVHRtLpQq5qonrxTU0A5km0DLCYiWfl3uctoGtZ5zt3jdLT8YHqeQMeuUPDrP9vg2Mo%2BUDWTi5N0SMZBcbZEGczStqssgnyRGFmeHi%2BBaSAJnVyAJVyKpgO0GqLvg3IJKsWJ%2BT5rYTPpf09HbeEG9zNMb2cXcOYNGOKeXoaDVSCAbQnNX7%2BtEurchAUp8T7VByDMBbIZO1FlefrYVQie5g%2F%2BYlCa%2BtxmfOSiNfIoi207sgQHULCN1xzRCuuz1Hfrw4erOBHjbg6LxeIlwJKq2VBQywDM0PvIrjp%2B8jw%2F8J84qvRA0eVtV87b0T4w9IDiiW2Ji4F9j46IE8tDv2pRtJcQjKQwnRFtwL%2FpsR%2Byd78PFIwhlisF5srvS1pOiUCg5%2FfHGCElIfLiEgliiVRq2ZjlrwYExtT4IMlB3ZMumhye4C9%2FnzhFtCoVcE%2FWRHHOWyT9e7B8Z%2Bnct69BdhcMLROjuvrzs%2BtrO7zqEPyXwSmL5IOqDIiMMA4Mup8ufr83kpy4rxhd1yhqK0k3wMMP5q8wGOqUBy%2BYFl20em5m73HejBpCZfA8wuMZ8PWvfjrTBKKLTdqxyoJ2gqOyKbs91GaEw8ng6w%2FgzfY3%2Fdp%2BQqEUbCdr%2Bgx4tabT%2FhzSO7EpYdRLY5%2FlB8mceZ9yCilAsxsfCruBf949tcBucTF55mX0iJUDVOeWSJvVJdRvzWls6DSk0WzO62iJYNrXtomlTR6Ce1g3u9nfivP1eXeA3XW%2FTW6wrQ6rq2qsP&X-Amz-Signature=69af40c55851cac3cdfc3a3bf6a49de5b5f58cb135b73172ca75ea6c4e584d0e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+            "expiry_time": "2026-02-10T11:45:11.329Z"
+          }
+        }
+      },
+      {
+        "object": "block",
+        "id": "30018eed-3014-8050-a6d9-f181676878dd",
+        "parent": {
+          "type": "page_id",
+          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
+        },
+        "created_time": "2026-02-07T07:55:00.000Z",
+        "last_edited_time": "2026-02-07T07:55:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "300d872b-594c-8174-937a-00021c16d1b1"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "300d872b-594c-8174-937a-00021c16d1b1"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "30018eed-3014-8099-a233-d88432ad92fc",
+        "parent": {
+          "type": "page_id",
+          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
+        },
+        "created_time": "2026-02-07T08:55:00.000Z",
+        "last_edited_time": "2026-02-07T08:55:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "300d872b-594c-8174-937a-00021c16d1b1"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "300d872b-594c-8174-937a-00021c16d1b1"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      }
+    ],
+    "dialogue": [],
+    "philosophical_insight": {},
+    "emotion_trajectory": {},
+    "embedding": null,
+    "schema_version": "1.0",
+    "last_updated": "2026-02-10T10:45:11.429Z",
+    "language": "en",
+    "audioFile": {
+      "url": "",
+      "duration": "0:00"
+    },
+    "structure": {
+      "intro": {
+        "timestamp": "0:00",
+        "summary": ""
+      },
+      "mainContent": {
+        "timestamp": "0:00",
+        "topics": []
+      },
+      "outro": {
+        "timestamp": "0:00",
+        "summary": ""
+      }
+    },
+    "transcript": "\n\n"
+  }
+}
