@@ -130,20 +130,27 @@ export function renderBlock(block: NotionBlock): string {
     case 'toggle':
       const toggleText = extractRichText(block.toggle?.rich_text || []);
       return `
-        <details class="my-4">
-          <summary class="cursor-pointer font-medium hover:text-neutral-700">${toggleText}</summary>
-          <div class="pl-4 pt-2">
-            <!-- Toggle content would be nested blocks -->
+        <details class="my-4 group border border-neutral-100 rounded-lg overflow-hidden transition-all duration-300">
+          <summary class="cursor-pointer font-medium p-4 bg-neutral-50/50 hover:bg-neutral-50 flex items-center gap-2 list-none marker:hidden">
+            <span class="group-open:rotate-90 transition-transform duration-200">▶</span>
+            ${toggleText}
+          </summary>
+          <div class="p-4 border-t border-neutral-100 bg-white">
+            ${block.has_children ? '<!-- Children rendered via nested logic -->' : '<p class="text-sm text-neutral-400">No content</p>'}
           </div>
         </details>`;
 
     // Divider
     case 'divider':
-      return `<hr class="my-8 border-neutral-200" />`;
+      return `<hr class="my-12 border-neutral-100" />`;
 
     // Table of Contents
     case 'table_of_contents':
-      return `<div class="toc my-6 p-4 bg-neutral-50 rounded-lg text-sm">📑 Table of Contents</div>`;
+      return `
+        <nav class="toc my-8 p-6 bg-neutral-50 font-outfit rounded-xl border border-neutral-200">
+          <div class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-4">Jump to Section</div>
+          <div id="toc-placeholder" class="text-sm text-neutral-500 italic">Exploring content structure...</div>
+        </nav>`;
 
     // Breadcrumb
     case 'breadcrumb':

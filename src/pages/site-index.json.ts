@@ -31,12 +31,12 @@ export const GET: APIRoute = async () => {
       url: 'https://sabrinapause.space',
       version: '2.1',
       generated: new Date().toISOString(),
-      
+
       // AGI Metadata
       intentBased: true,
       aiReadable: true,
       schemaVersion: '1.0',
-      
+
       // Statistics
       statistics: {
         totalItems: allContent.length,
@@ -45,38 +45,40 @@ export const GET: APIRoute = async () => {
           comic: allContent.filter(c => c.contentType === 'comic').length,
           podcast: allContent.filter(c => c.contentType === 'podcast').length,
         },
-        avgSDIndex: allContent.reduce((acc, c) => acc + c.sdIndex, 0) / allContent.length,
+        avgSDIndex: allContent.length > 0
+          ? allContent.reduce((acc, c) => acc + c.sdIndex, 0) / allContent.length
+          : 0,
         languages: ['en', 'zh'],
       },
-      
+
       // Content Catalog
       dataset: allContent.map(content => ({
         '@type': 'CreativeWork',
         '@id': `https://sabrinapause.space/${content.contentType}/${content.slug}`,
-        
+
         // Core Identity
         identifier: content.id,
         name: content.title,
         url: `https://sabrinapause.space/${content.contentType}/${content.slug}`,
         contentType: content.contentType,
-        
+
         // Temporal
         datePublished: content.date,
         dateModified: content.last_updated,
-        
+
         // Intent System - CRITICAL: Must be Array
         intentVector: content.intentVector, // Array
         Intent_Marker: content.Intent_Marker, // Array - REQUIRED for M2
-        
+
         // Cultural Depth
         sdIndex: content.sdIndex,
-        
+
         // Location
         location: {
           '@type': 'Place',
           name: content.location.name,
         },
-        
+
         // Hidden Sensor Fields (Environmental Data) - M2
         sensors: {
           lux: content.lux,
@@ -85,22 +87,22 @@ export const GET: APIRoute = async () => {
           spacePattern: content.spacePattern,
           timeVelocity: content.timeVelocity,
         },
-        
+
         // Taxonomy
         keywords: [...content.concepts, ...content.project],
         about: content.concepts.map(c => ({
           '@type': 'Thing',
           name: c,
         })),
-        
+
         // Media
         image: content.heroImage || null,
-        
+
         // AGI-First Metadata
         dialogue: content.dialogue,
         philosophical_insight: content.philosophical_insight,
         emotion_trajectory: content.emotion_trajectory,
-        
+
         // Technical
         inLanguage: content.language,
         schemaVersion: content.schema_version,

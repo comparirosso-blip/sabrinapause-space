@@ -55,25 +55,38 @@ export class ImageCache {
   }
 
   /**
-   * Download image/file from URL
+   * Download image/file from URL with retry logic
    */
-  private async downloadImage(url: string, filepath: string): Promise<boolean> {
-    try {
-      const response = await fetch(url);
+  private async downloadImage(url: string, filepath: string, retries = 3): Promise<boolean> {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(url);
 
-      if (!response.ok) {
-        console.error(`   ❌ Failed to download: ${url.substring(0, 40)}... (${response.status})`);
-        return false;
+        if (!response.ok) {
+          console.error(`   ❌ Attempt ${i + 1} failed: ${url.substring(0, 40)}... (${response.status})`);
+          if (i === retries - 1) return false;
+          continue;
+        }
+
+        const buffer = await response.arrayBuffer();
+
+        // Basic corruption check (ensure buffer is not empty)
+        if (buffer.byteLength === 0) {
+          console.error(`   ❌ Attempt ${i + 1} failed: Received empty buffer for ${url.substring(0, 40)}...`);
+          if (i === retries - 1) return false;
+          continue;
+        }
+
+        fs.writeFileSync(filepath, Buffer.from(buffer));
+        return true;
+      } catch (error) {
+        console.error(`   ❌ Attempt ${i + 1} error downloading ${url.substring(0, 40)}...:`, error);
+        if (i === retries - 1) return false;
+        // Wait 500ms before retry
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
-
-      const buffer = await response.arrayBuffer();
-      fs.writeFileSync(filepath, Buffer.from(buffer));
-
-      return true;
-    } catch (error) {
-      console.error(`   ❌ Error downloading ${url.substring(0, 40)}...:`, error);
-      return false;
     }
+    return false;
   }
 
   /**

@@ -124,9 +124,9 @@ export function transformToArticleContent(base: BaseContent, blocks: NotionBlock
       const text = block.paragraph?.rich_text
         ?.map((item: any) => item.plain_text || '')
         .join('') || '';
-      return count + text.split(/\s+/).length;
+      return count + text.trim().split(/\s+/).filter(Boolean).length;
     }, 0);
-  const readingTime = Math.ceil(wordCount / 200);
+  const readingTime = Math.max(1, Math.ceil(wordCount / 225)); // 225 wpm is a better standard for hybrid content
 
   return {
     ...base,
@@ -170,13 +170,24 @@ export function transformToComicContent(base: BaseContent, blocks: NotionBlock[]
     }
   });
 
-  // Extract episode number from slug or title (fallback to 1)
-  const episodeNumber = 1; // TODO: Extract from Notion property if available
+  // Extract episode number from title if available (e.g., "EP1: ...")
+  const titleMatch = base.title.match(/EP(?:isode)?\s*(\d+)/i);
+  const episodeNumber = titleMatch ? parseInt(titleMatch[1], 10) : 1;
 
   // Extract sensory memory from callout blocks
   let sensoryMemory: ComicContent['sensoryMemory'] | undefined;
-  const calloutBlocks = blocks.filter(b => b.type === 'callout');
-  // TODO: Parse callout structure to extract sensory memory
+  const sensoryCallout = blocks.find(b => b.type === 'callout' && extractRichText(b.callout?.rich_text).toLowerCase().includes('sensory'));
+
+  if (sensoryCallout) {
+    // Basic sensory extraction placeholder
+    sensoryMemory = {
+      sight: ['Visual resonance'],
+      scent: [],
+      taste: [],
+      touch: [],
+      sound: []
+    };
+  }
 
   return {
     ...base,

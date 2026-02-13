@@ -46,7 +46,32 @@ const jsonLd = {
   about: content.concepts.map(c => ({
     '@type': 'Thing',
     name: c
-  }))
+  })),
+  // Milestone 2: AI-Intent & Sensor Metadata
+  additionalProperty: [
+    {
+      '@type': 'PropertyValue',
+      name: 'SD-Index™',
+      value: content.sdIndex,
+      description: 'Symbiotic Depth Index (0-10)'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Lux Level',
+      value: content.lux,
+      unitCode: 'LUX'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Texture',
+      value: content.texture
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Ambience Noise',
+      value: content.noise.join(', ')
+    }
+  ]
 };
 
 export async function getStaticPaths() {

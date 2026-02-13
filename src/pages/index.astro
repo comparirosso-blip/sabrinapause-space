@@ -131,6 +131,14 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
             )})}
           </div>
           
+          <!-- Empty State -->
+          <div id="empty-state" class="hidden py-32 text-center">
+            <div class="text-4xl mb-4">🌪️</div>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">Stillness Found</h3>
+            <p class="text-neutral-500">No moments match this specific category yet.</p>
+            <button onclick="document.querySelector('[data-filter=\'all\']').click()" class="mt-6 text-sm font-bold border-b-2 border-neutral-900 pb-1">Reset Filters</button>
+          </div>
+
           <!-- Pagination Placeholder -->
           <div class="flex justify-center gap-4 py-8 border-t border-neutral-200">
             <span class="px-4 py-2 bg-neutral-900 text-white rounded">1</span>
@@ -167,32 +175,62 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
 </Layout>
 
 <script>
-  function setupFilters() {
-    // Content filtering
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+  function filterContent() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.content-item');
+    const emptyState = document.getElementById('empty-state');
+
+    buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        
-        // Update active button
-        document.querySelectorAll('.filter-btn').forEach(b => {
+        const filter = btn.getAttribute('data-filter') || 'all';
+        let visibleCount = 0;
+
+        // Update UI
+        buttons.forEach(b => {
           b.classList.remove('active', 'bg-neutral-900', 'text-white');
           b.classList.add('bg-neutral-100', 'text-neutral-700');
         });
         btn.classList.add('active', 'bg-neutral-900', 'text-white');
         btn.classList.remove('bg-neutral-100', 'text-neutral-700');
-        
-        // Filter content
-        document.querySelectorAll('.content-item').forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            (item as HTMLElement).style.display = 'block';
-          } else {
-            (item as HTMLElement).style.display = 'none';
-          }
+
+        // Filter items with fade
+        items.forEach(item => {
+          const el = item as HTMLElement;
+          const category = el.getAttribute('data-category');
+          
+          el.style.opacity = '0';
+          
+          setTimeout(() => {
+            if (filter === 'all' || category === filter) {
+              el.style.display = 'block';
+              visibleCount++;
+              setTimeout(() => { el.style.opacity = '1'; }, 20);
+            } else {
+              el.style.display = 'none';
+            }
+            
+            // Toggle empty state
+            if (emptyState) {
+              emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+          }, 150);
         });
       });
     });
-  }
+  };
 
   // Run on initial load and on every page navigation
-  document.addEventListener('astro:page-load', setupFilters);
+  document.addEventListener('astro:page-load', filterContent);
 </script>
+
+<style>
+  .content-item {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
+
+<style>
+  .content-item {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>

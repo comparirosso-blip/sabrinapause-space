@@ -57,7 +57,27 @@ const jsonLd = {
     '@type': 'PodcastSeries',
     name: 'Sabrina Pause Podcast'
   },
-  inLanguage: content.language
+  inLanguage: content.language,
+  // Milestone 2: AI-Intent & Sensor Metadata
+  additionalProperty: [
+    {
+      '@type': 'PropertyValue',
+      name: 'SD-Index™',
+      value: content.sdIndex,
+      description: 'Symbiotic Depth Index (0-10)'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Lux Level',
+      value: content.lux,
+      unitCode: 'LUX'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Texture',
+      value: content.texture
+    }
+  ]
 };
 
 export async function getStaticPaths() {
@@ -228,9 +248,9 @@ export async function getStaticPaths() {
         )}
 
         <!-- Row 4: Main Content Area -->
-        <div class="prose prose-neutral max-w-none pt-10 pb-20">
-          <div set:html={renderedContent} />
-        </div>
+          <div id="transcript" class="hidden prose-sabrina py-4">
+            <div set:html={content.transcript.replace(/\n/g, '<br />')} />
+          </div>
 
       </div>
 
