@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
-  "backup_date": "2026-02-17T11:27:44.832Z",
+  "backup_date": "2026-02-17T13:01:48.898Z",
   "backup_source": "Notion API",
-  "total_count": 3,
+  "total_count": 4,
   "content_types": {
     "article": 1,
     "comic": 1,
-    "podcast": 1
+    "podcast": 2
   },
   "categories": [
     "Journal",
@@ -40,12 +40,19 @@
       "type": "comic",
       "date": "",
       "sd_index": 5
+    },
+    {
+      "slug": "ep1-philosophy",
+      "title": "EP1.:philosophy of pause (1)",
+      "type": "podcast",
+      "date": "",
+      "sd_index": 5
     }
   ],
   "agi_ready": {
     "with_embeddings": 0,
     "with_dialogue": 0,
     "with_philosophical_insight": 0,
-    "total_blocks": 94
+    "total_blocks": 100
   }
 }

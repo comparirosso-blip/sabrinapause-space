@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-17T11:27:44.825Z",
-  "count": 3,
+  "backup_date": "2026-02-17T13:01:48.894Z",
+  "count": 4,
   "data": [
     {
       "id": "2fb18eed-3014-8017-bc08-f51d55b87596",
@@ -23,7 +23,7 @@
       "noise": [],
       "spacePattern": null,
       "timeVelocity": null,
-      "heroImage": "/images/2fb18eed-3014-8017-bc08-f51d55b87596.jpg",
+      "heroImage": "/images/2fb18eed-3014-8017-bc08-f51d55b87596.webp",
       "blocks": [
         {
           "object": "block",
@@ -4823,10 +4823,12 @@
       "emotion_trajectory": {},
       "embedding": null,
       "schema_version": "1.0",
-      "last_updated": "2026-02-17T11:27:44.822Z",
+      "last_updated": "2026-02-17T13:01:00.969Z",
       "language": "en",
       "excerpt": "Here is a podcast script structured as a dialogue between two intellectuals, following the specific flow and metaphors from your source material.",
-      "readingTime": 8
+      "readingTime": 8,
+      "heroImageWidth": 2560,
+      "heroImageHeight": 1920
     },
     {
       "id": "2fc18eed-3014-8020-b11e-d5c81bbf1222",
@@ -4848,7 +4850,7 @@
       "noise": [],
       "spacePattern": null,
       "timeVelocity": null,
-      "heroImage": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222.jpg",
+      "heroImage": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222.webp",
       "blocks": [
         {
           "object": "block",
@@ -5015,7 +5017,7 @@
       "emotion_trajectory": {},
       "embedding": null,
       "schema_version": "1.0",
-      "last_updated": "2026-02-17T11:27:44.472Z",
+      "last_updated": "2026-02-17T13:01:02.249Z",
       "language": "en",
       "audioFiles": [
         {
@@ -5037,7 +5039,9 @@
           "summary": ""
         }
       },
-      "transcript": "\n\n\n\n"
+      "transcript": "\n\n\n\n",
+      "heroImageWidth": 2560,
+      "heroImageHeight": 1920
     },
     {
       "id": "2fc18eed-3014-80a2-b7f1-fc3945ba4367",
@@ -5059,7 +5063,7 @@
       "noise": [],
       "spacePattern": null,
       "timeVelocity": null,
-      "heroImage": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367.jpg",
+      "heroImage": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367.webp",
       "blocks": [
         {
           "object": "block",
@@ -5086,7 +5090,9 @@
             "caption": [],
             "type": "file",
             "file": {
-              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.jpg"
+              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.webp",
+              "width": 2560,
+              "height": 1920
             }
           }
         },
@@ -5141,7 +5147,9 @@
             "caption": [],
             "type": "file",
             "file": {
-              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.jpg"
+              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.webp",
+              "width": 2560,
+              "height": 1920
             }
           }
         },
@@ -5170,7 +5178,9 @@
             "caption": [],
             "type": "file",
             "file": {
-              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.jpg"
+              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.webp",
+              "width": 2560,
+              "height": 1920
             }
           }
         },
@@ -5225,7 +5235,9 @@
             "caption": [],
             "type": "file",
             "file": {
-              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.jpg"
+              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.webp",
+              "width": 2560,
+              "height": 1920
             }
           }
         },
@@ -5254,7 +5266,9 @@
             "caption": [],
             "type": "file",
             "file": {
-              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.jpg"
+              "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.webp",
+              "width": 2560,
+              "height": 1920
             }
           }
         },
@@ -5290,49 +5304,264 @@
       "emotion_trajectory": {},
       "embedding": null,
       "schema_version": "1.0",
-      "last_updated": "2026-02-17T11:27:44.481Z",
+      "last_updated": "2026-02-17T13:00:59.418Z",
       "language": "en",
       "episodeNumber": 1,
       "panels": [
         {
           "panelNumber": 1,
-          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.jpg",
-          "width": 800,
-          "height": 600,
+          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.webp",
+          "width": 2560,
+          "height": 1920,
           "altText": "",
           "narration": ""
         },
         {
           "panelNumber": 2,
-          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.jpg",
-          "width": 800,
-          "height": 600,
+          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.webp",
+          "width": 2560,
+          "height": 1920,
           "altText": ""
         },
         {
           "panelNumber": 3,
-          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.jpg",
-          "width": 800,
-          "height": 600,
+          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.webp",
+          "width": 2560,
+          "height": 1920,
           "altText": "",
           "narration": ""
         },
         {
           "panelNumber": 4,
-          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.jpg",
-          "width": 800,
-          "height": 600,
+          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.webp",
+          "width": 2560,
+          "height": 1920,
           "altText": ""
         },
         {
           "panelNumber": 5,
-          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.jpg",
-          "width": 800,
-          "height": 600,
+          "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.webp",
+          "width": 2560,
+          "height": 1920,
           "altText": "",
           "narration": ""
         }
-      ]
+      ],
+      "heroImageWidth": 2560,
+      "heroImageHeight": 1920
+    },
+    {
+      "id": "30618eed-3014-80ac-a804-d4078afc79dd",
+      "contentType": "podcast",
+      "title": "EP1.:philosophy of pause (1)",
+      "date": "",
+      "slug": "ep1-philosophy",
+      "location": {
+        "name": ""
+      },
+      "webCategory": "Podcast",
+      "project": [],
+      "concepts": [],
+      "intentVector": [],
+      "sdIndex": 5,
+      "Intent_Marker": [],
+      "lux": 0,
+      "texture": "",
+      "noise": [],
+      "spacePattern": null,
+      "timeVelocity": null,
+      "heroImage": "/images/30618eed-3014-80ac-a804-d4078afc79dd.webp",
+      "blocks": [
+        {
+          "object": "block",
+          "id": "30618eed-3014-8040-8ee0-dbf752654248",
+          "parent": {
+            "type": "page_id",
+            "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+          },
+          "created_time": "2026-02-13T13:19:00.000Z",
+          "last_edited_time": "2026-02-13T13:19:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [],
+            "color": "default"
+          }
+        },
+        {
+          "object": "block",
+          "id": "30618eed-3014-806f-90b2-cef9d79edd58",
+          "parent": {
+            "type": "page_id",
+            "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+          },
+          "created_time": "2026-02-13T13:19:00.000Z",
+          "last_edited_time": "2026-02-13T13:19:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "audio",
+          "audio": {
+            "caption": [],
+            "type": "file",
+            "file": {
+              "url": "/images/30618eed-3014-80ac-a804-d4078afc79dd-audio-0.m4a"
+            }
+          }
+        },
+        {
+          "object": "block",
+          "id": "30618eed-3014-80b1-b0e2-dd49b30963fa",
+          "parent": {
+            "type": "page_id",
+            "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+          },
+          "created_time": "2026-02-13T13:19:00.000Z",
+          "last_edited_time": "2026-02-13T13:19:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [],
+            "color": "default"
+          }
+        },
+        {
+          "object": "block",
+          "id": "30618eed-3014-8020-bd30-f92e8109aa6b",
+          "parent": {
+            "type": "page_id",
+            "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+          },
+          "created_time": "2026-02-13T13:19:00.000Z",
+          "last_edited_time": "2026-02-13T13:19:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [],
+            "color": "default"
+          }
+        },
+        {
+          "object": "block",
+          "id": "30618eed-3014-806f-a4a9-cec7032d2a50",
+          "parent": {
+            "type": "page_id",
+            "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+          },
+          "created_time": "2026-02-13T13:19:00.000Z",
+          "last_edited_time": "2026-02-13T13:19:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [],
+            "color": "default"
+          }
+        },
+        {
+          "object": "block",
+          "id": "30618eed-3014-8060-ae45-ceb7c005c916",
+          "parent": {
+            "type": "page_id",
+            "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+          },
+          "created_time": "2026-02-13T13:19:00.000Z",
+          "last_edited_time": "2026-02-13T13:19:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [],
+            "color": "default"
+          }
+        }
+      ],
+      "dialogue": [],
+      "philosophical_insight": {},
+      "emotion_trajectory": {},
+      "embedding": null,
+      "schema_version": "1.0",
+      "last_updated": "2026-02-17T13:00:59.329Z",
+      "language": "en",
+      "audioFiles": [
+        {
+          "url": "/images/30618eed-3014-80ac-a804-d4078afc79dd-audio-0.m4a",
+          "duration": "0:00"
+        }
+      ],
+      "structure": {
+        "intro": {
+          "timestamp": "0:00",
+          "summary": ""
+        },
+        "mainContent": {
+          "timestamp": "0:00",
+          "topics": []
+        },
+        "outro": {
+          "timestamp": "0:00",
+          "summary": ""
+        }
+      },
+      "transcript": "\n\n\n\n",
+      "heroImageWidth": 2560,
+      "heroImageHeight": 1920
     }
   ]
 }

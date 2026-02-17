@@ -2,9 +2,9 @@
   "version": "1.0",
   "backup_date": "2026-02-17T13:01:48.897Z",
   "data": {
-    "id": "2fc18eed-3014-8020-b11e-d5c81bbf1222",
+    "id": "30618eed-3014-80ac-a804-d4078afc79dd",
     "contentType": "podcast",
-    "title": "EP1.:philosophy of pause",
+    "title": "EP1.:philosophy of pause (1)",
     "date": "",
     "slug": "ep1-philosophy",
     "location": {
@@ -21,123 +21,16 @@
     "noise": [],
     "spacePattern": null,
     "timeVelocity": null,
-    "heroImage": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222.webp",
+    "heroImage": "/images/30618eed-3014-80ac-a804-d4078afc79dd.webp",
     "blocks": [
       {
         "object": "block",
-        "id": "2fc18eed-3014-8064-8693-c6e289d548bc",
+        "id": "30618eed-3014-8040-8ee0-dbf752654248",
         "parent": {
           "type": "page_id",
-          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
+          "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
         },
-        "created_time": "2026-02-03T00:17:00.000Z",
-        "last_edited_time": "2026-02-03T00:17:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "archived": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [],
-          "color": "default"
-        }
-      },
-      {
-        "object": "block",
-        "id": "2fc18eed-3014-809a-aba7-d7534c9f21df",
-        "parent": {
-          "type": "page_id",
-          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
-        },
-        "created_time": "2026-02-03T00:21:00.000Z",
-        "last_edited_time": "2026-02-03T00:21:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "archived": false,
-        "in_trash": false,
-        "type": "audio",
-        "audio": {
-          "caption": [],
-          "type": "file",
-          "file": {
-            "url": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222-audio-0.m4a"
-          }
-        }
-      },
-      {
-        "object": "block",
-        "id": "30018eed-3014-8050-a6d9-f181676878dd",
-        "parent": {
-          "type": "page_id",
-          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
-        },
-        "created_time": "2026-02-07T07:55:00.000Z",
-        "last_edited_time": "2026-02-07T07:55:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "300d872b-594c-8174-937a-00021c16d1b1"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "300d872b-594c-8174-937a-00021c16d1b1"
-        },
-        "has_children": false,
-        "archived": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [],
-          "color": "default"
-        }
-      },
-      {
-        "object": "block",
-        "id": "30018eed-3014-8099-a233-d88432ad92fc",
-        "parent": {
-          "type": "page_id",
-          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
-        },
-        "created_time": "2026-02-07T08:55:00.000Z",
-        "last_edited_time": "2026-02-07T08:55:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "300d872b-594c-8174-937a-00021c16d1b1"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "300d872b-594c-8174-937a-00021c16d1b1"
-        },
-        "has_children": false,
-        "archived": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [],
-          "color": "default"
-        }
-      },
-      {
-        "object": "block",
-        "id": "30318eed-3014-80ac-a796-cdfdad2ebfbf",
-        "parent": {
-          "type": "page_id",
-          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
-        },
-        "created_time": "2026-02-10T11:30:00.000Z",
+        "created_time": "2026-02-13T13:19:00.000Z",
         "last_edited_time": "2026-02-13T13:19:00.000Z",
         "created_by": {
           "object": "user",
@@ -158,10 +51,117 @@
       },
       {
         "object": "block",
-        "id": "30618eed-3014-807c-80a5-fcec8a6633bb",
+        "id": "30618eed-3014-806f-90b2-cef9d79edd58",
         "parent": {
           "type": "page_id",
-          "page_id": "2fc18eed-3014-8020-b11e-d5c81bbf1222"
+          "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+        },
+        "created_time": "2026-02-13T13:19:00.000Z",
+        "last_edited_time": "2026-02-13T13:19:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "audio",
+        "audio": {
+          "caption": [],
+          "type": "file",
+          "file": {
+            "url": "/images/30618eed-3014-80ac-a804-d4078afc79dd-audio-0.m4a"
+          }
+        }
+      },
+      {
+        "object": "block",
+        "id": "30618eed-3014-80b1-b0e2-dd49b30963fa",
+        "parent": {
+          "type": "page_id",
+          "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+        },
+        "created_time": "2026-02-13T13:19:00.000Z",
+        "last_edited_time": "2026-02-13T13:19:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "30618eed-3014-8020-bd30-f92e8109aa6b",
+        "parent": {
+          "type": "page_id",
+          "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+        },
+        "created_time": "2026-02-13T13:19:00.000Z",
+        "last_edited_time": "2026-02-13T13:19:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "30618eed-3014-806f-a4a9-cec7032d2a50",
+        "parent": {
+          "type": "page_id",
+          "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
+        },
+        "created_time": "2026-02-13T13:19:00.000Z",
+        "last_edited_time": "2026-02-13T13:19:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "f66795a0-d9b1-42ae-b053-c8bbc99d27aa"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "30618eed-3014-8060-ae45-ceb7c005c916",
+        "parent": {
+          "type": "page_id",
+          "page_id": "30618eed-3014-80ac-a804-d4078afc79dd"
         },
         "created_time": "2026-02-13T13:19:00.000Z",
         "last_edited_time": "2026-02-13T13:19:00.000Z",
@@ -188,11 +188,11 @@
     "emotion_trajectory": {},
     "embedding": null,
     "schema_version": "1.0",
-    "last_updated": "2026-02-17T13:01:02.249Z",
+    "last_updated": "2026-02-17T13:00:59.329Z",
     "language": "en",
     "audioFiles": [
       {
-        "url": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222-audio-0.m4a",
+        "url": "/images/30618eed-3014-80ac-a804-d4078afc79dd-audio-0.m4a",
         "duration": "0:00"
       }
     ],
