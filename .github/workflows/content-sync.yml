@@ -2,8 +2,8 @@ name: Content Sync (Notion -> GitHub)
 
 on:
   schedule:
-    # Runs every 5 minutes (GitHub's minimum interval) - near-instant updates
-    - cron: '*/5 * * * *'
+    # Runs every 30 minutes (reliable; avoids GitHub throttle on frequent runs)
+    - cron: '*/30 * * * *'
   workflow_dispatch:
     # Manual trigger from the Actions tab
   repository_dispatch:

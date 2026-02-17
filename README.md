@@ -26,14 +26,15 @@ We record more than words. Our data schema follows the **Silence Index (SD-Index
 -   📉 **Noise Factor (Ambience)**: Environmental interference levels.
 
 ### 2. AGI Discovery Engine
--   📡 **Site Index**: `GET /site-index.json` provides a machine-readable catalog of every intent-vector.
--   🏷️ **JSON-LD**: Every page injects custom structured data for AI agents.
+-   📡 **Site Index**: `GET /site-index.json` — machine-readable catalog (reads from backup; permanent image URLs).
+-   🏷️ **JSON-LD**: Every page injects Schema.org metadata (Article, CreativeWork, PodcastEpisode) for AI agents.
 -   🧠 **Intent Markers**: Multi-select tags that classify the *purpose* behind the moment.
+-   🔗 **Discoverability**: `<link rel="ai-index" href="/site-index.json">`, `robots.txt`, `.well-known/ai-intent.json`.
 
 ### 3. Automated Backup & Persistence
--   📦 **Local Mirror**: All Notion content is mirrored to `data/backup/` as high-fidelity JSON.
--   🖼️ **Image Caching**: All Notion media is downloaded locally during build (3-tier retry protection) to prevent link expiration.
--   🧬 **Git History**: Every content update creates a versioned commit in this repository.
+-   📦 **Local Mirror**: All Notion content is mirrored to `data/backup/YYYY-MM-DD/` as high-fidelity JSON.
+-   🖼️ **Image Caching**: Notion media is downloaded during build, optimized to WebP (90%, max 2560px), and stored in `public/images/` for fast loading. No expiry.
+-   🧬 **Git History**: Every content update creates a versioned commit. Backup only runs when content changes.
 
 ---
 
@@ -59,22 +60,46 @@ NOTION_DATABASE_ID=xxxxxxxxxxxxxxxxxxx
 
 ### The "Sabrina Setup" (Vercel & Automation)
 To enable the automated publishing pipeline:
+
 1.  **Vercel Hosting**: Add `NOTION_API_KEY` and `NOTION_DATABASE_ID` to Vercel Environment Variables.
-2.  **Automated Sync (GitHub Actions)**:
+2.  **GitHub Actions Secrets**:
     -   Go to your repository on GitHub → **Settings** → **Secrets and variables** → **Actions**.
     -   Add two Repository Secrets:
         -   `NOTION_API_KEY`: Your integration token.
         -   `NOTION_DATABASE_ID`: Your database ID.
-    -   The system syncs **every 5 minutes** and redeploys your site.
-    -   **Tip**: If syncs don't run, check Actions → "Content Sync" → ensure the workflow is enabled (not disabled).
-    -   **Instant trigger**: Run manually from Actions, or use the `repository_dispatch` API with type `notion-sync` for external automations.
+
+### Content Sync (Notion → Production)
+| What | How |
+| :--- | :--- |
+| **Frequency** | Every **30 minutes** (reliable; avoids GitHub throttle) |
+| **Trigger** | Set Notion page Status to "Ready for Web" or "Published" |
+| **Flow** | Notion → Backup → Image Cache (WebP) → Build → Git Push → Vercel Deploy |
+| **Manual run** | Actions → "Content Sync (Notion -> GitHub)" → Run workflow |
+| **External trigger** | `POST` to GitHub API with `repository_dispatch` event type `notion-sync` |
+
+**Tips:**
+- If syncs don't run: Actions → "Content Sync" → ensure the workflow is **enabled** (not disabled).
+- Scheduled workflows run on the default branch (usually `main`).
+- No changes in Notion → no new commit, no unnecessary deploy.
+
+### Backup & Image Pipeline
+| Step | What happens |
+| :--- | :--- |
+| **Backup** | Content saved to `data/backup/YYYY-MM-DD/` as JSON. Only runs when content changes. |
+| **Image cache** | Notion images downloaded, optimized (WebP 90%, max 2560px), stored in `public/images/`. |
+| **Git commit** | Backup + image cache committed and pushed when there are changes. |
+| **Status update** | Pages with "Ready for Web" are auto-updated to "Published" after deploy. |
+
+**Draft behavior:** Moving a page from "Published" back to "Draft" in Notion removes it from the next sync; the URL will 404. Previous backups in Git history remain for recovery.
 
 ### Commands
 | Command | Action |
 | :--- | :--- |
-| `npm run dev` | Live preview (Notion-direct, high frequency) |
-| `npm run build` | **Full Pipeline**: Backup → Image Sync → Static Build → Notion Status Update |
-| `npm run sync` | (Internal) Used by GitHub Actions to auto-publish |
+| `npm run dev` | Live preview (Notion-direct) |
+| `npm run build` | **Full pipeline**: Backup → Cache images (WebP) → Astro build → Update Notion status |
+| `npm run backup` | Generate backup only |
+| `npm run cache-images` | Download and optimize images only |
+| `npm run publish-status` | Update "Ready for Web" → "Published" in Notion only |
 
 ---
 
@@ -85,13 +110,14 @@ To enable the automated publishing pipeline:
 │   ├── lib/
 │   │   ├── image-cache.ts    # 🖼️ Asset persistence (Retries + Validation)
 │   │   ├── sd-calculator.ts  # 🕯️ Automated SD-Index logic
-│   │   └── block-renderer.ts # 🖋️ Deep suport for Notion blocks
+│   │   └── block-renderer.ts # 🖋️ Deep support for Notion blocks
 │   ├── pages/
 │   │   ├── site-index.json.ts # 📡 AGI Data Catalog
 │   │   └── [types]/[slug].astro # 🎨 Type-optimized templates
 ├── scripts/
-│   ├── generate-backup.ts     # 📦 CI-aware Git backup script
-│   └── auto-publish-status.ts # 🔄 Status: Ready → Published
+│   ├── generate-backup.ts     # 📦 Backup to data/backup/, commits when changed
+│   ├── cache-images.ts        # 🖼️ Download + WebP optimize Notion images
+│   └── auto-publish-status.ts # 🔄 Status: Ready for Web → Published
 ├── data/backup/               # 🧬 The content source of truth
 └── tests/                     # 🧪 Logic verification suites
 ```

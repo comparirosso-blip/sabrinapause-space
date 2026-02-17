@@ -74,19 +74,16 @@ export class ImageCache {
       try {
         const response = await fetch(url);
         if (!response.ok) {
-          console.error(`   ❌ Attempt ${i + 1} failed: ${url.substring(0, 40)}... (${response.status})`);
           if (i === retries - 1) return null;
           continue;
         }
         const buffer = await response.arrayBuffer();
         if (buffer.byteLength === 0) {
-          console.error(`   ❌ Attempt ${i + 1} failed: Empty buffer for ${url.substring(0, 40)}...`);
           if (i === retries - 1) return null;
           continue;
         }
         return buffer;
-      } catch (error) {
-        console.error(`   ❌ Attempt ${i + 1} error downloading ${url.substring(0, 40)}...:`, error);
+      } catch {
         if (i === retries - 1) return null;
         await new Promise(resolve => setTimeout(resolve, 500));
       }
@@ -127,8 +124,7 @@ export class ImageCache {
         width: outputMeta.width || width,
         height: outputMeta.height || height,
       };
-    } catch (error) {
-      console.error(`   ❌ Image optimization failed:`, error);
+    } catch {
       return null;
     }
   }
@@ -170,7 +166,6 @@ export class ImageCache {
       return result;
     }
 
-    console.log(`   ⬇️  Syncing: ${outputFilename}`);
     const buffer = await this.downloadToBuffer(url);
     if (!buffer) return null;
 

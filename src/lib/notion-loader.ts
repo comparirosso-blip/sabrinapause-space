@@ -26,7 +26,6 @@ export class NotionLoader implements ContentLoader {
 
     if (this.cacheImages) {
       this.imageCache = new ImageCache();
-      console.log('🖼️  Image caching enabled');
     }
   }
 

@@ -36,12 +36,7 @@ export class BackupSystem {
       return true; // No previous backups
     }
 
-    // Check if today's backup already exists
     const latestDir = backupDirs[0];
-    if (latestDir === this.today) {
-      console.log(`ℹ️  Backup for ${this.today} already exists - checking for changes...`);
-    }
-
     const latestBackupPath = path.join(this.baseDir, latestDir, 'all-experiences.json');
     
     if (!fs.existsSync(latestBackupPath)) {
@@ -57,32 +52,25 @@ export class BackupSystem {
       const previousSlugs = new Set(previousData.map((c: any) => c.slug));
       
       if (currentSlugs.size !== previousSlugs.size) {
-        console.log(`📊 Content count changed: ${previousSlugs.size} → ${currentSlugs.size}`);
         return true;
       }
       
-      // Check if any slugs are different
       for (const slug of currentSlugs) {
         if (!previousSlugs.has(slug)) {
-          console.log(`🆕 New content detected: "${slug}"`);
           return true;
         }
       }
       
-      // Check if any content was updated (compare last_updated timestamps)
       const currentLastUpdated = Math.max(...content.map(c => new Date(c.last_updated).getTime()));
       const previousLastUpdated = Math.max(...previousData.map((c: any) => new Date(c.last_updated).getTime()));
       
       if (currentLastUpdated > previousLastUpdated) {
-        console.log(`📝 Content has been updated`);
         return true;
       }
       
-      console.log(`✅ No changes detected - skipping backup`);
       return false;
       
-    } catch (error) {
-      console.log(`⚠️  Could not read previous backup - creating new one`);
+    } catch {
       return true;
     }
   }
@@ -93,7 +81,6 @@ export class BackupSystem {
   private ensureDirectory(): void {
     if (!fs.existsSync(this.backupDir)) {
       fs.mkdirSync(this.backupDir, { recursive: true });
-      console.log(`✅ Created backup directory: ${this.backupDir}`);
     }
   }
 
@@ -114,7 +101,6 @@ export class BackupSystem {
     };
 
     fs.writeFileSync(filepath, JSON.stringify(backup, null, 2), 'utf-8');
-    console.log(`✅ Saved ${content.length} items to ${filepath}`);
 
     return filepath;
   }
@@ -167,17 +153,6 @@ export class BackupSystem {
         fs.writeFileSync(filepath, JSON.stringify(backup, null, 2), 'utf-8');
         filepaths.push(filepath);
       }
-      
-      console.log(`✅ Saved ${items.length} ${type}(s) to ${type}s/`);
-    }
-    
-    // Warn about duplicates
-    const duplicates = Object.entries(slugCounts).filter(([_, count]) => count > 1);
-    if (duplicates.length > 0) {
-      console.log(`⚠️  Warning: Found duplicate slugs:`);
-      duplicates.forEach(([slug, count]) => {
-        console.log(`   - "${slug}" appears ${count} times`);
-      });
     }
 
     return filepaths;
@@ -234,7 +209,6 @@ export class BackupSystem {
 
     const filepath = path.join(this.backupDir, 'metadata.json');
     fs.writeFileSync(filepath, JSON.stringify(metadata, null, 2), 'utf-8');
-    console.log(`✅ Saved enhanced metadata to ${filepath}`);
 
     return filepath;
   }
@@ -243,24 +217,12 @@ export class BackupSystem {
    * Full backup - saves all, individual files, and metadata (only if changes detected)
    */
   async performFullBackup(content: Content[]): Promise<void> {
-    console.log('\n🔄 Starting GitHub backup system...');
-    console.log(`   Checking ${content.length} items for changes...`);
-
-    // Check if backup is needed
     if (!this.hasContentChanged(content)) {
-      console.log('\n✅ Backup skipped - no changes detected');
-      console.log('   Using existing backup data');
       return;
     }
-
-    console.log(`\n💾 Creating new backup in: ${this.backupDir}`);
 
     await this.saveAllContent(content);
     await this.saveIndividualContent(content);
     await this.saveMetadata(content);
-
-    console.log('\n✅ Backup complete!');
-    console.log(`   📂 Location: ${this.backupDir}`);
-    console.log('   💡 Files will be auto-committed to GitHub');
   }
 }

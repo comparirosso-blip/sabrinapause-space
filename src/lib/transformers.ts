@@ -9,6 +9,16 @@ const extractMultiSelect = (prop: any): string[] =>
   prop?.multi_select?.map((m: any) => m.name) || [];
 
 /**
+ * Extract select OR multi-select (handles both per M2 spec: Noise can be either)
+ */
+const extractSelectOrMulti = (prop: any): string[] => {
+  const multi = extractMultiSelect(prop);
+  if (multi.length > 0) return multi;
+  const single = prop?.select?.name;
+  return single ? [single] : [];
+};
+
+/**
  * Extract select value
  */
 const extractSelect = (prop: any): string =>
@@ -57,7 +67,7 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
   // Extract Hidden Sensor Fields
   const lux = props.Lux ? extractNumber(props.Lux) : null;
   const texture = props.Texture ? extractSelect(props.Texture) : null;
-  const noise = extractMultiSelect(props.Noise);
+  const noise = extractSelectOrMulti(props.Noise);
   const spacePattern = extractRichText(props['Space Pattern']?.rich_text, { plain: true }) || null;
   const timeVelocity = props['Time Velocity'] ? extractNumber(props['Time Velocity']) : null;
 
