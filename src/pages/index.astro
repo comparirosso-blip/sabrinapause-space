@@ -70,7 +70,11 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
                           <img 
                             src={content.heroImage} 
                             alt={content.title}
+                            width={content.heroImageWidth}
+                            height={content.heroImageHeight}
                             class="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
                           />
                         ) : (
                           <div class="w-full h-full flex items-center justify-center bg-neutral-100">

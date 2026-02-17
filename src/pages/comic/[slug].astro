@@ -132,8 +132,11 @@ export async function getStaticPaths() {
           <img 
             src={content.heroImage} 
             alt={content.title}
+            width={content.heroImageWidth}
+            height={content.heroImageHeight}
             class="w-full h-auto"
             loading="eager"
+            fetchpriority="high"
             decoding="async"
           />
         </div>
@@ -150,6 +153,8 @@ export async function getStaticPaths() {
               <img 
                 src={imageUrl} 
                 alt={caption || `Panel ${index + 1}`}
+                width={block.image?.file?.width ?? content.panels?.[index]?.width}
+                height={block.image?.file?.height ?? content.panels?.[index]?.height}
                 loading={index < 3 ? 'eager' : 'lazy'}
                 decoding="async"
                 class="w-full h-auto block"

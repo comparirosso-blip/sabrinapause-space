@@ -115,8 +115,12 @@ export async function getStaticPaths() {
         <img 
           src={content.heroImage} 
           alt={content.title}
+          width={content.heroImageWidth}
+          height={content.heroImageHeight}
           class="w-full h-full object-cover"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
         <!-- Gradient overlay for better text contrast -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60"></div>

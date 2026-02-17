@@ -55,6 +55,8 @@ export interface BaseContent {
 
   // Media
   heroImage?: string; // Notion "Hero Image" file URL
+  heroImageWidth?: number; // From optimized image (prevents CLS)
+  heroImageHeight?: number;
 
   // Content Body (from Notion blocks)
   blocks: NotionBlock[]; // Raw Notion block data

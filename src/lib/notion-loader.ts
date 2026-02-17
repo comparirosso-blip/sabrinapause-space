@@ -105,8 +105,14 @@ export class NotionLoader implements ContentLoader {
     if (this.cacheImages && this.imageCache) {
       // 1. Hero Image
       if (content.heroImage) {
-        const cachedUrl = await this.imageCache.cacheImage(content.heroImage, page.id);
-        content.heroImage = cachedUrl || content.heroImage;
+        const result = await this.imageCache.cacheImage(content.heroImage, page.id);
+        if (result) {
+          content.heroImage = result.url;
+          if (result.width && result.height) {
+            (content as any).heroImageWidth = result.width;
+            (content as any).heroImageHeight = result.height;
+          }
+        }
       }
 
       // 2. Podcast audio files
@@ -115,8 +121,8 @@ export class NotionLoader implements ContentLoader {
         for (let i = 0; i < podcast.audioFiles.length; i++) {
           const file = podcast.audioFiles[i];
           const stableId = `${page.id}-audio-${i}`;
-          const cachedUrl = await this.imageCache.cacheImage(file.url, stableId);
-          if (cachedUrl) file.url = cachedUrl;
+          const result = await this.imageCache.cacheImage(file.url, stableId);
+          if (result) file.url = result.url;
         }
       }
 
@@ -126,8 +132,14 @@ export class NotionLoader implements ContentLoader {
         for (let i = 0; i < comic.panels.length; i++) {
           const panel = comic.panels[i];
           const stableId = `${page.id}-panel-${panel.panelNumber || i}`;
-          const cachedUrl = await this.imageCache.cacheImage(panel.imageUrl, stableId);
-          if (cachedUrl) panel.imageUrl = cachedUrl;
+          const result = await this.imageCache.cacheImage(panel.imageUrl, stableId);
+          if (result) {
+            panel.imageUrl = result.url;
+            if (result.width && result.height) {
+              panel.width = result.width;
+              panel.height = result.height;
+            }
+          }
         }
       }
 

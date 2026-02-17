@@ -1,174 +1,231 @@
 /**
  * Image Caching System
- * Downloads Notion images during build and replaces temporary S3 URLs with permanent local paths
- * 
- * Problem: Notion API image URLs expire after ~1 hour
- * Solution: Download all images to /public/images/ and update URLs
+ * Downloads Notion images during build, optimizes for fast loading, replaces temp S3 URLs with permanent local paths
+ *
+ * Optimizations:
+ * - Resize to max 2560px (retina-ready)
+ * - WebP 90% (visually lossless, 30-50% smaller)
+ * - Dimensions stored to prevent layout shift (CLS)
+ *
+ * Non-images (audio, video): stored as-is
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import crypto from 'crypto';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const IMAGE_EXT = /\.(jpg|jpeg|png|gif|webp)$/i;
+const MAX_DIMENSION = 2560;
+const WEBP_QUALITY = 90;
+
+export type CacheResult = {
+  url: string;
+  width?: number;
+  height?: number;
+};
+
 export class ImageCache {
   private cacheDir: string;
   private publicDir: string;
-  private imageMap: Map<string, string>; // originalUrl -> localPath
+  private imageMap: Map<string, CacheResult>;
 
   constructor() {
-    // Public directory for serving images
     this.publicDir = path.join(process.cwd(), 'public', 'images');
     this.cacheDir = this.publicDir;
     this.imageMap = new Map();
 
-    // Ensure directory exists
     if (!fs.existsSync(this.cacheDir)) {
       fs.mkdirSync(this.cacheDir, { recursive: true });
     }
   }
 
-  /**
-   * Generate a stable filename from URL or stableId
-   */
-  private generateFilename(url: string, stableId?: string): string {
-    // Use stableId if provided, otherwise hash the URL
+  private generateFilename(url: string, stableId?: string, ext: string = '.jpg'): string {
     const name = stableId || crypto.createHash('md5').update(url).digest('hex');
 
-    // Extract extension from URL or default to .jpg
-    let ext = '.jpg';
+    if (ext !== '.jpg') {
+      return `${name}${ext}`;
+    }
+
     try {
       const urlObj = new URL(url);
       const pathname = urlObj.pathname;
       const match = pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|m4a|mp3)$/i);
       if (match) {
-        ext = match[0].toLowerCase();
+        return `${name}${match[0].toLowerCase()}`;
       }
-    } catch (e) {
+    } catch {
       // Invalid URL, use default
     }
 
     return `${name}${ext}`;
   }
 
-  /**
-   * Download image/file from URL with retry logic
-   */
-  private async downloadImage(url: string, filepath: string, retries = 3): Promise<boolean> {
+  private isImageFile(filename: string): boolean {
+    return IMAGE_EXT.test(filename);
+  }
+
+  private async downloadToBuffer(url: string, retries = 3): Promise<ArrayBuffer | null> {
     for (let i = 0; i < retries; i++) {
       try {
         const response = await fetch(url);
-
         if (!response.ok) {
           console.error(`   ❌ Attempt ${i + 1} failed: ${url.substring(0, 40)}... (${response.status})`);
-          if (i === retries - 1) return false;
+          if (i === retries - 1) return null;
           continue;
         }
-
         const buffer = await response.arrayBuffer();
-
-        // Basic corruption check (ensure buffer is not empty)
         if (buffer.byteLength === 0) {
-          console.error(`   ❌ Attempt ${i + 1} failed: Received empty buffer for ${url.substring(0, 40)}...`);
-          if (i === retries - 1) return false;
+          console.error(`   ❌ Attempt ${i + 1} failed: Empty buffer for ${url.substring(0, 40)}...`);
+          if (i === retries - 1) return null;
           continue;
         }
-
-        fs.writeFileSync(filepath, Buffer.from(buffer));
-        return true;
+        return buffer;
       } catch (error) {
         console.error(`   ❌ Attempt ${i + 1} error downloading ${url.substring(0, 40)}...:`, error);
-        if (i === retries - 1) return false;
-        // Wait 500ms before retry
+        if (i === retries - 1) return null;
         await new Promise(resolve => setTimeout(resolve, 500));
       }
     }
-    return false;
+    return null;
+  }
+
+  private async optimizeImage(buffer: Buffer, filepath: string): Promise<{ width: number; height: number } | null> {
+    try {
+      const image = sharp(buffer);
+      const metadata = await image.metadata();
+      let { width = 0, height = 0 } = metadata;
+
+      if (!width || !height) {
+        const dims = await image.metadata();
+        width = dims.width || 0;
+        height = dims.height || 0;
+      }
+
+      if (width === 0 || height === 0) return null;
+
+      const needsResize = width > MAX_DIMENSION || height > MAX_DIMENSION;
+      let pipeline = image;
+
+      if (needsResize) {
+        pipeline = pipeline.resize(MAX_DIMENSION, MAX_DIMENSION, {
+          fit: 'inside',
+          withoutEnlargement: true,
+        });
+      }
+
+      await pipeline
+        .webp({ quality: WEBP_QUALITY, effort: 4 })
+        .toFile(filepath);
+
+      const outputMeta = await sharp(filepath).metadata();
+      return {
+        width: outputMeta.width || width,
+        height: outputMeta.height || height,
+      };
+    } catch (error) {
+      console.error(`   ❌ Image optimization failed:`, error);
+      return null;
+    }
   }
 
   /**
-   * Cache a single image/file
-   * Returns the local path (relative to /public)
+   * Cache a single image/file. Returns URL and dimensions (for images only).
    */
-  async cacheImage(url: string, stableId?: string): Promise<string | null> {
+  async cacheImage(url: string, stableId?: string): Promise<CacheResult | null> {
     if (!url || url === '') return null;
 
-    // Check if already cached in memory
     if (this.imageMap.has(url)) {
       return this.imageMap.get(url)!;
     }
 
-    // Check if URL is already a local path
     if (url.startsWith('/images/')) {
-      return url;
+      return { url };
     }
 
-    const filename = this.generateFilename(url, stableId);
-    const filepath = path.join(this.cacheDir, filename);
-    const publicPath = `/images/${filename}`;
+    const rawFilename = this.generateFilename(url, stableId);
+    const isImage = this.isImageFile(rawFilename);
+    const outputFilename = isImage
+      ? rawFilename.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '.webp')
+      : rawFilename;
+    const filepath = path.join(this.cacheDir, outputFilename);
+    const publicPath = `/images/${outputFilename}`;
 
-    // Check if file already exists on disk
     if (fs.existsSync(filepath)) {
-      this.imageMap.set(url, publicPath);
-      return publicPath;
+      let dims: { width?: number; height?: number } = {};
+      if (isImage) {
+        try {
+          const meta = await sharp(filepath).metadata();
+          dims = { width: meta.width, height: meta.height };
+        } catch {
+          // Use defaults if we can't read
+        }
+      }
+      const result: CacheResult = { url: publicPath, ...dims };
+      this.imageMap.set(url, result);
+      return result;
     }
 
-    // Download image
-    console.log(`   ⬇️  Syncing: ${filename}`);
-    const success = await this.downloadImage(url, filepath);
+    console.log(`   ⬇️  Syncing: ${outputFilename}`);
+    const buffer = await this.downloadToBuffer(url);
+    if (!buffer) return null;
 
-    if (success) {
-      this.imageMap.set(url, publicPath);
-      return publicPath;
+    if (isImage) {
+      const dims = await this.optimizeImage(Buffer.from(buffer), filepath);
+      if (dims) {
+        const result: CacheResult = { url: publicPath, width: dims.width, height: dims.height };
+        this.imageMap.set(url, result);
+        return result;
+      }
+      return null;
     }
 
-    return null;
+    fs.writeFileSync(filepath, Buffer.from(buffer));
+    const result: CacheResult = { url: publicPath };
+    this.imageMap.set(url, result);
+    return result;
   }
 
-  /**
-   * Cache hero image and return updated URL
-   */
-  async cacheHeroImage(url: string | undefined): Promise<string | undefined> {
+  async cacheHeroImage(url: string | undefined): Promise<CacheResult | undefined> {
     if (!url) return undefined;
-    const cachedUrl = await this.cacheImage(url);
-    return cachedUrl || undefined;
+    const result = await this.cacheImage(url);
+    return result || undefined;
   }
 
-  /**
-   * Cache all images in Notion blocks and update URLs
-   */
   async cacheBlockImages(blocks: any[]): Promise<any[]> {
     const updatedBlocks = [];
 
     for (const block of blocks) {
       const updatedBlock = { ...block };
 
-      // Handle media blocks (image, audio, video, file)
       const mediaTypes = ['image', 'audio', 'video', 'file'];
       if (mediaTypes.includes(block.type)) {
         const media = block[block.type];
         const url = media?.file?.url || media?.external?.url;
 
         if (url) {
-          const cachedUrl = await this.cacheImage(url, block.id);
-          if (cachedUrl) {
+          const result = await this.cacheImage(url, block.id);
+          if (result) {
             updatedBlock[block.type] = {
               ...media,
               type: 'file',
-              file: { url: cachedUrl }
+              file: {
+                url: result.url,
+                ...(result.width && result.height && { width: result.width, height: result.height }),
+              },
             };
           }
         }
       }
 
-      // Handle nested blocks (recursively)
       if (block.has_children && block[block.type]?.children) {
         updatedBlock[block.type] = {
           ...block[block.type],
-          children: await this.cacheBlockImages(block[block.type].children)
+          children: await this.cacheBlockImages(block[block.type].children),
         };
       }
 
@@ -178,9 +235,6 @@ export class ImageCache {
     return updatedBlocks;
   }
 
-  /**
-   * Get statistics
-   */
   getStats(): { total: number; cached: number } {
     return {
       total: this.imageMap.size,
