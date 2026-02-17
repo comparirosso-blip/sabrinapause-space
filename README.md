@@ -65,7 +65,9 @@ To enable the automated publishing pipeline:
     -   Add two Repository Secrets:
         -   `NOTION_API_KEY`: Your integration token.
         -   `NOTION_DATABASE_ID`: Your database ID.
-    -   The system will now automatically sync every hour and redeploy your site.
+    -   The system syncs **every 5 minutes** and redeploys your site.
+    -   **Tip**: If syncs don't run, check Actions → "Content Sync" → ensure the workflow is enabled (not disabled).
+    -   **Instant trigger**: Run manually from Actions, or use the `repository_dispatch` API with type `notion-sync` for external automations.
 
 ### Commands
 | Command | Action |

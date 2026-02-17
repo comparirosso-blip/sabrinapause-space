@@ -2,10 +2,18 @@ name: Content Sync (Notion -> GitHub)
 
 on:
   schedule:
-    # Runs every 1 hour
-    - cron: '0 * * * *'
+    # Runs every 5 minutes (GitHub's minimum interval) - near-instant updates
+    - cron: '*/5 * * * *'
   workflow_dispatch:
-    # Allows manual trigger from the Actions tab
+    # Manual trigger from the Actions tab
+  repository_dispatch:
+    # External trigger via GitHub API - e.g. Zapier/Make when Notion changes
+    types: [notion-sync]
+
+# Prevent overlapping runs (e.g. if a run takes >5 min)
+concurrency:
+  group: content-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
@@ -43,8 +51,17 @@ jobs:
           # This will: backup -> cache images -> build -> commit & push backups -> update Notion status
           npm run build
 
-      - name: Final Push (Safety Check)
+      - name: Commit & Push All Changes
         if: success()
         run: |
-          # The script handled the commit, but we ensure any remaining changes (like image cache) are pushed
-          git push origin main || echo "Nothing to push"
+          # Add backup (if backup script skipped commit) + image cache
+          git add data/backup/ public/images/ 2>/dev/null || true
+          git status --short
+          if git diff --staged --quiet 2>/dev/null; then
+            # No staged changes - backup script may have already committed; try push
+            git push origin main || echo "Nothing to push"
+          else
+            git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" \
+              commit -m "[AUTO] Sync: image cache + backup" || true
+            git push origin main
+          fi
