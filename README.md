@@ -72,6 +72,7 @@ To enable the automated publishing pipeline:
 | :--- | :--- |
 | `npm run dev` | Live preview (Notion-direct, high frequency) |
 | `npm run build` | **Full Pipeline**: Backup → Image Sync → Static Build → Notion Status Update |
+| `npm run test:sync` | **Data validation** — Tests Notion properties and sync pipeline (run during winery visits) |
 | `npm run sync` | (Internal) Used by GitHub Actions to auto-publish |
 
 ---

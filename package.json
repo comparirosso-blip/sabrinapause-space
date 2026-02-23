@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "node tests/notion-connection.test.js",
+    "test:sync": "tsx tests/sync-validation.test.ts",
     "backup": "tsx scripts/generate-backup.ts",
     "cache-images": "tsx scripts/cache-images.ts",
     "publish-status": "tsx scripts/auto-publish-status.ts",
