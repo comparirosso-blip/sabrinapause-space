@@ -72,7 +72,12 @@ export class ImageCache {
   private async downloadToBuffer(url: string, retries = 3): Promise<ArrayBuffer | null> {
     for (let i = 0; i < retries; i++) {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (compatible; sabrinapause/1.0)',
+            'Accept': 'image/*',
+          },
+        });
         if (!response.ok) {
           if (i === retries - 1) return null;
           continue;

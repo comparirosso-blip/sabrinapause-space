@@ -111,6 +111,11 @@ export class NotionLoader implements ContentLoader {
             (content as any).heroImageWidth = result.width;
             (content as any).heroImageHeight = result.height;
           }
+        } else {
+          // Cache failed (expired Notion URL, network error) — remove to avoid broken images
+          content.heroImage = undefined;
+          (content as any).heroImageWidth = undefined;
+          (content as any).heroImageHeight = undefined;
         }
       }
 
