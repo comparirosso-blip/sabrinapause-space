@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-23T08:03:36.652Z",
+  "backup_date": "2026-02-23T11:11:08.209Z",
   "count": 3,
   "data": [
     {
@@ -4822,8 +4822,28 @@
       "philosophical_insight": {},
       "emotion_trajectory": {},
       "embedding": null,
+      "ptv": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "sdIndexRaw": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "regionCluster": "Japan",
+      "counterpointIds": [],
+      "evidenceType": [
+        "Field"
+      ],
+      "confidence": "High",
+      "coordinates": "35.6812",
+      "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-23T08:03:36.649Z",
+      "last_updated": "2026-02-23T11:11:07.831Z",
       "language": "en",
       "excerpt": "Here is a podcast script structured as a dialogue between two intellectuals, following the specific flow and metaphors from your source material.",
       "readingTime": 8,
@@ -5016,8 +5036,16 @@
       "philosophical_insight": {},
       "emotion_trajectory": {},
       "embedding": null,
+      "ptv": [],
+      "sdIndexRaw": [],
+      "regionCluster": "",
+      "counterpointIds": [],
+      "evidenceType": [],
+      "confidence": "",
+      "coordinates": "",
+      "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-23T08:03:36.223Z",
+      "last_updated": "2026-02-23T11:11:07.657Z",
       "language": "en",
       "audioFiles": [
         {
@@ -5303,8 +5331,16 @@
       "philosophical_insight": {},
       "emotion_trajectory": {},
       "embedding": null,
+      "ptv": [],
+      "sdIndexRaw": [],
+      "regionCluster": "",
+      "counterpointIds": [],
+      "evidenceType": [],
+      "confidence": "",
+      "coordinates": "",
+      "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-23T08:03:36.278Z",
+      "last_updated": "2026-02-23T11:11:08.201Z",
       "language": "en",
       "episodeNumber": 1,
       "panels": [

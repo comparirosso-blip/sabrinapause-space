@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-23T08:03:36.655Z",
+  "backup_date": "2026-02-23T11:11:08.213Z",
   "data": {
     "id": "2fc18eed-3014-8020-b11e-d5c81bbf1222",
     "contentType": "podcast",
@@ -187,8 +187,16 @@
     "philosophical_insight": {},
     "emotion_trajectory": {},
     "embedding": null,
+    "ptv": [],
+    "sdIndexRaw": [],
+    "regionCluster": "",
+    "counterpointIds": [],
+    "evidenceType": [],
+    "confidence": "",
+    "coordinates": "",
+    "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-02-23T08:03:36.223Z",
+    "last_updated": "2026-02-23T11:11:07.657Z",
     "language": "en",
     "audioFiles": [
       {
