@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "backup_date": "2026-02-23T10:05:56.868Z",
+  "backup_date": "2026-02-23T10:07:03.629Z",
   "backup_source": "Notion API",
   "total_count": 3,
   "content_types": {
@@ -47,5 +47,13 @@
     "with_dialogue": 0,
     "with_philosophical_insight": 0,
     "total_blocks": 94
+  },
+  "m3_terroir": {
+    "with_ptv": 1,
+    "with_counterpoint": 0,
+    "with_region": 1,
+    "regions": [
+      "Japan"
+    ]
   }
 }
