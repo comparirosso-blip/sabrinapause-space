@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-23T09:46:50.110Z",
+  "backup_date": "2026-02-23T10:01:45.076Z",
   "data": {
     "id": "2fc18eed-3014-8020-b11e-d5c81bbf1222",
     "contentType": "podcast",
@@ -194,9 +194,9 @@
     "evidenceType": [],
     "confidence": "",
     "coordinates": "",
-    "altitude": null,
+    "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-02-23T09:46:47.608Z",
+    "last_updated": "2026-02-23T10:01:44.892Z",
     "language": "en",
     "audioFiles": [
       {
