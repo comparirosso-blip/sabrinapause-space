@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/outfit/latin-300.css";
+@import "@fontsource/outfit/latin-400.css";
+@import "@fontsource/outfit/latin-600.css";
+
 @theme {
   --font-inter: "Inter", "sans-serif";
   --font-outfit: "Outfit", "sans-serif";
@@ -25,36 +32,50 @@
   }
 }
 
-/* Premium Prose (Article Content) Styling */
+/* Premium Prose (Article Content) Styling - Mobile-optimized long-form */
 @layer components {
   .prose-sabrina {
-    @apply max-w-none text-lg text-neutral-800 leading-relaxed;
+    @apply max-w-none text-neutral-800 leading-relaxed;
+  }
+
+  /* Mobile: 16px base (readable), desktop: 18px */
+  .prose-sabrina { font-size: 1rem; }
+  @media (min-width: 640px) {
+    .prose-sabrina { font-size: 1.125rem; }
   }
 
   .prose-sabrina p {
-    @apply mb-6;
+    @apply mb-5 sm:mb-6;
   }
 
   .prose-sabrina h1, .prose-sabrina h2, .prose-sabrina h3 {
-    @apply font-semibold text-neutral-900 mt-12 mb-6;
+    @apply font-semibold text-neutral-900;
   }
-
-  .prose-sabrina h2 { @apply text-4xl; }
-  .prose-sabrina h3 { @apply text-2xl; }
+  .prose-sabrina h1 { @apply mt-10 mb-4 sm:mt-12 sm:mb-6 text-2xl sm:text-3xl; }
+  .prose-sabrina h2 { @apply mt-10 mb-4 sm:mt-12 sm:mb-6 text-xl sm:text-4xl; }
+  .prose-sabrina h3 { @apply mt-8 mb-3 sm:mt-10 sm:mb-4 text-lg sm:text-2xl; }
 
   .prose-sabrina ul, .prose-sabrina ol {
-    @apply mb-8 ml-6;
+    @apply mb-6 sm:mb-8 ml-5 sm:ml-6;
   }
 
   .prose-sabrina blockquote {
-    @apply pl-8 border-l-4 border-neutral-200 italic text-neutral-600 my-10 py-2;
+    @apply pl-4 sm:pl-8 border-l-4 border-neutral-200 italic text-neutral-600 my-6 sm:my-10 py-2;
   }
 
   .prose-sabrina img {
-    @apply rounded-2xl shadow-sm my-12 w-full transition-transform duration-500 hover:scale-[1.01];
+    @apply rounded-xl sm:rounded-2xl shadow-sm my-8 sm:my-12 w-full max-w-full h-auto transition-transform duration-500;
+  }
+  @media (min-width: 640px) {
+    .prose-sabrina img { @apply hover:scale-[1.01]; }
   }
 
   .prose-sabrina pre {
-    @apply p-6 bg-neutral-900 text-neutral-100 rounded-xl my-8 overflow-x-auto text-sm font-mono;
+    @apply p-4 sm:p-6 bg-neutral-900 text-neutral-100 rounded-lg sm:rounded-xl my-6 sm:my-8 overflow-x-auto text-xs sm:text-sm font-mono max-w-full;
+  }
+
+  /* Callout/embeds - responsive in block-renderer output */
+  .prose-sabrina .callout {
+    @apply p-3 sm:p-4;
   }
 }

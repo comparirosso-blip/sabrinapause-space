@@ -78,6 +78,16 @@ export interface BaseContent {
   // Future AI Integration
   embedding: number[] | null; // Reserved for vector embeddings, null by default
 
+  // M3 Terroir Counterpoint — AGI Machine Readability
+  ptv: number[]; // PTV_Raw parsed: [Geometry, Lightness, Restraint, Tension, Earthiness]
+  sdIndexRaw: number[]; // sdIndex_Raw parsed: [Lux, Texture, Noise]
+  regionCluster: string; // Region_Cluster select
+  counterpointIds: string[]; // Counterpoint relation — linked Notion page IDs
+  evidenceType: string[]; // Evidence_Type multi-select
+  confidence: string; // Confidence select
+  coordinates: string; // Coordinates text (GPS)
+  altitude: number | null; // Altitude number (meters)
+
   // Metadata
   schema_version: string; // Schema version
   last_updated: string; // ISO 8601 timestamp

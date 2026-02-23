@@ -7,6 +7,7 @@
 
 import Layout from '../../layouts/Layout.astro';
 import { NotionLoader } from '../../lib/notion-loader';
+import { getM3AdditionalProperties } from '../../lib/json-ld';
 
 const { slug } = Astro.params;
 
@@ -48,6 +49,7 @@ const jsonLd = {
     name: c
   })),
   // Milestone 2: AI-Intent & Sensor Metadata
+  // M3: Terroir Counterpoint (ptv, counterpoint, etc.)
   additionalProperty: [
     {
       '@type': 'PropertyValue',
@@ -70,7 +72,8 @@ const jsonLd = {
       '@type': 'PropertyValue',
       name: 'Ambience Noise',
       value: content.noise.join(', ')
-    }
+    },
+    ...getM3AdditionalProperties(content)
   ]
 };
 
@@ -94,37 +97,37 @@ export async function getStaticPaths() {
 
   <div class="comic-reader min-h-screen bg-black">
     
-    <!-- Comic Header (Fixed) -->
-    <header class="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-neutral-800">
-      <div class="max-w-[800px] mx-auto px-4 py-4">
-        <!-- Back Button -->
-        <nav class="mb-3">
-          <a href="/" class="text-sm text-neutral-400 hover:text-white inline-flex items-center gap-2 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- Comic Header (Fixed) - Mobile-optimized touch targets -->
+    <header class="sticky top-0 z-40 bg-black/95 backdrop-blur-sm border-b border-neutral-800 safe-area-top">
+      <div class="max-w-[800px] mx-auto px-4 py-3 sm:py-4">
+        <!-- Back Button - 44px min touch target -->
+        <nav class="mb-2 sm:mb-3">
+          <a href="/" class="comic-back-btn min-h-[44px] min-w-[44px] text-sm text-neutral-400 hover:text-white inline-flex items-center gap-2 py-2 -ml-1 transition-colors">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
-            Back to gallery
+            <span>Back to gallery</span>
           </a>
         </nav>
         
-        <!-- Title & Metadata -->
+        <!-- Title & Metadata - Wraps on narrow screens -->
         <div>
-          <h1 class="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+          <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2 leading-tight">
             {content.title}
           </h1>
-          <div class="flex items-center gap-3 text-sm text-neutral-400">
+          <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs sm:text-sm text-neutral-400">
             <span class="uppercase tracking-wide font-medium">{content.webCategory}</span>
-            <span>·</span>
+            <span class="hidden sm:inline">·</span>
             <time datetime={content.date}>{content.date}</time>
-            <span>·</span>
+            <span class="hidden sm:inline">·</span>
             <span>{imageBlocks.length} panels</span>
           </div>
         </div>
       </div>
     </header>
     
-    <!-- Comic Content - Vertical Scroll -->
-    <main class="max-w-[800px] mx-auto px-0 pb-16">
+    <!-- Comic Content - Vertical Scroll, full-bleed panels on mobile -->
+    <main class="comic-main max-w-[800px] mx-auto px-0 sm:px-2 pb-16">
       
       <!-- Hero/Cover Image -->
       {content.heroImage && (
@@ -169,9 +172,9 @@ export async function getStaticPaths() {
         })}
       </div>
       
-      <!-- End Card -->
-      <div class="mt-8 px-4">
-        <div class="bg-neutral-900 rounded-lg p-8 text-center border border-neutral-800">
+      <!-- End Card - Responsive padding -->
+      <div class="mt-8 px-4 sm:px-6">
+        <div class="bg-neutral-900 rounded-lg p-6 sm:p-8 text-center border border-neutral-800">
           <div class="text-4xl mb-4">✨</div>
           <h2 class="text-xl font-bold text-white mb-2">End of Episode</h2>
           <p class="text-neutral-400 mb-6">Thanks for reading!</p>
@@ -196,11 +199,11 @@ export async function getStaticPaths() {
             </div>
           </div>
           
-          <!-- Navigation -->
+          <!-- Navigation - Touch-friendly 44px min -->
           <div class="mt-8 pt-6 border-t border-neutral-800">
             <a 
               href="/" 
-              class="inline-block px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-neutral-100 transition-colors"
+              class="inline-block min-h-[48px] px-8 py-3 flex items-center justify-center bg-white text-black font-medium rounded-lg hover:bg-neutral-100 active:bg-neutral-200 transition-colors touch-manipulation"
             >
               Back to Gallery
             </a>
@@ -210,23 +213,42 @@ export async function getStaticPaths() {
       
     </main>
     
-    <!-- Reading Progress Bar -->
-    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-white z-50 transition-all duration-200" style="width: 0%"></div>
+    <!-- Reading Progress Bar - Below header, safe area aware -->
+    <div id="progress-bar" class="fixed left-0 h-0.5 sm:h-1 bg-white z-50 transition-all duration-200 progress-bar" style="width: 0%"></div>
     
   </div>
 </Layout>
 
 <style>
-  /* Comic Reader Styling */
+  /* Comic Reader - Mobile-first */
   .comic-reader {
     background: #000;
     color: #fff;
+    -webkit-overflow-scrolling: touch; /* Smooth momentum scroll on iOS */
+  }
+  
+  /* Safe area for notch/home indicator */
+  .safe-area-top {
+    padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  }
+  .comic-main {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
+  }
+  
+  /* Progress bar: fixed below safe area on mobile */
+  #progress-bar.progress-bar {
+    top: 0;
+  }
+  @supports (padding-top: env(safe-area-inset-top)) {
+    #progress-bar.progress-bar {
+      top: env(safe-area-inset-top, 0);
+    }
   }
   
   .comic-panels {
     display: flex;
     flex-direction: column;
-    gap: 0; /* No gap between panels for seamless scroll */
+    gap: 0;
   }
   
   .comic-panel {
@@ -241,6 +263,7 @@ export async function getStaticPaths() {
     height: auto;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+    vertical-align: middle; /* Prevents minor CLS */
   }
   
   .panel-caption {
@@ -249,23 +272,23 @@ export async function getStaticPaths() {
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    padding: 2rem 1rem 1rem;
-    font-size: 0.875rem;
+    padding: 1.5rem 0.75rem 0.75rem;
+    font-size: 0.8125rem;
     color: #d4d4d4;
     text-align: center;
+    line-height: 1.4;
   }
-  
-  /* Mobile optimization */
-  @media (max-width: 800px) {
-    .comic-panel img {
-      width: 100%;
-      height: auto;
+  @media (min-width: 640px) {
+    .panel-caption {
+      padding: 2rem 1rem 1rem;
+      font-size: 0.875rem;
     }
   }
   
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+  /* Touch-friendly, prevent double-tap zoom on buttons */
+  .comic-back-btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 </style>
 

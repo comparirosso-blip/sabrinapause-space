@@ -27,6 +27,7 @@ We record more than words. Our data schema follows the **Silence Index (SD-Index
 
 ### 2. AGI Discovery Engine
 -   📡 **Site Index**: `GET /site-index.json` — machine-readable catalog (reads from backup; permanent image URLs).
+-   🗺️ **Sitemap**: `GET /sitemap-index.xml` — auto-generated at build for search engines.
 -   🏷️ **JSON-LD**: Every page injects Schema.org metadata (Article, CreativeWork, PodcastEpisode) for AI agents.
 -   🧠 **Intent Markers**: Multi-select tags that classify the *purpose* behind the moment.
 -   🔗 **Discoverability**: `<link rel="ai-index" href="/site-index.json">`, `robots.txt`, `.well-known/ai-intent.json`.
@@ -100,6 +101,7 @@ To enable the automated publishing pipeline:
 | `npm run backup` | Generate backup only |
 | `npm run cache-images` | Download and optimize images only |
 | `npm run publish-status` | Update "Ready for Web" → "Published" in Notion only |
+| `npm run lighthouse` | Run Lighthouse on production (after deploy) |
 
 ---
 
@@ -110,16 +112,19 @@ To enable the automated publishing pipeline:
 │   ├── lib/
 │   │   ├── image-cache.ts    # 🖼️ Asset persistence (Retries + Validation)
 │   │   ├── sd-calculator.ts  # 🕯️ Automated SD-Index logic
-│   │   └── block-renderer.ts # 🖋️ Deep support for Notion blocks
+│   │   ├── block-renderer.ts # 🖋️ Deep support for Notion blocks
+│   │   ├── json-ld.ts        # 🏷️ M3 JSON-LD & Schema.org injection
+│   │   └── transformers.ts  # 🔄 M3 Terroir Counterpoint parsing
 │   ├── pages/
 │   │   ├── site-index.json.ts # 📡 AGI Data Catalog
-│   │   └── [types]/[slug].astro # 🎨 Type-optimized templates
+│   │   ├── api/               # experiences.json, schemas.json
+│   │   └── [article|comic|podcast]/[slug].astro
 ├── scripts/
 │   ├── generate-backup.ts     # 📦 Backup to data/backup/, commits when changed
-│   ├── cache-images.ts        # 🖼️ Download + WebP optimize Notion images
-│   └── auto-publish-status.ts # 🔄 Status: Ready for Web → Published
-├── data/backup/               # 🧬 The content source of truth
-└── tests/                     # 🧪 Logic verification suites
+│   ├── cache-images.ts       # 🖼️ Download + WebP optimize Notion images
+│   ├── auto-publish-status.ts # 🔄 Status: Ready for Web → Published
+│   └── check-notion-schema.ts # ✓ Validate M3 Notion properties
+└── data/backup/               # 🧬 The content source of truth
 ```
 
 ---
@@ -128,9 +133,30 @@ To enable the automated publishing pipeline:
 
 - [x] **Milestone 1**: Data Engine & Basic Backup
 - [x] **Milestone 2**: Premium UI + Sensor Metadata + Image Caching
-- [ ] **Milestone 3**: Proactive Intelligence (Vector Embeddings & AI Chat)
+- [x] **Milestone 3a**: Mobile Responsiveness + Performance & SEO (Lighthouse >90)
+- [x] **Milestone 3b**: Terroir Counterpoint — AGI Machine-Readability (PTV, Counterpoint, Region, etc.)
+- [ ] **Milestone 4**: Proactive Intelligence (Vector Embeddings & AI Chat)
+
+---
+
+## Milestone 3 Completed
+
+Mobile, performance, sitemap, Terroir Counterpoint (8 Notion properties → JSON-LD, API, backup, schema).
+
+---
+
+## Quick Reference (Live Site)
+
+| URL | Purpose |
+| :--- | :--- |
+| https://sabrinapause.space/ | Homepage |
+| https://sabrinapause.space/site-index.json | AI content catalog |
+| https://sabrinapause.space/sitemap-index.xml | Sitemap |
+| https://sabrinapause.space/api/experiences.json | Content API |
+| https://sabrinapause.space/api/schemas.json | Schema API |
+| https://github.com/sabrinapause-space/sabrinapause-space/actions | Manual sync |
 
 ---
 
 **Built with data rigor for the moments between.**  
-*Sabrina's Pause — v2.2.0 (Verified)*
+*Sabrina's Pause — v2.3.0 (M3 Verified)*

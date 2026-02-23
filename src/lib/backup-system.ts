@@ -204,6 +204,14 @@ export class BackupSystem {
         with_dialogue: content.filter(c => c.dialogue && c.dialogue.length > 0).length,
         with_philosophical_insight: content.filter(c => c.philosophical_insight && Object.keys(c.philosophical_insight).length > 0).length,
         total_blocks: content.reduce((sum, c) => sum + c.blocks.length, 0)
+      },
+      
+      // M3 Terroir Counterpoint
+      m3_terroir: {
+        with_ptv: content.filter(c => c.ptv && c.ptv.length === 5).length,
+        with_counterpoint: content.filter(c => c.counterpointIds && c.counterpointIds.length > 0).length,
+        with_region: content.filter(c => c.regionCluster && c.regionCluster.length > 0).length,
+        regions: [...new Set(content.map(c => c.regionCluster).filter(Boolean))] as string[],
       }
     };
 

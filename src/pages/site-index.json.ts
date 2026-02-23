@@ -137,6 +137,16 @@ export const GET: APIRoute = async () => {
         // Technical
         inLanguage: content.language,
         schemaVersion: content.schema_version,
+
+        // M3 Terroir Counterpoint (AGI machine-readability)
+        ptv: content.ptv ?? [],
+        sdIndexRaw: content.sdIndexRaw ?? [],
+        regionCluster: content.regionCluster ?? '',
+        counterpointIds: content.counterpointIds ?? [],
+        evidenceType: content.evidenceType ?? [],
+        confidence: content.confidence ?? '',
+        coordinates: content.coordinates ?? '',
+        altitude: content.altitude ?? null,
       })),
     };
 

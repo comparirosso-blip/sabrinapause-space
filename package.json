@@ -11,9 +11,13 @@
     "backup": "tsx scripts/generate-backup.ts",
     "cache-images": "tsx scripts/cache-images.ts",
     "publish-status": "tsx scripts/auto-publish-status.ts",
-    "sync": "npm run build"
+    "sync": "npm run build",
+    "lighthouse": "lighthouse https://sabrinapause.space --output=json --output-path=./lighthouse-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--headless --no-sandbox'"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/outfit": "^5.2.8",
     "@notionhq/client": "^2.2.15",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.17.1",

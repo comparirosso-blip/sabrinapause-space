@@ -37,6 +37,24 @@ const extractNumber = (prop: any): number =>
   prop?.number ?? 0;
 
 /**
+ * Extract relation property — array of linked page IDs
+ */
+const extractRelation = (prop: any): string[] =>
+  prop?.relation?.map((r: { id: string }) => r.id) || [];
+
+/**
+ * Parse comma-separated float string into array (e.g. "0.5,0.5,0.5" → [0.5, 0.5, 0.5])
+ */
+const parseFloatArray = (text: string | undefined, expectedLen?: number): number[] => {
+  if (!text || typeof text !== 'string') return [];
+  const parts = text.split(',').map(s => parseFloat(s.trim()));
+  const valid = parts.filter(n => !Number.isNaN(n));
+  if (expectedLen && valid.length !== expectedLen) return [];
+  return valid;
+};
+
+
+/**
  * Extract file URL from files property
  */
 function extractFileUrl(prop: any): string | undefined {
@@ -75,6 +93,18 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
   const notionSDIndex = extractNumber(props['SD-Index™'] || props['SD-Index']);
   const sdIndex = getSDIndex(notionSDIndex, { lux, texture, noise });
 
+  // M3 Terroir Counterpoint
+  const ptvRaw = extractRichText(props.PTV_Raw?.rich_text, { plain: true });
+  const sdIndexRawText = extractRichText(props.sdIndex_Raw?.rich_text, { plain: true });
+  const ptv = parseFloatArray(ptvRaw, 5);
+  const sdIndexRaw = parseFloatArray(sdIndexRawText, 3);
+  const regionCluster = extractSelect(props.Region_Cluster);
+  const counterpointIds = extractRelation(props.Counterpoint);
+  const evidenceType = extractMultiSelect(props.Evidence_Type);
+  const confidence = extractSelect(props.Confidence);
+  const coordinates = extractRichText(props.Coordinates?.rich_text, { plain: true });
+  const altitude = props.Altitude ? extractNumber(props.Altitude) : null;
+
   // Infer language (default to 'en' for now, can be enhanced)
   const language: 'zh' | 'en' = 'en';
 
@@ -106,6 +136,15 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
     philosophical_insight: {}, // Metaphor and reflection fields
     emotion_trajectory: {}, // Start and end emotional states
     embedding: null, // Reserved for vector embeddings
+    // M3 Terroir Counterpoint
+    ptv,
+    sdIndexRaw,
+    regionCluster,
+    counterpointIds,
+    evidenceType,
+    confidence,
+    coordinates,
+    altitude,
     // Metadata
     schema_version: '1.0',
     last_updated: new Date().toISOString(),
