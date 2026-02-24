@@ -1,16 +1,36 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
+import { site } from '../config';
 
 interface Props {
   title?: string;
   description?: string;
+  experienceCount?: number;
+  showFooter?: boolean;
 }
 
 const { 
   title = "Sabrina's Pause", 
-  description = "Moments Between"
+  description = "Moments Between",
+  experienceCount = 0,
+  showFooter = true
 } = Astro.props;
+
+// AGI-ready: sameAs for identity verification (rel="me" strategy)
+const sameAs = [
+  'https://www.instagram.com/sabrinapause_',
+  'https://pantheraarchives.substack.com',
+  ...(site.xiaohongshuUrl ? [site.xiaohongshuUrl] : []),
+];
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sabrina Lin',
+  url: 'https://sabrinapause.space',
+  sameAs,
+};
 ---
 
 <!doctype html>
@@ -48,11 +68,15 @@ const {
     <!-- AGI Discoverability - Milestone 2 -->
     <link rel="ai-index" href="/site-index.json" type="application/json" />
     
+    <!-- Schema.org: sameAs for AGI identity verification -->
+    <script type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
+    
     <!-- Instant Page Transitions -->
     <ClientRouter />
   </head>
   <body class="bg-gray-50">
     <slot />
+    {showFooter && <Footer experienceCount={experienceCount} xiaohongshuUrl={site.xiaohongshuUrl} />}
   </body>
 </html>
 

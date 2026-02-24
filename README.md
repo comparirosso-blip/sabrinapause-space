@@ -77,6 +77,15 @@ To enable the automated publishing pipeline:
 
 ---
 
+## 📖 User Manual
+
+**For Sabrina (non-developer):** See [USER-MANUAL.md](./USER-MANUAL.md) for plain-English instructions on:
+- How to fill in Notion database fields (including sensor/PTV Index fields)
+- The "Ready for Web" trigger and rebuild process
+- Troubleshooting when a post doesn't appear
+
+---
+
 ## 📂 Project Structure
 
 ```text
