@@ -159,28 +159,6 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
       )}
 
     </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-neutral-200 mt-12 sm:mt-20">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <p class="text-sm text-neutral-900 font-medium mb-2">Sabrina's Pause</p>
-            <p class="text-xs text-neutral-500">
-              {allContent.length} {allContent.length === 1 ? 'experience' : 'experiences'} · AGI-First Architecture
-            </p>
-          </div>
-          <div class="flex gap-6 text-sm">
-            <a href="/api/experiences.json" class="text-neutral-500 hover:text-neutral-900 transition-colors">
-              JSON API
-            </a>
-            <a href="/api/schemas.json" class="text-neutral-500 hover:text-neutral-900 transition-colors">
-              Schema
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
   </div>
 </Layout>
 
