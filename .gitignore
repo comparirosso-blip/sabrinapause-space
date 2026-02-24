@@ -99,6 +99,11 @@ $RECYCLE.BIN/
 *.backup
 *~
 
+# Lighthouse reports
+lighthouse-report*.json
+lighthouse-local.json
+*.report.html
+
 # misc
 *.pem
 *.log

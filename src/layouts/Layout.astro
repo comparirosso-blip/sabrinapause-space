@@ -9,13 +9,15 @@ interface Props {
   description?: string;
   experienceCount?: number;
   showFooter?: boolean;
+  preloadImage?: string;
 }
 
 const { 
   title = "Sabrina's Pause", 
   description = "Moments Between",
   experienceCount = 0,
-  showFooter = true
+  showFooter = true,
+  preloadImage
 } = Astro.props;
 
 // AGI-ready: sameAs for identity verification (rel="me" strategy)
@@ -37,7 +39,7 @@ const siteJsonLd = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     
@@ -56,20 +58,23 @@ const siteJsonLd = {
     <meta property="twitter:image" content={new URL('/og-image.png', Astro.url)} />
 
     <title>{title}</title>
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={Astro.url} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     
-    <!-- Premium Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Fonts: self-hosted via @fontsource (no render-blocking) -->
 
     <!-- AGI Discoverability - Milestone 2 -->
     <link rel="ai-index" href="/site-index.json" type="application/json" />
     
     <!-- Schema.org: sameAs for AGI identity verification -->
     <script type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
+    
+    <!-- Preload LCP image (FCP/LCP optimization) -->
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
     
     <!-- Instant Page Transitions -->
     <ClientRouter />

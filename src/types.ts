@@ -55,6 +55,8 @@ export interface BaseContent {
 
   // Media
   heroImage?: string; // Notion "Hero Image" file URL
+  heroImageWidth?: number; // From optimized image (prevents CLS)
+  heroImageHeight?: number;
 
   // Content Body (from Notion blocks)
   blocks: NotionBlock[]; // Raw Notion block data
@@ -75,6 +77,16 @@ export interface BaseContent {
 
   // Future AI Integration
   embedding: number[] | null; // Reserved for vector embeddings, null by default
+
+  // M3 Terroir Counterpoint — AGI Machine Readability
+  ptv: number[]; // PTV_Raw parsed: [Geometry, Lightness, Restraint, Tension, Earthiness]
+  sdIndexRaw: number[]; // sdIndex_Raw parsed: [Lux, Texture, Noise]
+  regionCluster: string; // Region_Cluster select
+  counterpointIds: string[]; // Counterpoint relation — linked Notion page IDs
+  evidenceType: string[]; // Evidence_Type multi-select
+  confidence: string; // Confidence select
+  coordinates: string; // Coordinates text (GPS)
+  altitude: number | null; // Altitude number (meters)
 
   // Metadata
   schema_version: string; // Schema version

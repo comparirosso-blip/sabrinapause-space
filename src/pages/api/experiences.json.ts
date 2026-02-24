@@ -32,8 +32,6 @@ export const GET: APIRoute = async () => {
     });
 
   } catch (error) {
-    console.error('API Error:', error);
-    
     return new Response(JSON.stringify({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'

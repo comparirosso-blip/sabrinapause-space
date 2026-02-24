@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-24T20:17:17.766Z",
+  "backup_date": "2026-02-24T19:57:31.815Z",
   "data": {
     "id": "2fb18eed-3014-8017-bc08-f51d55b87596",
     "contentType": "article",
@@ -21,7 +21,7 @@
     "noise": [],
     "spacePattern": null,
     "timeVelocity": null,
-    "heroImage": "/images/2fb18eed-3014-8017-bc08-f51d55b87596.jpg",
+    "heroImage": "/images/2fb18eed-3014-8017-bc08-f51d55b87596.webp",
     "blocks": [
       {
         "object": "block",
@@ -4820,10 +4820,32 @@
     "philosophical_insight": {},
     "emotion_trajectory": {},
     "embedding": null,
+    "ptv": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "sdIndexRaw": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "regionCluster": "Japan",
+    "counterpointIds": [],
+    "evidenceType": [
+      "Field"
+    ],
+    "confidence": "High",
+    "coordinates": "35.6812",
+    "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-02-24T20:17:17.758Z",
+    "last_updated": "2026-02-24T19:57:31.810Z",
     "language": "en",
     "excerpt": "Here is a podcast script structured as a dialogue between two intellectuals, following the specific flow and metaphors from your source material.",
-    "readingTime": 8
+    "readingTime": 8,
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
   }
 }

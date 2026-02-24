@@ -10,6 +10,20 @@ export const GET: APIRoute = async () => {
     version: '1.0',
     generated_at: new Date().toISOString(),
     description: 'Sabrina\'s Pause - AGI-First Content Schema',
+    m3_terroir_counterpoint: {
+      description: 'M3 Terroir Counterpoint - AGI machine-readability fields (applies to all content types)',
+      source: 'Notion properties PTV_Raw, sdIndex_Raw, Region_Cluster, Counterpoint, Evidence_Type, Confidence, Coordinates, Altitude',
+      fields: {
+        ptv: { type: 'array', items: 'number', length: 5, description: '[Geometry, Lightness, Restraint, Tension, Earthiness]' },
+        sdIndexRaw: { type: 'array', items: 'number', length: 3, description: '[Lux, Texture, Noise]' },
+        regionCluster: { type: 'string', enum: ['Japan', 'Germany', 'Portugal', 'Other'] },
+        counterpointIds: { type: 'array', items: 'string', description: 'Linked Notion page IDs' },
+        evidenceType: { type: 'array', items: 'string', enum: ['Field', 'Interview', 'Comparative', 'Lab'] },
+        confidence: { type: 'string', enum: ['High', 'Medium', 'Low'] },
+        coordinates: { type: 'string', description: 'GPS' },
+        altitude: { type: 'number', nullable: true, description: 'Meters' },
+      },
+    },
     content_types: {
       article: {
         type: 'article',
@@ -50,9 +64,38 @@ export const GET: APIRoute = async () => {
           // Hidden Sensor Fields (Milestone 2) - Environmental/Sensory Data
           lux: { type: 'number', nullable: true, description: 'Light intensity measurement (Tanizaki Factor)' },
           texture: { type: 'string', nullable: true, description: 'Tactile/material quality (Kawabata Factor)' },
-          noise: { type: 'string', nullable: true, description: 'Ambient sound category (Noise Factor)' },
+          noise: { type: 'array', items: 'string', description: 'Ambient sound categories (Noise Factor)' },
           spacePattern: { type: 'string', nullable: true, description: 'Spatial configuration' },
           timeVelocity: { type: 'number', nullable: true, description: 'Temporal flow perception' },
+          
+          // M3 Terroir Counterpoint - AGI Machine Readability
+          ptv: {
+            type: 'array',
+            items: 'number',
+            length: 5,
+            description: 'PTV Vector: Geometry, Lightness, Restraint, Tension, Earthiness (from PTV_Raw)'
+          },
+          sdIndexRaw: {
+            type: 'array',
+            items: 'number',
+            length: 3,
+            description: 'Raw SD: Lux, Texture, Noise (from sdIndex_Raw)'
+          },
+          regionCluster: { type: 'string', enum: ['Japan', 'Germany', 'Portugal', 'Other'], description: 'Terroir region' },
+          counterpointIds: {
+            type: 'array',
+            items: 'string',
+            description: 'Notion page IDs of related entries (self-relation links)'
+          },
+          evidenceType: {
+            type: 'array',
+            items: 'string',
+            enum: ['Field', 'Interview', 'Comparative', 'Lab'],
+            description: 'Evidence sources'
+          },
+          confidence: { type: 'string', enum: ['High', 'Medium', 'Low'], description: 'Data confidence level' },
+          coordinates: { type: 'string', description: 'GPS coordinates (e.g. 35.6812,139.7671)' },
+          altitude: { type: 'number', nullable: true, description: 'Altitude in meters' },
           
           // Media
           heroImage: { type: 'string', format: 'url' },

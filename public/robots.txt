@@ -8,7 +8,7 @@ Allow: /
 # AI Intent Index: /site-index.json
 
 # Sitemaps
-Sitemap: https://sabrinapause.space/sitemap.xml
+Sitemap: https://sabrinapause.space/sitemap-index.xml
 
 # AGI Discovery Endpoints
 Allow: /site-index.json

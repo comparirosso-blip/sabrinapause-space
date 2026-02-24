@@ -57,8 +57,6 @@ export const GET: APIRoute = async ({ params }) => {
     });
 
   } catch (error) {
-    console.error('API Error:', error);
-    
     return new Response(JSON.stringify({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
@@ -79,7 +77,6 @@ export async function getStaticPaths() {
     const databaseId = import.meta.env.NOTION_DATABASE_ID || process.env.NOTION_DATABASE_ID;
     
     if (!apiKey || !databaseId) {
-      console.error('Missing Notion credentials in getStaticPaths');
       return [];
     }
 
@@ -89,8 +86,7 @@ export async function getStaticPaths() {
     return content.map((item) => ({
       params: { slug: item.slug },
     }));
-  } catch (error) {
-    console.error('Error in getStaticPaths:', error);
+  } catch {
     return [];
   }
 }

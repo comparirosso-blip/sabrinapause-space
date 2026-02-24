@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-24T20:17:17.767Z",
+  "backup_date": "2026-02-24T19:57:31.817Z",
   "data": {
     "id": "2fc18eed-3014-80a2-b7f1-fc3945ba4367",
     "contentType": "comic",
@@ -21,7 +21,7 @@
     "noise": [],
     "spacePattern": null,
     "timeVelocity": null,
-    "heroImage": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367.jpg",
+    "heroImage": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367.webp",
     "blocks": [
       {
         "object": "block",
@@ -48,7 +48,9 @@
           "caption": [],
           "type": "file",
           "file": {
-            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.jpg"
+            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.webp",
+            "width": 2560,
+            "height": 1920
           }
         }
       },
@@ -103,7 +105,9 @@
           "caption": [],
           "type": "file",
           "file": {
-            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.jpg"
+            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.webp",
+            "width": 2560,
+            "height": 1920
           }
         }
       },
@@ -132,7 +136,9 @@
           "caption": [],
           "type": "file",
           "file": {
-            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.jpg"
+            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.webp",
+            "width": 2560,
+            "height": 1920
           }
         }
       },
@@ -187,7 +193,9 @@
           "caption": [],
           "type": "file",
           "file": {
-            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.jpg"
+            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.webp",
+            "width": 2560,
+            "height": 1920
           }
         }
       },
@@ -216,7 +224,9 @@
           "caption": [],
           "type": "file",
           "file": {
-            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.jpg"
+            "url": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.webp",
+            "width": 2560,
+            "height": 1920
           }
         }
       },
@@ -251,49 +261,59 @@
     "philosophical_insight": {},
     "emotion_trajectory": {},
     "embedding": null,
+    "ptv": [],
+    "sdIndexRaw": [],
+    "regionCluster": "",
+    "counterpointIds": [],
+    "evidenceType": [],
+    "confidence": "",
+    "coordinates": "",
+    "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-02-24T20:17:16.909Z",
+    "last_updated": "2026-02-24T19:57:31.280Z",
     "language": "en",
     "episodeNumber": 1,
     "panels": [
       {
         "panelNumber": 1,
-        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.jpg",
-        "width": 800,
-        "height": 600,
+        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-1.webp",
+        "width": 2560,
+        "height": 1920,
         "altText": "",
         "narration": ""
       },
       {
         "panelNumber": 2,
-        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.jpg",
-        "width": 800,
-        "height": 600,
+        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-2.webp",
+        "width": 2560,
+        "height": 1920,
         "altText": ""
       },
       {
         "panelNumber": 3,
-        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.jpg",
-        "width": 800,
-        "height": 600,
+        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-3.webp",
+        "width": 2560,
+        "height": 1920,
         "altText": "",
         "narration": ""
       },
       {
         "panelNumber": 4,
-        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.jpg",
-        "width": 800,
-        "height": 600,
+        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-4.webp",
+        "width": 2560,
+        "height": 1920,
         "altText": ""
       },
       {
         "panelNumber": 5,
-        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.jpg",
-        "width": 800,
-        "height": 600,
+        "imageUrl": "/images/2fc18eed-3014-80a2-b7f1-fc3945ba4367-panel-5.webp",
+        "width": 2560,
+        "height": 1920,
         "altText": "",
         "narration": ""
       }
-    ]
+    ],
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
   }
 }

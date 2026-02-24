@@ -68,9 +68,14 @@ export function renderBlock(block: NotionBlock): string {
     case 'image':
       const imageUrl = block.image?.file?.url || block.image?.external?.url || '';
       const imageCaption = extractRichText(block.image?.caption || []);
+      const imgW = block.image?.file?.width;
+      const imgH = block.image?.file?.height;
+      const imgAttrs = imgW && imgH
+        ? `width="${imgW}" height="${imgH}" `
+        : '';
       return `
         <figure class="my-6">
-          <img src="${imageUrl}" alt="${imageCaption}" class="w-full rounded-lg" loading="lazy" />
+          <img src="${imageUrl}" alt="${imageCaption}" ${imgAttrs}class="w-full h-auto rounded-lg" loading="lazy" decoding="async" />
           ${imageCaption ? `<figcaption class="text-center text-sm text-neutral-600 mt-2">${imageCaption}</figcaption>` : ''}
         </figure>`;
 

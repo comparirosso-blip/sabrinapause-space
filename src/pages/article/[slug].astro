@@ -8,6 +8,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { NotionLoader } from '../../lib/notion-loader';
 import { renderBlocks } from '../../lib/block-renderer';
+import { getM3AdditionalProperties } from '../../lib/json-ld';
 
 const { slug } = Astro.params;
 
@@ -58,6 +59,7 @@ const jsonLd = {
     name: c
   })),
   // Milestone 2: AI-Intent & Sensor Metadata
+  // M3: Terroir Counterpoint (ptv, counterpoint, etc.)
   additionalProperty: [
     {
       '@type': 'PropertyValue',
@@ -85,7 +87,8 @@ const jsonLd = {
       '@type': 'PropertyValue',
       name: 'Intent Markers',
       value: content.Intent_Marker.join(', ')
-    }
+    },
+    ...getM3AdditionalProperties(content)
   ]
 };
 
@@ -109,35 +112,39 @@ export async function getStaticPaths() {
 
   <article class="min-h-screen bg-white">
     
-    <!-- Hero Image -->
+      <!-- Hero Image - Responsive height -->
     {content.heroImage && (
-      <div class="w-full h-[60vh] bg-neutral-100 relative">
+      <div class="w-full h-[50vh] sm:h-[60vh] min-h-[240px] bg-neutral-100 relative">
         <img 
           src={content.heroImage} 
           alt={content.title}
+          width={content.heroImageWidth}
+          height={content.heroImageHeight}
           class="w-full h-full object-cover"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
         <!-- Gradient overlay for better text contrast -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60"></div>
       </div>
     )}
     
-    <!-- Article Content -->
-    <div class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Article Content - Mobile-optimized padding & typography -->
+    <div class="article-container max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
       
-      <!-- Breadcrumb -->
-      <nav class="text-sm text-neutral-500 hover:text-neutral-900 mb-8">
-        <a href="/" class="inline-flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Breadcrumb - Touch-friendly -->
+      <nav class="text-sm text-neutral-500 hover:text-neutral-900 mb-6 sm:mb-8">
+        <a href="/" class="min-h-[44px] inline-flex items-center gap-2 py-2 -ml-1 touch-manipulation">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
           </svg>
           Back to all experiences
         </a>
       </nav>
       
-      <!-- Metadata Bar -->
-      <div class="flex items-center gap-3 mb-6 text-sm text-neutral-500">
+      <!-- Metadata Bar - Wraps on mobile -->
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-6 text-sm text-neutral-500">
         <span class="font-medium uppercase tracking-wide text-xs px-2 py-1 bg-neutral-100 text-neutral-700 rounded">
           {content.webCategory}
         </span>
@@ -147,20 +154,20 @@ export async function getStaticPaths() {
         <span>{readingTime} min read</span>
       </div>
       
-      <!-- Title -->
-      <h1 class="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 leading-tight tracking-tight">
+      <!-- Title - Responsive scaling for mobile -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6 leading-tight tracking-tight">
         {content.title}
       </h1>
       
       <!-- Intent Vector as subtitle -->
       {content.intentVector.length > 0 && (
-        <p class="text-xl text-neutral-600 mb-8 leading-relaxed font-light">
+        <p class="text-lg sm:text-xl text-neutral-600 mb-6 sm:mb-8 leading-relaxed font-light">
           {content.intentVector.join(' · ')}
         </p>
       )}
       
-      <!-- Metadata Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 mb-12 border-y border-neutral-200 text-sm">
+      <!-- Metadata Grid - Responsive columns -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 py-4 sm:py-6 mb-8 sm:mb-12 border-y border-neutral-200 text-sm">
         <div>
           <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Location</div>
           <div class="text-neutral-900 font-medium">{content.location.name}</div>
@@ -194,13 +201,13 @@ export async function getStaticPaths() {
         </div>
       )}
       
-      <!-- Content -->
-      <div class="prose-sabrina mt-10">
+      <!-- Content - Long-form optimized for mobile reading -->
+      <div class="prose-sabrina mt-8 sm:mt-10">
         <div set:html={renderBlocks(content.blocks)} />
       </div>
       
-      <!-- Footer Metadata -->
-      <footer class="mt-20 pt-8 border-t border-neutral-100 flex justify-between items-center text-sm">
+      <!-- Footer Metadata - Stacks on mobile -->
+      <footer class="mt-12 sm:mt-20 pt-6 sm:pt-8 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-start gap-4 text-sm">
         <div class="flex flex-wrap gap-4 text-sm text-neutral-500">
           <div>
             <span class="font-medium">Last updated:</span>

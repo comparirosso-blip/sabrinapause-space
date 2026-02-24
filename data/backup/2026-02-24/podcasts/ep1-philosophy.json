@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-24T20:17:17.768Z",
+  "backup_date": "2026-02-24T19:57:31.817Z",
   "data": {
     "id": "2fc18eed-3014-8020-b11e-d5c81bbf1222",
     "contentType": "podcast",
@@ -21,7 +21,7 @@
     "noise": [],
     "spacePattern": null,
     "timeVelocity": null,
-    "heroImage": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222.jpg",
+    "heroImage": "/images/2fc18eed-3014-8020-b11e-d5c81bbf1222.webp",
     "blocks": [
       {
         "object": "block",
@@ -187,8 +187,16 @@
     "philosophical_insight": {},
     "emotion_trajectory": {},
     "embedding": null,
+    "ptv": [],
+    "sdIndexRaw": [],
+    "regionCluster": "",
+    "counterpointIds": [],
+    "evidenceType": [],
+    "confidence": "",
+    "coordinates": "",
+    "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-02-24T20:17:17.088Z",
+    "last_updated": "2026-02-24T19:57:31.263Z",
     "language": "en",
     "audioFiles": [
       {
@@ -210,6 +218,8 @@
         "summary": ""
       }
     },
-    "transcript": "\n\n\n\n"
+    "transcript": "\n\n\n\n",
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
   }
 }

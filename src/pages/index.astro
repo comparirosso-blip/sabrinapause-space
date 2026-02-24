@@ -15,32 +15,37 @@ const allContent = await loader.getAll();
 const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean))].sort();
 ---
 
-<Layout title="Sabrina's Pause" description="Moments Between — A Digital Archive" experienceCount={allContent.length}>
+<Layout 
+  title="Sabrina's Pause" 
+  description="Moments Between — A Digital Archive"
+  experienceCount={allContent.length}
+  preloadImage={allContent[0]?.heroImage}
+>
   <div class="min-h-screen bg-white">
     
-    <!-- Header -->
+    <!-- Header - Responsive -->
     <header class="border-b border-neutral-200">
-      <div class="max-w-5xl mx-auto px-6 py-16">
-        <h1 class="text-6xl font-bold text-neutral-900 mb-4 tracking-tight">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-neutral-900 mb-3 sm:mb-4 tracking-tight">
           Sabrina's Pause
         </h1>
-        <p class="text-2xl text-neutral-600">
+        <p class="text-lg sm:text-2xl text-neutral-600">
           Moments Between
         </p>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-6 py-16">
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
       
       <!-- Filter Navigation - Dynamic from Category tags (M2 Requirement) -->
       {allContent.length > 0 && (
-        <div class="flex flex-wrap gap-3 mb-12 pb-6 border-b border-neutral-200">
-          <button class="filter-btn active px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium transition-colors" data-filter="all">
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 pb-4 sm:pb-6 border-b border-neutral-200">
+          <button class="filter-btn active min-h-[44px] px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium transition-colors touch-manipulation" data-filter="all">
             All ({allContent.length})
           </button>
           {categories.map(category => (
-            <button class="filter-btn px-4 py-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-sm font-medium transition-colors" data-filter={category.toLowerCase()}>
+            <button class="filter-btn min-h-[44px] px-4 py-2 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-sm font-medium transition-colors touch-manipulation" data-filter={category.toLowerCase()}>
               {category} ({allContent.filter(c => c.webCategory === category).length})
             </button>
           ))}
@@ -54,10 +59,11 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
       ) : (
         <>
           <!-- Content Grid -->
-          <div class="grid gap-12 mb-20">
-            {allContent.map((content) => {
+          <div class="grid gap-8 sm:gap-12 mb-12 sm:mb-20">
+            {allContent.map((content, idx) => {
               // Route to content-type specific pages
               const contentUrl = `/${content.contentType}/${content.slug}`;
+              const isFirstLcp = idx === 0; // First image = LCP candidate
               return (
               <article class="group content-item" data-category={content.webCategory.toLowerCase()}>
                 <a href={contentUrl} class="block">
@@ -70,7 +76,12 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
                           <img 
                             src={content.heroImage} 
                             alt={content.title}
+                            width={content.heroImageWidth}
+                            height={content.heroImageHeight}
                             class="w-full h-full object-cover"
+                            loading={isFirstLcp ? "eager" : "lazy"}
+                            fetchpriority={isFirstLcp ? "high" : undefined}
+                            decoding="async"
                           />
                         ) : (
                           <div class="w-full h-full flex items-center justify-center bg-neutral-100">
@@ -149,6 +160,31 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
 
     </main>
 
+<<<<<<< HEAD
+=======
+    <!-- Footer -->
+    <footer class="border-t border-neutral-200 mt-12 sm:mt-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div>
+            <p class="text-sm text-neutral-900 font-medium mb-2">Sabrina's Pause</p>
+            <p class="text-xs text-neutral-500">
+              {allContent.length} {allContent.length === 1 ? 'experience' : 'experiences'} · AGI-First Architecture
+            </p>
+          </div>
+          <div class="flex gap-6 text-sm">
+            <a href="/api/experiences.json" class="text-neutral-500 hover:text-neutral-900 transition-colors">
+              JSON API
+            </a>
+            <a href="/api/schemas.json" class="text-neutral-500 hover:text-neutral-900 transition-colors">
+              Schema
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+>>>>>>> cf1ddf02da5483f2da825fa2f4d682e372b6de6a
   </div>
 </Layout>
 
@@ -197,15 +233,9 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
     });
   };
 
-  // Run on initial load and on every page navigation
-  document.addEventListener('astro:page-load', filterContent);
+  // Run on initial load (MPA: DOMContentLoaded)
+  document.addEventListener('DOMContentLoaded', filterContent);
 </script>
-
-<style>
-  .content-item {
-    transition: opacity 0.3s ease-in-out;
-  }
-</style>
 
 <style>
   .content-item {

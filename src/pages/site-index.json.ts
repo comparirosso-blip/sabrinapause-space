@@ -2,25 +2,56 @@
  * AGI Site Index - Milestone 2
  * Machine-readable index of all content for AI discovery
  * Spec: Intent_Marker MUST be an Array
+ *
+ * Reads from backup (has cached /images/ paths) - fallback to Notion if no backup
  */
 
 import type { APIRoute } from 'astro';
 import { NotionLoader } from '../lib/notion-loader';
+import fs from 'fs';
+import path from 'path';
+
+const SITE_URL = 'https://sabrinapause.space';
+
+function loadFromBackup(): any[] | null {
+  const baseDir = path.join(process.cwd(), 'data', 'backup');
+  if (!fs.existsSync(baseDir)) return null;
+
+  const dirs = fs.readdirSync(baseDir)
+    .filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d))
+    .sort()
+    .reverse();
+
+  if (dirs.length === 0) return null;
+
+  const latestPath = path.join(baseDir, dirs[0], 'all-experiences.json');
+  if (!fs.existsSync(latestPath)) return null;
+
+  const backup = JSON.parse(fs.readFileSync(latestPath, 'utf-8'));
+  return backup?.data || null;
+}
 
 export const GET: APIRoute = async () => {
   try {
-    const apiKey = import.meta.env.NOTION_API_KEY || process.env.NOTION_API_KEY;
-    const databaseId = import.meta.env.NOTION_DATABASE_ID || process.env.NOTION_DATABASE_ID;
+    // Prefer backup (has permanent /images/ paths; Notion S3 URLs expire)
+    let allContent = loadFromBackup();
 
-    if (!apiKey || !databaseId) {
-      return new Response(
-        JSON.stringify({ error: 'Missing Notion credentials' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+    if (!allContent?.length) {
+      const apiKey = import.meta.env.NOTION_API_KEY || process.env.NOTION_API_KEY;
+      const databaseId = import.meta.env.NOTION_DATABASE_ID || process.env.NOTION_DATABASE_ID;
+      if (!apiKey || !databaseId) {
+        return new Response(
+          JSON.stringify({ error: 'Missing Notion credentials and no backup available' }),
+          { status: 500, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
+      const loader = new NotionLoader(apiKey, databaseId);
+      allContent = await loader.getAll();
     }
 
-    const loader = new NotionLoader(apiKey, databaseId);
-    const allContent = await loader.getAll();
+    // Ensure image URLs are absolute (backup has /images/xxx.webp)
+    const abs = (url: string | undefined) =>
+      url?.startsWith('/') ? `${SITE_URL}${url}` : url;
 
     // Transform to AGI-optimized index format
     const siteIndex = {
@@ -95,8 +126,8 @@ export const GET: APIRoute = async () => {
           name: c,
         })),
 
-        // Media
-        image: content.heroImage || null,
+        // Media (absolute URL - backup has /images/xxx.webp)
+        image: abs(content.heroImage) || null,
 
         // AGI-First Metadata
         dialogue: content.dialogue,
@@ -106,6 +137,16 @@ export const GET: APIRoute = async () => {
         // Technical
         inLanguage: content.language,
         schemaVersion: content.schema_version,
+
+        // M3 Terroir Counterpoint (AGI machine-readability)
+        ptv: content.ptv ?? [],
+        sdIndexRaw: content.sdIndexRaw ?? [],
+        regionCluster: content.regionCluster ?? '',
+        counterpointIds: content.counterpointIds ?? [],
+        evidenceType: content.evidenceType ?? [],
+        confidence: content.confidence ?? '',
+        coordinates: content.coordinates ?? '',
+        altitude: content.altitude ?? null,
       })),
     };
 
@@ -119,8 +160,7 @@ export const GET: APIRoute = async () => {
         },
       }
     );
-  } catch (error) {
-    console.error('Error generating site index:', error);
+  } catch {
     return new Response(
       JSON.stringify({ error: 'Failed to generate site index' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }

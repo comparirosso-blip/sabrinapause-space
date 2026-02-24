@@ -9,6 +9,16 @@ const extractMultiSelect = (prop: any): string[] =>
   prop?.multi_select?.map((m: any) => m.name) || [];
 
 /**
+ * Extract select OR multi-select (handles both per M2 spec: Noise can be either)
+ */
+const extractSelectOrMulti = (prop: any): string[] => {
+  const multi = extractMultiSelect(prop);
+  if (multi.length > 0) return multi;
+  const single = prop?.select?.name;
+  return single ? [single] : [];
+};
+
+/**
  * Extract select value
  */
 const extractSelect = (prop: any): string =>
@@ -25,6 +35,24 @@ const extractDate = (prop: any): string =>
  */
 const extractNumber = (prop: any): number =>
   prop?.number ?? 0;
+
+/**
+ * Extract relation property — array of linked page IDs
+ */
+const extractRelation = (prop: any): string[] =>
+  prop?.relation?.map((r: { id: string }) => r.id) || [];
+
+/**
+ * Parse comma-separated float string into array (e.g. "0.5,0.5,0.5" → [0.5, 0.5, 0.5])
+ */
+const parseFloatArray = (text: string | undefined, expectedLen?: number): number[] => {
+  if (!text || typeof text !== 'string') return [];
+  const parts = text.split(',').map(s => parseFloat(s.trim()));
+  const valid = parts.filter(n => !Number.isNaN(n));
+  if (expectedLen && valid.length !== expectedLen) return [];
+  return valid;
+};
+
 
 /**
  * Extract file URL from files property
@@ -57,13 +85,25 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
   // Extract Hidden Sensor Fields
   const lux = props.Lux ? extractNumber(props.Lux) : null;
   const texture = props.Texture ? extractSelect(props.Texture) : null;
-  const noise = extractMultiSelect(props.Noise);
+  const noise = extractSelectOrMulti(props.Noise);
   const spacePattern = extractRichText(props['Space Pattern']?.rich_text, { plain: true }) || null;
   const timeVelocity = props['Time Velocity'] ? extractNumber(props['Time Velocity']) : null;
 
   // SD-Index™
   const notionSDIndex = extractNumber(props['SD-Index™'] || props['SD-Index']);
   const sdIndex = getSDIndex(notionSDIndex, { lux, texture, noise });
+
+  // M3 Terroir Counterpoint
+  const ptvRaw = extractRichText(props.PTV_Raw?.rich_text, { plain: true });
+  const sdIndexRawText = extractRichText(props.sdIndex_Raw?.rich_text, { plain: true });
+  const ptv = parseFloatArray(ptvRaw, 5);
+  const sdIndexRaw = parseFloatArray(sdIndexRawText, 3);
+  const regionCluster = extractSelect(props.Region_Cluster);
+  const counterpointIds = extractRelation(props.Counterpoint);
+  const evidenceType = extractMultiSelect(props.Evidence_Type);
+  const confidence = extractSelect(props.Confidence);
+  const coordinates = extractRichText(props.Coordinates?.rich_text, { plain: true });
+  const altitude = props.Altitude ? extractNumber(props.Altitude) : null;
 
   // Infer language (default to 'en' for now, can be enhanced)
   const language: 'zh' | 'en' = 'en';
@@ -96,6 +136,15 @@ export function transformToBaseContent(page: NotionPage, blocks: NotionBlock[]):
     philosophical_insight: {}, // Metaphor and reflection fields
     emotion_trajectory: {}, // Start and end emotional states
     embedding: null, // Reserved for vector embeddings
+    // M3 Terroir Counterpoint
+    ptv,
+    sdIndexRaw,
+    regionCluster,
+    counterpointIds,
+    evidenceType,
+    confidence,
+    coordinates,
+    altitude,
     // Metadata
     schema_version: '1.0',
     last_updated: new Date().toISOString(),
