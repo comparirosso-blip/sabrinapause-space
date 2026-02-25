@@ -1,6 +1,8 @@
 # Sabrina's Pause — User Manual (Plain English)
 
-**For non-developers.** How to manage your site from Kyoto, Europe, or anywhere.
+Hey Sabrina,
+
+This is your guide for managing sabrinapause.space. Everything is written in plain English — no coding required. You can run the whole thing from Kyoto, Europe, or anywhere.
 
 ---
 
@@ -81,19 +83,112 @@ When a post is ready to go live:
 - The Status in Notion will change from **"Ready for Web"** to **"Published"**.
 - Your post will appear on the site.
 
-### Deploy Hook — How It Works
+---
 
-**What am I looking at?**  
-When you click the Deploy Hook link, you see a JSON response like `{"job":{"id":"...","state":"PENDING",...}}`. That means Vercel received your request and a new build has started. You don’t need to check anything else — the build is in progress.
+## Deploy Hook — Full Guide
 
-**Wait time**  
-The Deploy Hook triggers a **full site rebuild** (backup → cache images → Astro build). Allow **2–5 minutes** before changes appear live. You can watch progress in Vercel → Deployments if you have access.
+The Deploy Hook is a special URL that tells Vercel (your hosting provider) to rebuild the entire site from scratch. Use it when you want your latest Notion changes to go live immediately, without waiting for the hourly sync.
 
-**Frequency**  
-You can click it multiple times. Each click starts a new build. If you click again before the previous build finishes, the new one will run after it. There is no cool-down period, but avoid rapid repeated clicks (e.g. many times in a few seconds).
+### What is the Deploy Hook URL?
+
+**Save this link somewhere handy (e.g. bookmarks, notes):**
+
+```
+https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2
+```
+
+Or click: [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2)
+
+### When to use it
+
+- You just set a post to **"Ready for Web"** and want it live now
+- You edited text, images, or metadata in Notion and want the changes live
+- You added or removed Counterpoint links and want them to appear
+- You fixed a typo or changed a slug
+- Images look broken — a rebuild re-caches them from Notion
+
+### How to use it
+
+1. Open the Deploy Hook URL in any browser (Chrome, Safari, etc.)
+2. You will see a JSON response, e.g. `{"job":{"id":"...","state":"PENDING",...}}`
+3. That means Vercel received your request. **You don't need to do anything else.**
+4. Wait 2–5 minutes, then refresh your site to see the changes.
+
+### What happens when you click
+
+| Step | What happens |
+|------|--------------|
+| 1 | Vercel receives the request and starts a new build |
+| 2 | The build runs: backup → cache images from Notion → build the site |
+| 3 | Fresh data is pulled from Notion at that moment (no waiting for hourly sync) |
+| 4 | Images are downloaded and stored locally so they don't expire |
+| 5 | The new site is deployed and replaces the old one |
+
+### Common questions
+
+**What am I looking at when I click the link?**  
+A page with JSON text like `{"job":{"id":"abc123","state":"PENDING",...}}`. This is normal. It means the build has started. You can close the tab.
+
+**How long until my changes appear?**  
+Usually **2–5 minutes**. The build must finish before the new version goes live. If you have Vercel access, you can watch the build in Deployments.
+
+**Can I click it more than once?**  
+Yes. Each click starts a new build. If you click again before the previous build finishes, the new one will queue and run after. Avoid clicking many times in a few seconds — once is enough.
 
 **Does it fetch the latest from Notion?**  
-Yes. Each build fetches the **latest data from Notion** at that moment. You don’t need to wait for the hourly sync — the Deploy Hook runs the full pipeline and pulls fresh content directly from Notion.
+Yes. Each build fetches the **latest data from Notion** at that moment. You don't need to wait for any hourly sync.
+
+**Do I need to log in or have a Vercel account?**  
+No. The link works for anyone who has it. You don't need to sign in.
+
+**Is it safe to share this link?**  
+Anyone with the link can trigger a rebuild. Only share it with people you trust (e.g. yourself, your developer). Don't post it publicly.
+
+---
+
+## Counterpoint — Full Guide
+
+**Counterpoint** lets you link related pieces of content (articles, comics, podcasts) so readers can discover them together. For example, a winery article can link to a related hotel experience, or two essays on the same theme can point to each other.
+
+### What is the Counterpoint field?
+
+In your Notion database, **Counterpoint** is a **Relation** property. It links one page to other pages in the same database. When you add links there, the site shows a 「Counterpoint」 section at the bottom of the article, comic, or podcast page with cards for each linked piece.
+
+### Where does it appear?
+
+- **Article pages** — A "Counterpoint" section appears above "Last updated", with cards for each linked item
+- **Comic pages** — Same section at the bottom
+- **Podcast pages** — Same section at the bottom
+
+Each card shows: Hero image, title, content type (Article / Comic / Podcast), and a link to that page.
+
+### How to add Counterpoint links in Notion
+
+1. Open the page you want to add links to (e.g. your winery article)
+2. Find the **Counterpoint** property (Relation type)
+3. Click to add a relation
+4. Search for and select the other page(s) you want to link (e.g. a related hotel article)
+5. Save the page
+6. **Trigger a rebuild** — [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2) — so the links appear on the site
+
+### Requirements for linked pages to appear
+
+| Requirement | Why |
+|-------------|-----|
+| **Status = "Ready for Web" or "Published"** | Draft or Archived pages are hidden from the site |
+| **Same Notion database** | Counterpoint only links to pages in the same database |
+| **Rebuild after adding links** | The site fetches Counterpoint data during build — trigger the Deploy Hook |
+
+### If a link doesn't appear
+
+1. **Check the linked page's Status** — It must be "Ready for Web" or "Published"
+2. **Trigger a rebuild** — [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2)
+3. Wait 2–5 minutes, then refresh the site
+4. If still missing, the linked page may be Draft or Archived — change its Status and rebuild again
+
+### Homepage — Category filters
+
+The homepage shows all your content with a **Featured** section (latest entry) and a **grid** below. Click the category buttons (All, Journal, Podcast, Episodes) to filter the content. The filters work on first load and when you navigate back to the homepage from an article. If a filter doesn't respond when you click it, try refreshing the page or clicking the logo to return home first.
 
 ---
 
@@ -136,14 +231,9 @@ Yes. Each build fetches the **latest data from Notion** at that moment. You don�
 - In Notion, change Status to **"Archived"** or **"Draft"**.
 - Trigger a rebuild. The post will no longer appear on the site.
 
-### "Counterpoint (Relation) links don’t appear on the site"
+### "Counterpoint (Relation) links don't appear on the site"
 
-The **Counterpoint** field in Notion is a Relation that links articles to each other. The data is fetched during build, but the frontend section titled 「Counterpoint」 (showing linked articles as cards with Title and Hero Image) may need to be implemented or updated by your developer.
-
-If you’ve linked articles in the Counterpoint field and they don’t appear at the bottom of the article page, contact your developer and mention:
-1. **Check the linked pages** — They must have Status "Ready for Web" or "Published".
-2. **Trigger a rebuild** — [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2)
-3. If still missing, contact your developer with the page slug and which links you added.
+See the **Counterpoint — Full Guide** section above.
 
 ---
 
