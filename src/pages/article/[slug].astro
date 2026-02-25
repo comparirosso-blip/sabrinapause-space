@@ -6,6 +6,7 @@
  */
 
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { NotionLoader } from '../../lib/notion-loader';
 import { renderBlocks } from '../../lib/block-renderer';
 import { getM3AdditionalProperties } from '../../lib/json-ld';
@@ -115,15 +116,14 @@ export async function getStaticPaths() {
       <!-- Hero Image - Responsive height -->
     {content.heroImage && (
       <div class="w-full h-[50vh] sm:h-[60vh] min-h-[240px] bg-neutral-100 relative">
-        <img 
+        <Image 
           src={content.heroImage} 
           alt={content.title}
-          width={content.heroImageWidth}
-          height={content.heroImageHeight}
+          width={content.heroImageWidth ?? 1200}
+          height={content.heroImageHeight ?? 800}
           class="w-full h-full object-cover"
           loading="eager"
           fetchpriority="high"
-          decoding="async"
         />
         <!-- Gradient overlay for better text contrast -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/60"></div>

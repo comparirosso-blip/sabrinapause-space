@@ -6,6 +6,7 @@
  */
 
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { NotionLoader } from '../../lib/notion-loader';
 import { getM3AdditionalProperties } from '../../lib/json-ld';
 
@@ -132,15 +133,14 @@ export async function getStaticPaths() {
       <!-- Hero/Cover Image -->
       {content.heroImage && (
         <div class="w-full bg-neutral-900">
-          <img 
+          <Image 
             src={content.heroImage} 
             alt={content.title}
-            width={content.heroImageWidth}
-            height={content.heroImageHeight}
+            width={content.heroImageWidth ?? 1200}
+            height={content.heroImageHeight ?? 800}
             class="w-full h-auto"
             loading="eager"
             fetchpriority="high"
-            decoding="async"
           />
         </div>
       )}
@@ -153,13 +153,12 @@ export async function getStaticPaths() {
           
           return (
             <div class="comic-panel" data-panel={index + 1}>
-              <img 
+              <Image 
                 src={imageUrl} 
                 alt={caption || `Panel ${index + 1}`}
-                width={block.image?.file?.width ?? content.panels?.[index]?.width}
-                height={block.image?.file?.height ?? content.panels?.[index]?.height}
+                width={block.image?.file?.width ?? content.panels?.[index]?.width ?? 800}
+                height={block.image?.file?.height ?? content.panels?.[index]?.height ?? 600}
                 loading={index < 3 ? 'eager' : 'lazy'}
-                decoding="async"
                 class="w-full h-auto block"
               />
               {caption && (

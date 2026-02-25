@@ -24,7 +24,8 @@ export const GET: APIRoute = async ({ params }) => {
 
     const loader = new NotionLoader(
       import.meta.env.NOTION_API_KEY,
-      import.meta.env.NOTION_DATABASE_ID
+      import.meta.env.NOTION_DATABASE_ID,
+      { cacheImages: true } // Localize images to avoid Notion S3 expiry (AccessDenied)
     );
 
     // Fetch content by slug
@@ -80,7 +81,7 @@ export async function getStaticPaths() {
       return [];
     }
 
-    const loader = new NotionLoader(apiKey, databaseId);
+    const loader = new NotionLoader(apiKey, databaseId, { cacheImages: true });
     const content = await loader.getAll();
 
     return content.map((item) => ({

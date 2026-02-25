@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { NotionLoader } from '../lib/notion-loader';
 
 // Fetch content to display
@@ -73,15 +74,14 @@ const categories = [...new Set(allContent.map(c => c.webCategory).filter(Boolean
                     <div class="md:w-1/3 flex-shrink-0">
                       <div class="aspect-[4/3] bg-neutral-100 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity">
                         {content.heroImage ? (
-                          <img 
+                          <Image 
                             src={content.heroImage} 
                             alt={content.title}
-                            width={content.heroImageWidth}
-                            height={content.heroImageHeight}
+                            width={content.heroImageWidth ?? 800}
+                            height={content.heroImageHeight ?? 600}
                             class="w-full h-full object-cover"
                             loading={isFirstLcp ? "eager" : "lazy"}
                             fetchpriority={isFirstLcp ? "high" : undefined}
-                            decoding="async"
                           />
                         ) : (
                           <div class="w-full h-full flex items-center justify-center bg-neutral-100">

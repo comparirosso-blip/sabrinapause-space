@@ -10,7 +10,8 @@ export const GET: APIRoute = async () => {
   try {
     const loader = new NotionLoader(
       import.meta.env.NOTION_API_KEY,
-      import.meta.env.NOTION_DATABASE_ID
+      import.meta.env.NOTION_DATABASE_ID,
+      { cacheImages: true } // Localize images to avoid Notion S3 expiry (AccessDenied)
     );
 
     // Fetch all content

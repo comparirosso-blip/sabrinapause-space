@@ -77,6 +77,7 @@ To enable the automated publishing pipeline:
 | **Flow** | Notion → Backup → Image Cache (WebP) → Build → Git Push → Vercel Deploy |
 | **Manual run** | Actions → "Content Sync (Notion -> GitHub)" → Run workflow |
 | **External trigger** | `POST` to GitHub API with `repository_dispatch` event type `notion-sync` |
+| **Vercel Deploy Hook** | Instant rebuild without waiting for hourly sync — see [Deploy Hook](#deploy-hook) below |
 
 **Tips:**
 - If syncs don't run: Actions → "Content Sync" → ensure the workflow is **enabled** (not disabled).
@@ -92,6 +93,17 @@ To enable the automated publishing pipeline:
 | **Status update** | Pages with "Ready for Web" are auto-updated to "Published" after deploy. |
 
 **Draft behavior:** Moving a page from "Published" back to "Draft" in Notion removes it from the next sync; the URL will 404. Previous backups in Git history remain for recovery.
+
+### Deploy Hook (Manual Rebuild)
+
+To trigger an immediate Vercel rebuild without waiting for the hourly sync:
+
+1. In **Vercel** → Project → **Settings** → **Git** → **Deploy Hooks**
+2. Create a hook (e.g. "Manual Rebuild") and copy the webhook URL
+3. Trigger a rebuild: `curl -X POST "https://api.vercel.com/v1/integrations/deploy/..."`
+4. Or use the Vercel dashboard: **Deployments** → **Redeploy** → **Redeploy with existing Build Cache**
+
+The Deploy Hook runs the full build pipeline (backup → cache images → Astro build), so new Notion content goes live within minutes.
 
 ### Commands
 | Command | Action |

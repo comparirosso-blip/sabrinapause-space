@@ -45,7 +45,7 @@ export const GET: APIRoute = async () => {
           { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
       }
-      const loader = new NotionLoader(apiKey, databaseId);
+      const loader = new NotionLoader(apiKey, databaseId, { cacheImages: true });
       allContent = await loader.getAll();
     }
 
