@@ -216,6 +216,24 @@ export class NotionLoader implements ContentLoader {
   }
 
   /**
+   * Get content items by Notion page IDs (for Counterpoint relation)
+   */
+  async getByPageIds(pageIds: string[]): Promise<Content[]> {
+    if (!pageIds?.length) return [];
+
+    const pages = await this.fetchAllPages();
+    const idSet = new Set(pageIds);
+    const matchingPages = pages.filter(p => idSet.has(p.id));
+
+    // Preserve order from counterpointIds
+    const ordered = pageIds
+      .map(id => matchingPages.find(p => p.id === id))
+      .filter(Boolean);
+
+    return Promise.all(ordered.map(page => this.transformPage(page)));
+  }
+
+  /**
    * Get all content items in a specific web category
    */
   async getByCategory(category: string): Promise<Content[]> {

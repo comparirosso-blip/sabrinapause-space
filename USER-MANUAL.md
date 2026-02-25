@@ -35,6 +35,7 @@ These help AI understand the “feel” of the moment. Fill them when you can, e
 | **Intent Vector** | Tags for the purpose of the piece | Add options like "Reflection", "Documentation" |
 | **Project** | Project tags | "Winery Tours 2026" |
 | **Concepts** | Topic tags | "Terroir", "Humidity" |
+| **Counterpoint** | Relation — link related articles | Select other pages from the same database |
 
 **Tip:** Lux under 100 = candlelight (quieter feel). Lux over 2000 = harsh light. Texture "Snow" or "Moss" adds depth. "Traffic" or "Construction" in Noise lowers the contemplative score.
 
@@ -80,6 +81,20 @@ When a post is ready to go live:
 - The Status in Notion will change from **"Ready for Web"** to **"Published"**.
 - Your post will appear on the site.
 
+### Deploy Hook — How It Works
+
+**What am I looking at?**  
+When you click the Deploy Hook link, you see a JSON response like `{"job":{"id":"...","state":"PENDING",...}}`. That means Vercel received your request and a new build has started. You don’t need to check anything else — the build is in progress.
+
+**Wait time**  
+The Deploy Hook triggers a **full site rebuild** (backup → cache images → Astro build). Allow **2–5 minutes** before changes appear live. You can watch progress in Vercel → Deployments if you have access.
+
+**Frequency**  
+You can click it multiple times. Each click starts a new build. If you click again before the previous build finishes, the new one will run after it. There is no cool-down period, but avoid rapid repeated clicks (e.g. many times in a few seconds).
+
+**Does it fetch the latest from Notion?**  
+Yes. Each build fetches the **latest data from Notion** at that moment. You don’t need to wait for the hourly sync — the Deploy Hook runs the full pipeline and pulls fresh content directly from Notion.
+
 ---
 
 ## Part 3: Troubleshooting
@@ -121,6 +136,15 @@ When a post is ready to go live:
 - In Notion, change Status to **"Archived"** or **"Draft"**.
 - Trigger a rebuild. The post will no longer appear on the site.
 
+### "Counterpoint (Relation) links don’t appear on the site"
+
+The **Counterpoint** field in Notion is a Relation that links articles to each other. The data is fetched during build, but the frontend section titled 「Counterpoint」 (showing linked articles as cards with Title and Hero Image) may need to be implemented or updated by your developer.
+
+If you’ve linked articles in the Counterpoint field and they don’t appear at the bottom of the article page, contact your developer and mention:
+1. **Check the linked pages** — They must have Status "Ready for Web" or "Published".
+2. **Trigger a rebuild** — [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2)
+3. If still missing, contact your developer with the page slug and which links you added.
+
 ---
 
 ## Part 4: Consistency for AI Crawlers
@@ -143,6 +167,7 @@ To keep the site easy for AI agents to understand:
 | Unpublish a post | Set Status = "Archived" or "Draft", then rebuild |
 | Fix a typo | Edit in Notion, then rebuild |
 | Add sensor data | Fill Lux, Texture, Noise, etc. in Notion, then rebuild |
+| Link related articles | Use the Counterpoint (Relation) field in Notion |
 | Get help | Contact your developer with: page title, slug, and what you expected |
 
 ---

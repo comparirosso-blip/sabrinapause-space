@@ -25,6 +25,11 @@ if (!content || content.contentType !== 'article') {
   return Astro.redirect('/404');
 }
 
+// Fetch Counterpoint linked articles (title, hero, slug for cards)
+const counterpointItems = content.counterpointIds?.length
+  ? await loader.getByPageIds(content.counterpointIds)
+  : [];
+
 const renderedContent = renderBlocks(content.blocks);
 
 // Estimate reading time (avg 200 words/min)
@@ -206,6 +211,45 @@ export async function getStaticPaths() {
       <div class="prose-sabrina mt-8 sm:mt-10">
         <div set:html={renderBlocks(content.blocks)} />
       </div>
+      
+      <!-- Counterpoint - Linked articles -->
+      {counterpointItems.length > 0 && (
+        <section class="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-neutral-200">
+          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 mb-6 sm:mb-8">Counterpoint</h2>
+          <div class="grid gap-6 sm:gap-8 sm:grid-cols-2">
+            {counterpointItems.map((item) => {
+              const itemUrl = `/${item.contentType}/${item.slug}`;
+              return (
+                <a href={itemUrl} class="group block rounded-lg border border-neutral-200 overflow-hidden hover:border-neutral-400 transition-colors">
+                  <div class="aspect-[16/10] bg-neutral-100">
+                    {item.heroImage ? (
+                      <Image 
+                        src={item.heroImage} 
+                        alt={item.title}
+                        width={item.heroImageWidth ?? 640}
+                        height={item.heroImageHeight ?? 400}
+                        class="w-full h-full object-cover group-hover:opacity-95 transition-opacity"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="w-full h-full flex items-center justify-center text-4xl opacity-40">
+                        {item.contentType === 'article' ? '📄' : item.contentType === 'comic' ? '🎨' : '🎙️'}
+                      </div>
+                    )}
+                  </div>
+                  <div class="p-4 sm:p-5">
+                    <span class="text-xs font-medium text-neutral-500 uppercase tracking-wide">{item.contentType}</span>
+                    <h3 class="mt-1 font-bold text-neutral-900 group-hover:text-neutral-600 transition-colors">{item.title}</h3>
+                    {item.intentVector?.length > 0 && (
+                      <p class="mt-2 text-sm text-neutral-500 line-clamp-2">{item.intentVector.join(' · ')}</p>
+                    )}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
       
       <!-- Footer Metadata - Stacks on mobile -->
       <footer class="mt-12 sm:mt-20 pt-6 sm:pt-8 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-start gap-4 text-sm">

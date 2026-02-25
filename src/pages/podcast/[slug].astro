@@ -24,6 +24,10 @@ if (!content || content.contentType !== 'podcast') {
   return Astro.redirect('/404');
 }
 
+const counterpointItems = content.counterpointIds?.length
+  ? await loader.getByPageIds(content.counterpointIds)
+  : [];
+
 // Filter blocks to exclude audio files that are already displayed in the top list
 const audioUrls = content.audioFiles.map(f => f.url);
 const filteredBlocks = content.blocks.filter(b => {
@@ -254,7 +258,46 @@ export async function getStaticPaths() {
           </div>
         )}
 
-        <!-- Row 4: Main Content Area -->
+        <!-- Row 4: Counterpoint - Linked content -->
+        {counterpointItems.length > 0 && (
+          <div class="space-y-6">
+            <h4 class="text-lg font-bold text-neutral-900">Counterpoint</h4>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {counterpointItems.map((item) => {
+                const itemUrl = `/${item.contentType}/${item.slug}`;
+                return (
+                  <a href={itemUrl} class="group flex gap-4 p-4 rounded-xl border border-neutral-200 hover:border-neutral-400 transition-colors bg-white">
+                    <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-neutral-100">
+                      {item.heroImage ? (
+                        <Image 
+                          src={item.heroImage} 
+                          alt={item.title}
+                          width={80}
+                          height={80}
+                          class="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div class="w-full h-full flex items-center justify-center text-2xl opacity-40">
+                          {item.contentType === 'article' ? '📄' : item.contentType === 'comic' ? '🎨' : '🎙️'}
+                        </div>
+                      )}
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <span class="text-xs font-medium text-neutral-500 uppercase">{item.contentType}</span>
+                      <h3 class="font-bold text-neutral-900 group-hover:text-neutral-600 truncate">{item.title}</h3>
+                      {item.intentVector?.length > 0 && (
+                        <p class="text-sm text-neutral-500 line-clamp-2 mt-0.5">{item.intentVector.join(' · ')}</p>
+                      )}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <!-- Row 5: Main Content Area -->
           <div id="transcript" class="hidden prose-sabrina py-4">
             <div set:html={content.transcript.replace(/\n/g, '<br />')} />
           </div>
