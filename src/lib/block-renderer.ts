@@ -67,6 +67,7 @@ export function renderBlock(block: NotionBlock): string {
     // Image
     case 'image':
       const imageUrl = block.image?.file?.url || block.image?.external?.url || '';
+      if (!imageUrl || !imageUrl.startsWith('/')) return ''; // Skip: no URL or Notion URL (expires)
       const imageCaption = extractRichText(block.image?.caption || []);
       const imgW = block.image?.file?.width;
       const imgH = block.image?.file?.height;
@@ -79,10 +80,9 @@ export function renderBlock(block: NotionBlock): string {
           ${imageCaption ? `<figcaption class="text-center text-sm text-neutral-600 mt-2">${imageCaption}</figcaption>` : ''}
         </figure>`;
 
-    // Video
     case 'audio':
       const audioUrl = block.audio?.file?.url || block.audio?.external?.url;
-      if (!audioUrl) return '<!-- Missing audio URL -->';
+      if (!audioUrl || !audioUrl.startsWith('/')) return '<!-- Audio skipped: no local URL -->';
       return `
         <div class="my-8 p-6 bg-neutral-50 rounded-xl border border-neutral-200">
           <p class="text-sm font-medium text-neutral-500 mb-3 flex items-center gap-2">
@@ -97,6 +97,7 @@ export function renderBlock(block: NotionBlock): string {
       `;
     case 'video':
       const videoUrl = block.video?.file?.url || block.video?.external?.url || '';
+      if (!videoUrl || !videoUrl.startsWith('/')) return '<!-- Video skipped: no local URL -->';
       return `
         <div class="video-container my-6">
           <video controls class="w-full rounded-lg">
@@ -108,6 +109,7 @@ export function renderBlock(block: NotionBlock): string {
     // File
     case 'file':
       const fileUrl = block.file?.file?.url || block.file?.external?.url || '';
+      if (!fileUrl || !fileUrl.startsWith('/')) return '<!-- File skipped: no local URL -->';
       const fileName = block.file?.name || 'Download file';
       return `
         <a href="${fileUrl}" download class="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 hover:bg-neutral-200 rounded-lg transition-colors my-4">

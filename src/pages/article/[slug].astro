@@ -96,7 +96,8 @@ const jsonLd = {
 export async function getStaticPaths() {
   const loader = new NotionLoader(
     import.meta.env.NOTION_API_KEY,
-    import.meta.env.NOTION_DATABASE_ID
+    import.meta.env.NOTION_DATABASE_ID,
+    { cacheImages: true }
   );
   
   const articles = await loader.getAll('article');

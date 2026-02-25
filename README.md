@@ -98,10 +98,13 @@ To enable the automated publishing pipeline:
 
 To trigger an immediate Vercel rebuild without waiting for the hourly sync:
 
+**Quick link:** [Trigger Rebuild](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2) — open in browser or `curl -X POST` it.
+
+Or set up your own:
 1. In **Vercel** → Project → **Settings** → **Git** → **Deploy Hooks**
 2. Create a hook (e.g. "Manual Rebuild") and copy the webhook URL
-3. Trigger a rebuild: `curl -X POST "https://api.vercel.com/v1/integrations/deploy/..."`
-4. Or use the Vercel dashboard: **Deployments** → **Redeploy** → **Redeploy with existing Build Cache**
+3. Trigger: `curl -X POST "YOUR_HOOK_URL"`
+4. Or use the Vercel dashboard: **Deployments** → **Redeploy**
 
 The Deploy Hook runs the full build pipeline (backup → cache images → Astro build), so new Notion content goes live within minutes.
 

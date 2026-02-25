@@ -87,7 +87,8 @@ const jsonLd = {
 export async function getStaticPaths() {
   const loader = new NotionLoader(
     import.meta.env.NOTION_API_KEY,
-    import.meta.env.NOTION_DATABASE_ID
+    import.meta.env.NOTION_DATABASE_ID,
+    { cacheImages: true }
   );
   const podcasts = await loader.getAll('podcast');
   return podcasts.map((p) => ({ params: { slug: p.slug } }));

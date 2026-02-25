@@ -81,7 +81,8 @@ const jsonLd = {
 export async function getStaticPaths() {
   const loader = new NotionLoader(
     import.meta.env.NOTION_API_KEY,
-    import.meta.env.NOTION_DATABASE_ID
+    import.meta.env.NOTION_DATABASE_ID,
+    { cacheImages: true }
   );
   
   const comics = await loader.getAll('comic');
@@ -147,7 +148,10 @@ export async function getStaticPaths() {
       
       <!-- Comic Panels -->
       <div class="comic-panels">
-        {imageBlocks.map((block, index) => {
+        {imageBlocks.filter(b => {
+          const u = b.image?.file?.url || b.image?.external?.url;
+          return u && u.startsWith('/');
+        }).map((block, index) => {
           const imageUrl = block.image?.file?.url || block.image?.external?.url;
           const caption = block.image?.caption?.[0]?.plain_text;
           

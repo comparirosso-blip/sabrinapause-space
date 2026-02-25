@@ -70,10 +70,10 @@ When a post is ready to go live:
 - The site rebuilds automatically (about once per hour).
 - No extra steps.
 
-**Option B — Manual rebuild**
+**Option B — Manual rebuild (instant)**
 
-- Ask your developer to run: `npm run build`
-- Or, if you use Vercel/Netlify: trigger a deploy from the dashboard.
+- Open this link in your browser to trigger a rebuild: [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2)
+- Or ask your developer to run: `npm run build`
 
 ### Step 4: After a successful build
 
@@ -100,8 +100,8 @@ When a post is ready to go live:
 
 ### "Images are broken or missing"
 
-- Hero images from Notion can expire. The build process caches them locally.
-- Run a fresh build: `npm run build`.
+- Images are now cached locally during build — they should not expire.
+- If you see broken images, trigger a fresh rebuild: [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2)
 - If images still fail, re-upload the Hero Image in Notion and rebuild.
 
 ### "Wrong content type (e.g. article vs comic)"
@@ -139,6 +139,7 @@ To keep the site easy for AI agents to understand:
 | I want to… | Do this… |
 |------------|----------|
 | Publish a new post | Set Status = "Ready for Web", then trigger rebuild |
+| Trigger instant rebuild | Open [Deploy Hook](https://api.vercel.com/v1/integrations/deploy/prj_wcWPd81zPXwkgzlbPD4ZgmIGu6jo/HJhhERlGL2) in your browser |
 | Unpublish a post | Set Status = "Archived" or "Draft", then rebuild |
 | Fix a typo | Edit in Notion, then rebuild |
 | Add sensor data | Fill Lux, Texture, Noise, etc. in Notion, then rebuild |

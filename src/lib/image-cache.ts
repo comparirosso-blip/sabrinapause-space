@@ -218,6 +218,9 @@ export class ImageCache {
                 ...(result.width && result.height && { width: result.width, height: result.height }),
               },
             };
+          } else {
+            // Cache failed — never pass through Notion URLs (they expire). Remove to avoid AccessDenied.
+            updatedBlock[block.type] = { ...media, type: 'file', file: { url: undefined } };
           }
         }
       }
