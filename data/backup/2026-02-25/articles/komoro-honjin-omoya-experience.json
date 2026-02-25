@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-25T05:14:20.522Z",
+  "backup_date": "2026-02-25T08:03:22.339Z",
   "data": {
     "id": "31218eed-3014-80f1-a3a5-cff652a0886a",
     "contentType": "article",
@@ -318,8 +318,8 @@
           "caption": [],
           "type": "file",
           "file": {
-            "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/39118eed-3014-817f-b614-000386133549/1394929d-40aa-487c-9fb7-464b2a9a1534/IMG_2119.heic?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB46675O5NCJY%2F20260225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260225T051417Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDgaCXVzLXdlc3QtMiJGMEQCIHIHkkbM4D7%2F2H97VZ9tH%2FIQbMOOFKrLDTFYJR%2B0lVrUAiAQ75pznK51HpFvwFbDgYDf0TdRUAQosYmtvbkCb%2FU0Gir%2FAwgBEAAaDDYzNzQyMzE4MzgwNSIMLL7%2BQDZVkuSFVminKtwD0Sa9AzEgbZw1I8ovLLZCTYv7qOkXgn1JrW18do794SA7VSF9TsIQCiOyl5%2F0yVJKiMR1m%2Bl%2BsvL3fuFKWf1fqIGknCSk7Hdwxmse3RApPx2XJaqDDKaLJEH0kmCv1Ez4GE5XBSx%2Bnv6tiNPCoN8AtVC%2BRd%2FHqlNEVrgi9QF6C0sTy6z3XwvfEl5VCM5uULQcdwO3FsVupw%2FbzZEplCg8glW8GBkfmk2f2jqngUA%2BvykIeobWcnTNF83t%2Bv0DWsavwYjmSh59KgwjXSijU%2FH6AMWKVVTYHTVfH%2BfI9mFbPPfs%2BvXpuoTKBwhM8Rt3A77g%2BL%2BUja6VkiIEa14Eaw6t4R9F8ziEvFjPwnL7KIjjUHk33NROzdJaxYwLbzY3BGNiZmtvVaHX%2FR54d%2FAMrNb3vl08tM5Deqe%2FnZu0PXu4sbWGVlx1V0j%2FPRvrimxoTwI%2FD3ht0kRSnN9zXClgxCSsJSWcEC%2FybEbPTqZJ%2BPszJBZ1Qv%2BbILriqauUqZR7am79HUsavwfkt6uW5916Redjj%2By28xO41dO%2B0ywHfVxj63NaLPIAooI4eeeY1VNE5L28usXXwvsUVs6NoJEqrVldPoOuOyWMdJSVWMEw1yfOqAAwXCKTeEPga6MV23kwpu%2F4zAY6pgGHqJIWSkuqelMF8AsGQWpk4ki9Pf79wZieNSY3DJdHE8FzvVBd4YTaQ%2FP5QjxQXVE4aaCg3oDQP2gtP73GpASh9%2FY5gVoLcVtnGLtWcjcmPTBpZWGPEhcLhIUPETYrgdovh%2FCZcoZZSzonP5GvliOEXtrxMUKcgDj8R4e55ExaKbxx0ZdmU0o7n2RhSvR%2B1p%2BmB4tsLSmi3vIvaHK42SOb8JTgu1Cz&X-Amz-Signature=c0f5025192c260c289d42ea628cf985e2a2b990b5914f4ba1ada1d93f0461fc5&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
-            "expiry_time": "2026-02-25T06:14:17.336Z"
+            "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/39118eed-3014-817f-b614-000386133549/1394929d-40aa-487c-9fb7-464b2a9a1534/IMG_2119.heic?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4664LATSKVY%2F20260225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260225T080321Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjED0aCXVzLXdlc3QtMiJIMEYCIQCo8VH%2BTEXUQXHteH3K%2FuaiJOD2XtniyzuvR657r5%2FR2wIhAMvancmYHQLMcarfzkI79q%2BLsD1D3S3lVBmSYhkLFf6%2FKv8DCAYQABoMNjM3NDIzMTgzODA1IgzfAYmdbW%2BOghnLWYgq3AOUj1seE2QWoaG9c%2BnRDdB975v73eLrREw8OiUgs3Mdk%2F1CAasRblv%2B6vJ21aGUUNa8WjomxH1rwF5ewEpI07zUKpP%2Fj%2BYlE3HHvCrXFjKd8Fs63xKIr2ovdw4kf%2F6rvTNH3xfmnqSEA1so8u59okO78wfLpddu7xtVDHUE0i9oITcWxmaKqgO4JLm5cFN%2FfCwkQxAy3XwTQWsRvDSO6%2BJZXqAhrZ5HxZcgMNJ33hHul2oYKogRuLREBWLypalgNAv7dw8l0Xao85c5KMK%2FycAbY0kraA7hRrbkTGLqg5iwDXs2AhiFjU5bDCxWQlvi2aDy8AfPY3BZ%2Fh2EPAgTaqwV%2BZ3dfrn%2BUvcpTdjrTop%2FF97C5eYlFD9KZPWCgKGhYelbrQ2LCOC5HYSLuCj5USSQGYjn7Z8Nn%2BJYcv1CBjnjVoyQnH0ujczp7N4Cq81MTzosqD4RJsUu9jOw85A0rH8ZBzbI2JIdZjqO47Vgyphbt836gI43ycIXIMqRIjd0m%2BsQS%2BmgeA57wtXTo%2Fb47qbjVQFNVZCiAhyF2kz3sba9Y%2F1caSM50FV63mRQrIb9L9zRBJnVtihRjYKpPkzWqr%2F4W4sih0yY5yC0kGb%2B2vNQ8%2FoLjPxIm38kPBoHzTCWi%2FrMBjqkAYITtLKuKeXwqtRM2fStrFiHCyfC8zPmK2DQDMOestnnugvbzJewCmkTNTeWZr82ok70iS%2FvUqycpgyorL0TI2WoC4waNI5enFlTgUCtnBTsIxrhj01PfXu7zlKKh8P%2FJZDcqL3DauAwpbQ278ceQcGiVwescfVyMwLYu8TddcP%2FLu0VSQwB4wRisROo6S1F1wjsPrqv5THB%2Bec35527LI3AA1Ic&X-Amz-Signature=e6ccb5550f0bb59c9afb812133c86766d53e0c1afd904c059913068ef91c5164&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+            "expiry_time": "2026-02-25T09:03:21.171Z"
           },
           "name": "IMG_2119.HEIC.heic"
         }
@@ -384,7 +384,7 @@
     "coordinates": "",
     "altitude": 1001,
     "schema_version": "1.0",
-    "last_updated": "2026-02-25T05:14:17.382Z",
+    "last_updated": "2026-02-25T08:03:21.341Z",
     "language": "en",
     "excerpt": "Voice: Human - Sabrina\n如果只把它當作一間義大利餐廳，其實會錯過它真正的層次。這座建築幾百年前原本是江戶時代中山道的「本陣」，曾經是大名與高階武士停留的場所。厚重的木構、低光源、深色梁柱與安靜的空氣，讓人一走進去就自然慢下來。",
     "readingTime": 1,
