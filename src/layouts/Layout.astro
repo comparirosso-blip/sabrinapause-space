@@ -43,6 +43,9 @@ const siteJsonLd = {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     
+    <!-- Do not index until content base is ready. Remove when ready to invite crawlers. -->
+    <meta name="robots" content="noindex, nofollow" />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
@@ -79,7 +82,7 @@ const siteJsonLd = {
     <!-- Instant Page Transitions -->
     <ClientRouter />
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-[#f8f7f5]">
     <slot />
     {showFooter && <Footer experienceCount={experienceCount} xiaohongshuUrl={site.xiaohongshuUrl} />}
   </body>

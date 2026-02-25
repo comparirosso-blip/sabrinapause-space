@@ -3,28 +3,34 @@
 @import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-500.css";
 @import "@fontsource/inter/latin-600.css";
-@import "@fontsource/outfit/latin-300.css";
-@import "@fontsource/outfit/latin-400.css";
-@import "@fontsource/outfit/latin-600.css";
+@import "@fontsource/playfair-display/latin-400.css";
+@import "@fontsource/playfair-display/latin-500.css";
+@import "@fontsource/playfair-display/latin-600.css";
+@import "@fontsource/playfair-display/latin-700.css";
 
 @theme {
+  --font-sans: "Inter", "sans-serif";
+  --font-serif: "Playfair Display", "Georgia", serif;
   --font-inter: "Inter", "sans-serif";
-  --font-outfit: "Outfit", "sans-serif";
+  --font-playfair: "Playfair Display", "Georgia", serif;
   
   --color-brand: #171717;
-  --color-accent: #6d28d9;
+  --color-bg: #fafafa;
+  --color-bg-warm: #f8f7f5;
 }
 
 @layer base {
   html {
     font-family: var(--font-inter);
-    @apply antialiased text-neutral-900 bg-gray-50;
+    @apply antialiased text-neutral-900;
+    background-color: var(--color-bg-warm);
     scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, .font-outfit {
-    font-family: var(--font-outfit);
-    letter-spacing: -0.02em;
+  /* Serif for titles — journal feel */
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-playfair);
+    letter-spacing: 0.01em;
   }
 
   ::selection {
@@ -45,15 +51,15 @@
   }
 
   .prose-sabrina p {
-    @apply mb-5 sm:mb-6;
+    @apply mb-6 sm:mb-8;
   }
 
   .prose-sabrina h1, .prose-sabrina h2, .prose-sabrina h3 {
     @apply font-semibold text-neutral-900;
   }
-  .prose-sabrina h1 { @apply mt-10 mb-4 sm:mt-12 sm:mb-6 text-2xl sm:text-3xl; }
-  .prose-sabrina h2 { @apply mt-10 mb-4 sm:mt-12 sm:mb-6 text-xl sm:text-4xl; }
-  .prose-sabrina h3 { @apply mt-8 mb-3 sm:mt-10 sm:mb-4 text-lg sm:text-2xl; }
+  .prose-sabrina h1 { @apply mt-14 mb-6 sm:mt-16 sm:mb-8 text-2xl sm:text-3xl; }
+  .prose-sabrina h2 { @apply mt-14 mb-5 sm:mt-16 sm:mb-7 text-xl sm:text-2xl; }
+  .prose-sabrina h3 { @apply mt-12 mb-4 sm:mt-14 sm:mb-5 text-lg sm:text-xl; }
 
   .prose-sabrina ul, .prose-sabrina ol {
     @apply mb-6 sm:mb-8 ml-5 sm:ml-6;

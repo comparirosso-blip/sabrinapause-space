@@ -154,7 +154,7 @@ export function renderBlock(block: NotionBlock): string {
     // Table of Contents
     case 'table_of_contents':
       return `
-        <nav class="toc my-8 p-6 bg-neutral-50 font-outfit rounded-xl border border-neutral-200">
+        <nav class="toc my-8 p-6 bg-neutral-50 font-serif rounded-xl border border-neutral-200">
           <div class="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-4">Jump to Section</div>
           <div id="toc-placeholder" class="text-sm text-neutral-500 italic">Exploring content structure...</div>
         </nav>`;

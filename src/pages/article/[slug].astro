@@ -117,7 +117,7 @@ export async function getStaticPaths() {
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <article class="min-h-screen bg-white">
+  <article class="min-h-screen bg-[#fafafa]">
     
       <!-- Hero Image - Responsive height -->
     {content.heroImage && (
@@ -137,7 +137,7 @@ export async function getStaticPaths() {
     )}
     
     <!-- Article Content - Mobile-optimized padding & typography -->
-    <div class="article-container max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+    <div class="article-container max-w-3xl mx-auto px-6 sm:px-10 py-14 sm:py-20">
       
       <!-- Breadcrumb - Touch-friendly -->
       <nav class="text-sm text-neutral-500 hover:text-neutral-900 mb-6 sm:mb-8">
@@ -154,14 +154,13 @@ export async function getStaticPaths() {
         <span class="font-medium uppercase tracking-wide text-xs px-2 py-1 bg-neutral-100 text-neutral-700 rounded">
           {content.webCategory}
         </span>
-        <span>·</span>
-        <time datetime={content.date}>{content.date}</time>
+        {content.date && (<><span>·</span><time datetime={content.date}>{content.date}</time></>)}
         <span>·</span>
         <span>{readingTime} min read</span>
       </div>
       
-      <!-- Title - Responsive scaling for mobile -->
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6 leading-tight tracking-tight">
+      <!-- Title - Serif for journal feel -->
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 mb-6 sm:mb-8 leading-tight">
         {content.title}
       </h1>
       
@@ -172,20 +171,25 @@ export async function getStaticPaths() {
         </p>
       )}
       
-      <!-- Metadata Grid - Responsive columns -->
+      <!-- Metadata Grid - Responsive columns (only show when at least one field has a value) -->
+      {(content.location?.name || content.sdIndex != null || content.lux != null || content.texture) && (
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 py-4 sm:py-6 mb-8 sm:mb-12 border-y border-neutral-200 text-sm">
-        <div>
-          <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Location</div>
-          <div class="text-neutral-900 font-medium">{content.location.name}</div>
-        </div>
-        <div>
-          <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">SD-Index™</div>
-          <div class="text-neutral-900 font-medium">{content.sdIndex}/10</div>
-        </div>
-        {content.lux !== null && (
+        {content.location?.name && (
           <div>
-            <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Lux</div>
-            <div class="text-neutral-900 font-medium">{content.lux}</div>
+            <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Location</div>
+            <div class="text-neutral-900 font-medium">{content.location.name}</div>
+          </div>
+        )}
+        {content.sdIndex != null && (
+          <div>
+            <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">SD-Index™</div>
+            <div class="text-neutral-900 font-medium">{content.sdIndex}/10</div>
+          </div>
+        )}
+        {content.lux != null && (
+          <div>
+            <div class="text-xs text-neutral-500 uppercase tracking-wide mb-1">Lux Level</div>
+            <div class="text-neutral-900 font-medium">{content.lux} LUX</div>
           </div>
         )}
         {content.texture && (
@@ -195,6 +199,7 @@ export async function getStaticPaths() {
           </div>
         )}
       </div>
+      )}
       
       <!-- Concepts/Tags -->
       {content.concepts.length > 0 && (
@@ -221,7 +226,7 @@ export async function getStaticPaths() {
               const itemUrl = `/${item.contentType}/${item.slug}`;
               return (
                 <a href={itemUrl} class="group block rounded-lg border border-neutral-200 overflow-hidden hover:border-neutral-400 transition-colors">
-                  <div class="aspect-[16/10] bg-neutral-100">
+                  <div class="aspect-[3/2] bg-neutral-100">
                     {item.heroImage ? (
                       <Image 
                         src={item.heroImage} 
@@ -239,10 +244,10 @@ export async function getStaticPaths() {
                   </div>
                   <div class="p-4 sm:p-5">
                     <span class="text-xs font-medium text-neutral-500 uppercase tracking-wide">{item.contentType}</span>
-                    <h3 class="mt-1 font-bold text-neutral-900 group-hover:text-neutral-600 transition-colors">{item.title}</h3>
-                    {item.intentVector?.length > 0 && (
-                      <p class="mt-2 text-sm text-neutral-500 line-clamp-2">{item.intentVector.join(' · ')}</p>
-                    )}
+                    <h3 class="mt-1 font-serif font-semibold text-neutral-900 group-hover:text-neutral-600 transition-colors">{item.title}</h3>
+                    <p class="mt-2 text-sm text-neutral-500 line-clamp-2">
+                      {item.intentVector?.length > 0 ? item.intentVector.join(' · ') : (item.contentType === 'podcast' ? 'Listen' : item.contentType === 'comic' ? 'View episode' : 'Read')}
+                    </p>
                   </div>
                 </a>
               );

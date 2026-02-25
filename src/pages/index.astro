@@ -34,13 +34,13 @@ const categoryIcons: Record<string, string> = {
   experienceCount={allContent.length}
   preloadImage={sortedContent[0]?.heroImage}
 >
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-[#fafafa]">
     
     <!-- Header - Logo links to Home -->
-    <header class="border-b border-neutral-200">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="border-b border-neutral-200/60">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 py-12 sm:py-16">
         <a href="/" class="inline-block group">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-2 group-hover:text-neutral-600 transition-colors tracking-tight">
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-neutral-900 mb-2 group-hover:text-neutral-600 transition-colors">
             Sabrina's Pause
           </h1>
           <p class="text-base sm:text-lg text-neutral-600">
@@ -51,11 +51,11 @@ const categoryIcons: Record<string, string> = {
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <main class="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 py-12 sm:py-20">
       
       <!-- Filter Navigation - Clickable category icons -->
       {allContent.length > 0 && (
-        <div class="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10 pb-6 border-b border-neutral-200">
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-12 sm:mb-16 pb-8 border-b border-neutral-200/60">
           <button class="filter-btn active min-h-[44px] px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium transition-colors touch-manipulation flex items-center gap-2" data-filter="all">
             <span>✦</span> All ({allContent.length})
           </button>
@@ -75,15 +75,15 @@ const categoryIcons: Record<string, string> = {
       ) : (
         <>
           <!-- Featured Section - Latest entry -->
-          <section class="mb-12 sm:mb-16">
+          <section class="mb-16 sm:mb-24">
             {sortedContent.map((content, idx) => {
               if (idx !== 0) return null;
               const contentUrl = `/${content.contentType}/${content.slug}`;
               return (
                 <article class="content-item featured-item" data-category={content.webCategory.toLowerCase()}>
-                  <a href={contentUrl} class="block group rounded-xl overflow-hidden border border-neutral-200 hover:border-neutral-400 transition-colors bg-white">
+                  <a href={contentUrl} class="block group rounded-xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300 transition-colors bg-white">
                     <div class="grid md:grid-cols-2 gap-0">
-                      <div class="aspect-[16/10] md:aspect-auto md:min-h-[320px] bg-neutral-100">
+                      <div class="aspect-[3/2] md:aspect-auto md:min-h-[360px] bg-neutral-100">
                         {content.heroImage ? (
                           <Image 
                             src={content.heroImage} 
@@ -102,19 +102,23 @@ const categoryIcons: Record<string, string> = {
                           </div>
                         )}
                       </div>
-                      <div class="p-6 sm:p-8 flex flex-col justify-center">
-                        <span class="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-2">{content.webCategory}</span>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mb-3 group-hover:text-neutral-600 transition-colors">
+                      <div class="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                        <span class="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-3">{content.webCategory}</span>
+                        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-neutral-900 mb-4 group-hover:text-neutral-600 transition-colors">
                           {content.title}
                         </h2>
                         <p class="text-neutral-600 mb-4 line-clamp-2">
-                          {Array.isArray(content.intentVector) ? content.intentVector.join(' · ') : content.intentVector}
+                          {Array.isArray(content.intentVector) && content.intentVector.length > 0
+                            ? content.intentVector.join(' · ')
+                            : (content.contentType === 'podcast' ? 'Listen to this episode' : content.contentType === 'comic' ? 'View this episode' : 'Read this piece')}
                         </p>
-                        <div class="flex flex-wrap gap-4 text-sm text-neutral-500">
-                          <span>{content.date}</span>
-                          <span>{content.location.name}</span>
-                          <span>SD-Index {content.sdIndex}/10</span>
-                        </div>
+                        {(content.date || content.location?.name || content.sdIndex != null) && (
+                        <dl class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                          {content.date && <div class="flex gap-1.5"><dt class="text-neutral-400">Date:</dt><dd>{content.date}</dd></div>}
+                          {content.location?.name && <div class="flex gap-1.5"><dt class="text-neutral-400">Location:</dt><dd>{content.location.name}</dd></div>}
+                          {content.sdIndex != null && <div class="flex gap-1.5"><dt class="text-neutral-400">SD-Index™:</dt><dd>{content.sdIndex}/10</dd></div>}
+                        </dl>
+                        )}
                       </div>
                     </div>
                   </a>
@@ -123,15 +127,15 @@ const categoryIcons: Record<string, string> = {
             })}
           </section>
           
-          <!-- Content Grid - 2-3 columns -->
-          <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <!-- Content Grid - 2-3 columns (Gallery: consistent 3:2 or 4:5) -->
+          <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
             {sortedContent.map((content, idx) => {
               if (idx === 0) return null; // Featured already shown
               const contentUrl = `/${content.contentType}/${content.slug}`;
               return (
               <article class="group content-item" data-category={content.webCategory.toLowerCase()}>
-                <a href={contentUrl} class="block h-full rounded-xl overflow-hidden border border-neutral-200 hover:border-neutral-400 transition-colors bg-white">
-                  <div class="aspect-[4/3] bg-neutral-100">
+                <a href={contentUrl} class="block h-full rounded-xl overflow-hidden border border-neutral-200/60 hover:border-neutral-300 transition-colors bg-white">
+                  <div class="aspect-[3/2] bg-neutral-100">
                     {content.heroImage ? (
                       <Image 
                         src={content.heroImage} 
@@ -149,19 +153,23 @@ const categoryIcons: Record<string, string> = {
                       </div>
                     )}
                   </div>
-                  <div class="p-4 sm:p-5">
+                  <div class="p-5 sm:p-6">
                     <span class="text-xs font-medium text-neutral-500 uppercase tracking-wide">{content.webCategory}</span>
-                    <h3 class="mt-2 font-bold text-neutral-900 group-hover:text-neutral-600 transition-colors line-clamp-2">
+                    <h3 class="mt-3 font-serif font-semibold text-neutral-900 group-hover:text-neutral-600 transition-colors line-clamp-2">
                       {content.title}
                     </h3>
                     <p class="mt-2 text-sm text-neutral-500 line-clamp-2">
-                      {Array.isArray(content.intentVector) ? content.intentVector.join(' · ') : content.intentVector}
+                      {Array.isArray(content.intentVector) && content.intentVector.length > 0
+                        ? content.intentVector.join(' · ')
+                        : (content.contentType === 'podcast' ? 'Listen to this episode' : content.contentType === 'comic' ? 'View this episode' : 'Read this piece')}
                     </p>
-                    <div class="mt-3 flex flex-wrap gap-3 text-xs text-neutral-400">
-                      <span>{content.date}</span>
-                      <span>{content.location.name}</span>
-                      <span>{content.sdIndex}/10</span>
-                    </div>
+                    {(content.date || content.location?.name || content.sdIndex != null) && (
+                    <dl class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-400">
+                      {content.date && <div class="flex gap-1"><dt class="text-neutral-500">Date:</dt><dd>{content.date}</dd></div>}
+                      {content.location?.name && <div class="flex gap-1"><dt class="text-neutral-500">Location:</dt><dd>{content.location.name}</dd></div>}
+                      {content.sdIndex != null && <div class="flex gap-1"><dt class="text-neutral-500">SD-Index™:</dt><dd>{content.sdIndex}/10</dd></div>}
+                    </dl>
+                    )}
                   </div>
                 </a>
               </article>
@@ -177,7 +185,7 @@ const categoryIcons: Record<string, string> = {
           </div>
 
           <!-- Pagination Placeholder -->
-          <div class="flex justify-center gap-4 py-8 border-t border-neutral-200">
+          <div class="flex justify-center gap-4 py-12 sm:py-16 border-t border-neutral-200/60">
             <span class="px-4 py-2 bg-neutral-900 text-white rounded">1</span>
             <span class="px-4 py-2 text-neutral-400">of 1</span>
           </div>

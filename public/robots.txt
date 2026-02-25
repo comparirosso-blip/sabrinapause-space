@@ -1,20 +1,9 @@
-# robots.txt - AGI-First Website
-# Optimized for AI crawlers and indexing
+# robots.txt - Sabrina's Pause
+# BLOCKING CRAWLERS: Do not submit to search engines or indexers yet.
+# Building content base first. When ready, replace with Allow rules and remove noindex from Layout.astro
 
 User-agent: *
-Allow: /
+Disallow: /
 
-# AI-specific indexing
-# AI Intent Index: /site-index.json
-
-# Sitemaps
-Sitemap: https://sabrinapause.space/sitemap-index.xml
-
-# AGI Discovery Endpoints
-Allow: /site-index.json
-Allow: /api/experiences.json
-Allow: /api/schemas.json
-Allow: /.well-known/ai-intent.json
-
-# Fast crawl rate for AI agents
-Crawl-delay: 1
+# Sitemap exists but do NOT submit to Google Search Console or Bing Webmaster Tools yet.
+# Sitemap: https://sabrinapause.space/sitemap-index.xml
