@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-25T08:04:57.010Z",
+  "backup_date": "2026-02-25T08:03:22.335Z",
   "count": 5,
   "data": [
     {
@@ -4843,7 +4843,7 @@
       "coordinates": "35.6812",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-25T08:04:40.788Z",
+      "last_updated": "2026-02-25T08:03:21.752Z",
       "language": "en",
       "excerpt": "Here is a podcast script structured as a dialogue between two intellectuals, following the specific flow and metaphors from your source material.",
       "readingTime": 8,
@@ -5045,7 +5045,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-25T08:04:40.230Z",
+      "last_updated": "2026-02-25T08:03:20.582Z",
       "language": "en",
       "audioFiles": [
         {
@@ -5340,7 +5340,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-25T08:04:40.277Z",
+      "last_updated": "2026-02-25T08:03:20.670Z",
       "language": "en",
       "episodeNumber": 1,
       "panels": [
@@ -5708,7 +5708,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-02-25T08:04:40.378Z",
+      "last_updated": "2026-02-25T08:03:20.595Z",
       "language": "en",
       "excerpt": "Voice: Human - Sabrina\n原本以為只是一次普通的見學，結果收穫遠比想像多。冬天的葡萄藤只剩骨架，卻反而更清楚地看見土地的線條。有時候，去掉果實之後，風土反而更清晰。",
       "readingTime": 1,
@@ -6032,8 +6032,8 @@
             "caption": [],
             "type": "file",
             "file": {
-              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/39118eed-3014-817f-b614-000386133549/1394929d-40aa-487c-9fb7-464b2a9a1534/IMG_2119.heic?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665HMHKIL3%2F20260225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260225T080440Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjED4aCXVzLXdlc3QtMiJIMEYCIQCl8UxCZJEYINL09aBOsw4cFgU%2F5FDQnabQqHF2PCU4qgIhAPAj6ykQzIsVMpq%2FmD0bK7yYN5eyANwMN9K87cvIbeRDKv8DCAcQABoMNjM3NDIzMTgzODA1IgxmY2wTOdgRYtXK1LAq3ANRSmTdNs%2BiAohZr4SBwaxQD56eW5fX3MSVMRrb1HZ44iiJqE3JUZKE9kkxnF%2F8Sm48aThuQIouSDd7Bu2jskcBPEUO3KTGvxGQmhNYHFofKyFREitx06vj6BsFLm%2BFDW0od4%2FuBx2xvBQg0XK6eFFVsDsldycmyOmbhCmddjm6qEzvmExNYS%2FUVfGKWWnnVcWipXNlxUkBuI2ZLeO64H%2BuTj%2BJtYLeZRYNvfeMkIWmNn3KRm1afjJMa%2FktHhStShdsNMYvCMgZfkrxsp6COm8RpwMHv7OvOSZ8D8mQCRDtwzjohTtAC73PucJWmhkClckB%2FNM098RV4Bobmhyegbp%2BNQxnmqLj11LEndB8VZhYotgdoD28XjBtdsJ250Z7NpIZFapsUoZ%2BR9%2BXr1xY0xE%2FgZYGRzKjMrOTuZ6By4WI1s2CCyHKdH0hFc8%2BmzO8qQ4Ww5OafO%2FFy2ln969nuhd7EFqV%2F4aFZn8IC9mUH0%2BHK6tU4lIEIPOY5OuVDdGtRe%2Bfq%2Fo5zQ8HvOeR5D%2B23s9YQ0FWeHYp8kzcDXoIQScVnnlgpEGG4mRBcXVvBauHHHXEOETNgKabyvGonx55EUJnS8B6iwwIJnTK%2BJtDjUn37cSol4MsLgUFgEr6CTDYnPrMBjqkAeJeppl7UyIdc5gySPdEH%2FrBUfxj4%2B8gjM7XoGpRh4sy0SWlamzLV7LUTWinYSH30%2FK9F1shabNKWePofz%2F7E6zjDxglhOAFSigDBp0ia7Wh4Eq%2FI6M4QrFaChnz1lILaqUcGpeMP%2FTUQTU6EAnZzDSWmpb5NOwYG%2FB7fsfR5bcvR7CgoDXbeTAia7ip7%2FXj1bVtjlj4reZYU3SGz1zCPSpO3tfq&X-Amz-Signature=08d88f6e461c34849ebda9db91686b7ecee58d7f69a7fb3cf9e1868c34882779&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
-              "expiry_time": "2026-02-25T09:04:40.464Z"
+              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/39118eed-3014-817f-b614-000386133549/1394929d-40aa-487c-9fb7-464b2a9a1534/IMG_2119.heic?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4664LATSKVY%2F20260225%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260225T080321Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjED0aCXVzLXdlc3QtMiJIMEYCIQCo8VH%2BTEXUQXHteH3K%2FuaiJOD2XtniyzuvR657r5%2FR2wIhAMvancmYHQLMcarfzkI79q%2BLsD1D3S3lVBmSYhkLFf6%2FKv8DCAYQABoMNjM3NDIzMTgzODA1IgzfAYmdbW%2BOghnLWYgq3AOUj1seE2QWoaG9c%2BnRDdB975v73eLrREw8OiUgs3Mdk%2F1CAasRblv%2B6vJ21aGUUNa8WjomxH1rwF5ewEpI07zUKpP%2Fj%2BYlE3HHvCrXFjKd8Fs63xKIr2ovdw4kf%2F6rvTNH3xfmnqSEA1so8u59okO78wfLpddu7xtVDHUE0i9oITcWxmaKqgO4JLm5cFN%2FfCwkQxAy3XwTQWsRvDSO6%2BJZXqAhrZ5HxZcgMNJ33hHul2oYKogRuLREBWLypalgNAv7dw8l0Xao85c5KMK%2FycAbY0kraA7hRrbkTGLqg5iwDXs2AhiFjU5bDCxWQlvi2aDy8AfPY3BZ%2Fh2EPAgTaqwV%2BZ3dfrn%2BUvcpTdjrTop%2FF97C5eYlFD9KZPWCgKGhYelbrQ2LCOC5HYSLuCj5USSQGYjn7Z8Nn%2BJYcv1CBjnjVoyQnH0ujczp7N4Cq81MTzosqD4RJsUu9jOw85A0rH8ZBzbI2JIdZjqO47Vgyphbt836gI43ycIXIMqRIjd0m%2BsQS%2BmgeA57wtXTo%2Fb47qbjVQFNVZCiAhyF2kz3sba9Y%2F1caSM50FV63mRQrIb9L9zRBJnVtihRjYKpPkzWqr%2F4W4sih0yY5yC0kGb%2B2vNQ8%2FoLjPxIm38kPBoHzTCWi%2FrMBjqkAYITtLKuKeXwqtRM2fStrFiHCyfC8zPmK2DQDMOestnnugvbzJewCmkTNTeWZr82ok70iS%2FvUqycpgyorL0TI2WoC4waNI5enFlTgUCtnBTsIxrhj01PfXu7zlKKh8P%2FJZDcqL3DauAwpbQ278ceQcGiVwescfVyMwLYu8TddcP%2FLu0VSQwB4wRisROo6S1F1wjsPrqv5THB%2Bec35527LI3AA1Ic&X-Amz-Signature=e6ccb5550f0bb59c9afb812133c86766d53e0c1afd904c059913068ef91c5164&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+              "expiry_time": "2026-02-25T09:03:21.171Z"
             },
             "name": "IMG_2119.HEIC.heic"
           }
@@ -6098,7 +6098,7 @@
       "coordinates": "",
       "altitude": 1001,
       "schema_version": "1.0",
-      "last_updated": "2026-02-25T08:04:40.651Z",
+      "last_updated": "2026-02-25T08:03:21.341Z",
       "language": "en",
       "excerpt": "Voice: Human - Sabrina\n如果只把它當作一間義大利餐廳，其實會錯過它真正的層次。這座建築幾百年前原本是江戶時代中山道的「本陣」，曾經是大名與高階武士停留的場所。厚重的木構、低光源、深色梁柱與安靜的空氣，讓人一走進去就自然慢下來。",
       "readingTime": 1,
