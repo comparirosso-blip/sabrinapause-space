@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-02-27T00:02:23.596Z",
+  "backup_date": "2026-02-27T05:07:43.914Z",
   "data": {
     "id": "2fc18eed-3014-80a2-b7f1-fc3945ba4367",
     "contentType": "comic",
@@ -270,7 +270,7 @@
     "coordinates": "",
     "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-02-27T00:02:23.578Z",
+    "last_updated": "2026-02-27T05:07:43.895Z",
     "language": "en",
     "episodeNumber": 1,
     "panels": [
