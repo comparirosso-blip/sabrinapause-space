@@ -1,0 +1,333 @@
+{
+  "version": "1.0",
+  "backup_date": "2026-02-27T00:02:23.596Z",
+  "data": {
+    "id": "31218eed-3014-8080-87dc-d404c5382818",
+    "contentType": "article",
+    "title": "Château Mercian 椀子酒莊：冬日的風土骨架",
+    "date": "2026-02-25",
+    "slug": "chateau-mercian-mariko-winter",
+    "location": {
+      "name": ""
+    },
+    "webCategory": "Journal",
+    "project": [],
+    "concepts": [],
+    "intentVector": [],
+    "sdIndex": 5,
+    "Intent_Marker": [],
+    "lux": 0,
+    "texture": "",
+    "noise": [],
+    "spacePattern": null,
+    "timeVelocity": null,
+    "heroImage": "/images/31218eed-3014-8080-87dc-d404c5382818.webp",
+    "blocks": [
+      {
+        "object": "block",
+        "id": "31218eed-3014-80e9-ba1f-d285262d99cb",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-8080-87dc-d404c5382818"
+        },
+        "created_time": "2026-02-25T00:45:00.000Z",
+        "last_edited_time": "2026-02-25T00:46:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Human - Sabrina",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Human - Sabrina",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n原本以為只是一次普通的見學，結果收穫遠比想像多。冬天的葡萄藤只剩骨架，卻反而更清楚地看見土地的線條。有時候，去掉果實之後，風土反而更清晰。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n原本以為只是一次普通的見學，結果收穫遠比想像多。冬天的葡萄藤只剩骨架，卻反而更清楚地看見土地的線條。有時候，去掉果實之後，風土反而更清晰。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-80d3-bf74-e1a6703dff6c",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-8080-87dc-d404c5382818"
+        },
+        "created_time": "2026-02-25T00:45:00.000Z",
+        "last_edited_time": "2026-02-25T00:46:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Character - 釀酒師",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Character - 釀酒師",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n「這麼大的園子，採收時我們大量採用附近居民志工。這不只是成本控制，更是建立社區連結。葡萄酒在這裡不是孤立的產業，而是與地方共同運作的結構。」",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n「這麼大的園子，採收時我們大量採用附近居民志工。這不只是成本控制，更是建立社區連結。葡萄酒在這裡不是孤立的產業，而是與地方共同運作的結構。」",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-80e6-b18e-eaf3d4b7497f",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-8080-87dc-d404c5382818"
+        },
+        "created_time": "2026-02-25T00:45:00.000Z",
+        "last_edited_time": "2026-02-25T00:46:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Diplomat - Strategic Insight",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Diplomat - Strategic Insight",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n日本酒莊正在學會如何在本地風土與全球視野之間找到平衡。這不僅是技術輸入，而是一種學習釀造規模化與國際市場思維的過程。市場還在建立信任，價格與品牌歷史都需要時間堆疊。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n日本酒莊正在學會如何在本地風土與全球視野之間找到平衡。這不僅是技術輸入，而是一種學習釀造規模化與國際市場思維的過程。市場還在建立信任，價格與品牌歷史都需要時間堆疊。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-8042-96a5-cebf7cc807fd",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-8080-87dc-d404c5382818"
+        },
+        "created_time": "2026-02-25T00:45:00.000Z",
+        "last_edited_time": "2026-02-25T00:46:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Human - Reflection",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Human - Reflection",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n臨走前問釀酒師，大阪人是不是都很討厭京都人？他大笑。氣氛瞬間從產區經營跳回關西日常。這場見學很有密度，展現了產業如何在地方社會中生存的真實樣貌。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n臨走前問釀酒師，大阪人是不是都很討厭京都人？他大笑。氣氛瞬間從產區經營跳回關西日常。這場見學很有密度，展現了產業如何在地方社會中生存的真實樣貌。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-8079-b40b-ea83d1e93e05",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-8080-87dc-d404c5382818"
+        },
+        "created_time": "2026-02-25T01:10:00.000Z",
+        "last_edited_time": "2026-02-25T01:10:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      }
+    ],
+    "dialogue": [],
+    "philosophical_insight": {},
+    "emotion_trajectory": {},
+    "embedding": null,
+    "ptv": [
+      0.9,
+      0.8,
+      0.7,
+      0.6,
+      0.9
+    ],
+    "sdIndexRaw": [
+      0.9,
+      0.9,
+      0.2
+    ],
+    "regionCluster": "Japan",
+    "counterpointIds": [
+      "31218eed-3014-80b5-a179-cddee42ea753",
+      "31218eed-3014-80f1-a3a5-cff652a0886a"
+    ],
+    "evidenceType": [
+      "Field",
+      "Interview"
+    ],
+    "confidence": "High",
+    "coordinates": "",
+    "altitude": 0,
+    "schema_version": "1.0",
+    "last_updated": "2026-02-27T00:02:18.127Z",
+    "language": "en",
+    "excerpt": "Voice: Human - Sabrina\n原本以為只是一次普通的見學，結果收穫遠比想像多。冬天的葡萄藤只剩骨架，卻反而更清楚地看見土地的線條。有時候，去掉果實之後，風土反而更清晰。",
+    "readingTime": 1,
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
+  }
+}
