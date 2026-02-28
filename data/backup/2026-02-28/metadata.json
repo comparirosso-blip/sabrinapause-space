@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "backup_date": "2026-02-28T04:35:35.837Z",
+  "backup_source": "Notion API",
+  "total_count": 5,
+  "content_types": {
+    "article": 3,
+    "comic": 1,
+    "podcast": 1
+  },
+  "categories": [
+    "Journal",
+    "Podcast",
+    "Episodes"
+  ],
+  "projects": [],
+  "all_concepts": [],
+  "date_range": {
+    "earliest": "",
+    "latest": "2026-02-25"
+  },
+  "content_index": [
+    {
+      "slug": "hello-world",
+      "title": "Hello World: My first Post",
+      "type": "article",
+      "date": "",
+      "sd_index": 5
+    },
+    {
+      "slug": "ep1-philosophy",
+      "title": "EP1.:philosophy of pause",
+      "type": "podcast",
+      "date": "",
+      "sd_index": 5
+    },
+    {
+      "slug": "wine-journey-01",
+      "title": "The Wine Journey Begins",
+      "type": "comic",
+      "date": "",
+      "sd_index": 5
+    },
+    {
+      "slug": "chateau-mercian-mariko-winter",
+      "title": "Château Mercian 椀子酒莊：冬日的風土骨架",
+      "type": "article",
+      "date": "2026-02-25",
+      "sd_index": 5
+    },
+    {
+      "slug": "komoro-honjin-omoya-experience",
+      "title": "小諸本陣 OMOYA：歷史與信州風土的義式翻譯",
+      "type": "article",
+      "date": "2026-02-21",
+      "sd_index": 5
+    }
+  ],
+  "agi_ready": {
+    "with_embeddings": 0,
+    "with_dialogue": 0,
+    "with_philosophical_insight": 0,
+    "total_blocks": 106
+  },
+  "m3_terroir": {
+    "with_ptv": 3,
+    "with_counterpoint": 2,
+    "with_region": 3,
+    "regions": [
+      "Japan"
+    ]
+  }
+}
