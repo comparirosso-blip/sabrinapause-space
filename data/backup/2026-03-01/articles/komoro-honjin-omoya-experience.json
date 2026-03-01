@@ -1,0 +1,391 @@
+{
+  "version": "1.0",
+  "backup_date": "2026-03-01T05:10:50.100Z",
+  "data": {
+    "id": "31218eed-3014-80f1-a3a5-cff652a0886a",
+    "contentType": "article",
+    "title": "小諸本陣 OMOYA：歷史與信州風土的義式翻譯",
+    "date": "2026-02-21",
+    "slug": "komoro-honjin-omoya-experience",
+    "location": {
+      "name": ""
+    },
+    "webCategory": "Journal",
+    "project": [],
+    "concepts": [],
+    "intentVector": [],
+    "sdIndex": 5,
+    "Intent_Marker": [],
+    "lux": 0,
+    "texture": "",
+    "noise": [],
+    "spacePattern": null,
+    "timeVelocity": null,
+    "heroImage": "/images/31218eed-3014-80f1-a3a5-cff652a0886a.webp",
+    "blocks": [
+      {
+        "object": "block",
+        "id": "31218eed-3014-80a9-bba4-f8a46dda2758",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:39:00.000Z",
+        "last_edited_time": "2026-02-25T01:39:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Human - Sabrina",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Human - Sabrina",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n如果只把它當作一間義大利餐廳，其實會錯過它真正的層次。這座建築幾百年前原本是江戶時代中山道的「本陣」，曾經是大名與高階武士停留的場所。厚重的木構、低光源、深色梁柱與安靜的空氣，讓人一走進去就自然慢下來。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n如果只把它當作一間義大利餐廳，其實會錯過它真正的層次。這座建築幾百年前原本是江戶時代中山道的「本陣」，曾經是大名與高階武士停留的場所。厚重的木構、低光源、深色梁柱與安靜的空氣，讓人一走進去就自然慢下來。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-8045-99f8-dcc3ef2e7fdc",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:39:00.000Z",
+        "last_edited_time": "2026-02-25T01:39:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Diplomat - Strategic Insight",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Diplomat - Strategic Insight",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n背後的營運是藤屋（Fujiya）體系，他們的核心並不是做餐廳，而是把「空間 × 歷史 × 飲食」變成一種可以被體驗的文化。這種看不見的基礎工程，往往比裝飾更昂貴，也說明了這個場域是長期經營，而不是短期觀光。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n背後的營運是藤屋（Fujiya）體系，他們的核心並不是做餐廳，而是把「空間 × 歷史 × 飲食」變成一種可以被體驗的文化。這種看不見的基礎工程，往往比裝飾更昂貴，也說明了這個場域是長期經營，而不是短期觀光。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-80dc-8af3-ed0a2de01ffc",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:39:00.000Z",
+        "last_edited_time": "2026-02-25T01:39:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Human - Sensory Reflection",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Human - Sensory Reflection",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n今晚的料理很乾淨而精準。信州牛菲力油脂控制得非常好，肉質細緻而安靜，是典型山地風土的味道。整體料理不是模仿義大利，而是用義式技法去翻譯信州土地。這代表料理已經不是「西式語言」，而是與土地與身體相容的味道。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n今晚的料理很乾淨而精準。信州牛菲力油脂控制得非常好，肉質細緻而安靜，是典型山地風土的味道。整體料理不是模仿義大利，而是用義式技法去翻譯信州土地。這代表料理已經不是「西式語言」，而是與土地與身體相容的味道。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-80f8-8afe-dd228b074133",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:39:00.000Z",
+        "last_edited_time": "2026-02-25T01:39:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Voice: Human - Travel Note",
+                "link": null
+              },
+              "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Voice: Human - Travel Note",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "\n晚上住在小諸市一個海拔 1001 公尺的溫泉飯店，泡溫泉要先搭纜車。外面是寒冷的信州冬夜，但內部的保暖做得非常完整。這裡不是為了效率，而是為了讓文化可以被安靜地延續。",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "\n晚上住在小諸市一個海拔 1001 公尺的溫泉飯店，泡溫泉要先搭纜車。外面是寒冷的信州冬夜，但內部的保暖做得非常完整。這裡不是為了效率，而是為了讓文化可以被安靜地延續。",
+              "href": null
+            }
+          ],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-80ec-b6e0-ee7017de25e3",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:40:00.000Z",
+        "last_edited_time": "2026-02-25T01:40:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [],
+          "color": "default"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-8070-baf3-e4b62fe85e1a",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:41:00.000Z",
+        "last_edited_time": "2026-02-25T01:41:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "file",
+        "file": {
+          "caption": [],
+          "type": "file",
+          "file": {},
+          "name": "IMG_2119.HEIC.heic"
+        }
+      },
+      {
+        "object": "block",
+        "id": "31218eed-3014-801c-a895-f67304d5f021",
+        "parent": {
+          "type": "page_id",
+          "page_id": "31218eed-3014-80f1-a3a5-cff652a0886a"
+        },
+        "created_time": "2026-02-25T01:41:00.000Z",
+        "last_edited_time": "2026-02-25T01:41:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "archived": false,
+        "in_trash": false,
+        "type": "image",
+        "image": {
+          "caption": [],
+          "type": "file",
+          "file": {
+            "url": "/images/31218eed-3014-801c-a895-f67304d5f021.webp",
+            "width": 2560,
+            "height": 1920
+          }
+        }
+      }
+    ],
+    "dialogue": [],
+    "philosophical_insight": {},
+    "emotion_trajectory": {},
+    "embedding": null,
+    "ptv": [
+      0.7,
+      0.3,
+      0.8,
+      0.5,
+      0.9
+    ],
+    "sdIndexRaw": [
+      0.3,
+      0.9,
+      0.2
+    ],
+    "regionCluster": "Japan",
+    "counterpointIds": [
+      "31218eed-3014-8080-87dc-d404c5382818"
+    ],
+    "evidenceType": [
+      "Field",
+      "Interview"
+    ],
+    "confidence": "High",
+    "coordinates": "",
+    "altitude": 1001,
+    "schema_version": "1.0",
+    "last_updated": "2026-03-01T05:10:49.757Z",
+    "language": "en",
+    "excerpt": "Voice: Human - Sabrina\n如果只把它當作一間義大利餐廳，其實會錯過它真正的層次。這座建築幾百年前原本是江戶時代中山道的「本陣」，曾經是大名與高階武士停留的場所。厚重的木構、低光源、深色梁柱與安靜的空氣，讓人一走進去就自然慢下來。",
+    "readingTime": 1,
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
+  }
+}
