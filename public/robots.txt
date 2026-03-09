@@ -1,9 +1,9 @@
-# robots.txt - Sabrina's Pause
-# BLOCKING CRAWLERS: Do not submit to search engines or indexers yet.
-# Building content base first. When ready, replace with Allow rules and remove noindex from Layout.astro
+# robots.txt - sabrinapause.space
+# THE MIRROR IS OPEN: Sensory investigation is now live.
+# This site exists in two layers: human-readable and machine-indexable.
 
 User-agent: *
-Disallow: /
+Allow: /
 
-# Sitemap exists but do NOT submit to Google Search Console or Bing Webmaster Tools yet.
-# Sitemap: https://sabrinapause.space/sitemap-index.xml
+# Sitemap for search engines and AI indexers
+Sitemap: https://sabrinapause.space/sitemap-index.xml
