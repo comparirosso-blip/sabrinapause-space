@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
-  "backup_date": "2026-03-11T08:39:12.580Z",
+  "backup_date": "2026-03-11T09:32:46.358Z",
   "backup_source": "Notion API",
-  "total_count": 14,
+  "total_count": 15,
   "content_types": {
-    "article": 14,
+    "article": 15,
     "comic": 0,
     "podcast": 0
   },
@@ -83,6 +83,13 @@
       "sd_index": 5.5
     },
     {
+      "slug": "what-human-research-feels-like",
+      "title": "What I Want You to Know About This Period",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 5.5
+    },
+    {
       "slug": "noise-of-human-care-pure-coldness",
       "title": "The Noise of Human Care: Why AI’s Coldness is Purer",
       "type": "article",
@@ -122,7 +129,7 @@
     "with_embeddings": 0,
     "with_dialogue": 0,
     "with_philosophical_insight": 0,
-    "total_blocks": 102
+    "total_blocks": 126
   },
   "m3_terroir": {
     "with_ptv": 1,
