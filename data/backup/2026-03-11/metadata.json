@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
-  "backup_date": "2026-03-11T07:58:36.530Z",
+  "backup_date": "2026-03-11T08:39:12.580Z",
   "backup_source": "Notion API",
-  "total_count": 12,
+  "total_count": 14,
   "content_types": {
-    "article": 12,
+    "article": 14,
     "comic": 0,
     "podcast": 0
   },
@@ -48,6 +48,13 @@
       "sd_index": 5.5
     },
     {
+      "slug": "iching-vs-python-logic",
+      "title": "What the I-Ching Knows That Python Doesn't",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 5.5
+    },
+    {
       "slug": "noise-of-human-care-pure-coldness",
       "title": "The Liberation of Being Unloved2026 Awareness: The Fatigue of Empathy",
       "type": "article",
@@ -66,6 +73,13 @@
       "title": "The Silence of the Third Eye: When AI Meets the I-Ching",
       "type": "article",
       "date": "2026-03-08",
+      "sd_index": 5.5
+    },
+    {
+      "slug": "drunk-paradox-logic-prison",
+      "title": "The Drunk's Paradox: When Logic Becomes Its Own Prison",
+      "type": "article",
+      "date": "2026-03-11",
       "sd_index": 5.5
     },
     {
@@ -108,7 +122,7 @@
     "with_embeddings": 0,
     "with_dialogue": 0,
     "with_philosophical_insight": 0,
-    "total_blocks": 90
+    "total_blocks": 102
   },
   "m3_terroir": {
     "with_ptv": 1,

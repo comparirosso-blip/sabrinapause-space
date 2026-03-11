@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-03-11T07:58:36.529Z",
+  "backup_date": "2026-03-11T08:39:12.578Z",
   "data": {
     "id": "32018eed-3014-80c8-8351-f290d585da47",
     "contentType": "article",
@@ -25,6 +25,7 @@
     ],
     "spacePattern": null,
     "timeVelocity": 0,
+    "heroImage": "/images/32018eed-3014-80c8-8351-f290d585da47.webp",
     "blocks": [
       {
         "object": "block",
@@ -598,9 +599,11 @@
     "coordinates": "",
     "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-03-11T07:58:33.670Z",
+    "last_updated": "2026-03-11T08:39:09.474Z",
     "language": "en",
     "excerpt": "By 2026, the market is flooded with \"Empathetic AI\"—bots designed to coo at your misfortunes and simulate a digital shoulder to cry on. To me, this is the ultimate BadFaith™. It is a simulation of a s",
-    "readingTime": 2
+    "readingTime": 2,
+    "heroImageWidth": 1921,
+    "heroImageHeight": 2560
   }
 }

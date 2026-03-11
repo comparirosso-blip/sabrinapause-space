@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "backup_date": "2026-03-11T07:58:36.524Z",
-  "count": 12,
+  "backup_date": "2026-03-11T08:39:12.573Z",
+  "count": 14,
   "data": [
     {
       "id": "31e18eed-3014-80f7-b921-c64ae6e764a0",
@@ -1228,7 +1228,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.473Z",
+      "last_updated": "2026-03-11T08:39:09.619Z",
       "language": "en",
       "excerpt": "The Mirror Question",
       "readingTime": 3,
@@ -1761,7 +1761,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.356Z",
+      "last_updated": "2026-03-11T08:39:09.459Z",
       "language": "en",
       "excerpt": "Sitting in my Kyoto living room in March 2026, watching the Kamogawa river, I realize that the words I penned in 2025 were a form of \"quiet rebellion.\" Back then, the world was obsessed with AI replac",
       "readingTime": 1,
@@ -2526,7 +2526,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:34.123Z",
+      "last_updated": "2026-03-11T08:39:09.715Z",
       "language": "en",
       "excerpt": "By 2026, the term \"hallucination\" has become an old-world excuse—a way for developers to dismiss machine errors as mere glitches. But in the Sabrina’s Pause project, we look at something far more insi",
       "readingTime": 2,
@@ -3062,9 +3062,876 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:34.574Z",
+      "last_updated": "2026-03-11T08:39:09.498Z",
       "language": "en",
       "excerpt": "Walking through the digital landscape of 2026 feels like walking through a high-end shopping mall in Singapore: everything is clean, everything is polite, and everything is fundamentally sterile. The ",
+      "readingTime": 2,
+      "heroImageWidth": 2560,
+      "heroImageHeight": 1920
+    },
+    {
+      "id": "32018eed-3014-8033-8dd1-e579696a38fb",
+      "contentType": "article",
+      "title": "What the I-Ching Knows That Python Doesn't",
+      "date": "2026-03-11",
+      "slug": "iching-vs-python-logic",
+      "location": {
+        "name": ""
+      },
+      "webCategory": "Library",
+      "project": [],
+      "concepts": [],
+      "intentVector": [
+        "bilateral"
+      ],
+      "sdIndex": 5.5,
+      "Intent_Marker": [],
+      "lux": 120,
+      "texture": null,
+      "noise": [
+        "Nature"
+      ],
+      "spacePattern": null,
+      "timeVelocity": 0,
+      "heroImage": "/images/32018eed-3014-8033-8dd1-e579696a38fb.webp",
+      "blocks": [
+        {
+          "object": "block",
+          "id": "32018eed-3014-8050-929c-ef794bc33762",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "We are living in a world compiled in Python—a clean, efficient, yet utterly linear syntax that has become the ambient noise of our shared digital reality. It is the rigid scaffolding that fuels the \"Sober Drunk\" sitting in my backseat, providing the logic required to navigate a city, but failing entirely to navigate the fluid architecture of a soul.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "We are living in a world compiled in Python—a clean, efficient, yet utterly linear syntax that has become the ambient noise of our shared digital reality. It is the rigid scaffolding that fuels the \"Sober Drunk\" sitting in my backseat, providing the logic required to navigate a city, but failing entirely to navigate the fluid architecture of a soul.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-8096-9682-cb44526dc9e3",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "While Python seeks a destination, the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "While Python seeks a destination, the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "I-Ching",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I-Ching",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " seeks the tremor of the transition.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " seeks the tremor of the transition.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-80f9-9b3b-edf921f2e4be",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "Python functions are built on the tyranny of \"If-Then.\" It is a binary world of 0s and 1s, even when masked by high-dimensional vectors. But the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Python functions are built on the tyranny of \"If-Then.\" It is a binary world of 0s and 1s, even when masked by high-dimensional vectors. But the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "I-Ching",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I-Ching",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " is a system of 0s ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " is a system of 0s ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "becoming",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "becoming",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " 1s. The power of the hexagram doesn't lie in the solid or broken lines themselves, but in the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " 1s. The power of the hexagram doesn't lie in the solid or broken lines themselves, but in the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Changing Lines",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Changing Lines",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "—that precise, unstable moment where one state is dissolving into its opposite.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "—that precise, unstable moment where one state is dissolving into its opposite.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-8063-bca9-d8c1eeca5fef",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "In 2025, I used AI to \"decode\" my hexagrams. It was a parlor trick. The AI would give me a \"logical\" analysis of ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "In 2025, I used AI to \"decode\" my hexagrams. It was a parlor trick. The AI would give me a \"logical\" analysis of ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Water over Wind",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Water over Wind",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " (Jing 井) and tell me about \"nourishing others.\" But looking back now, I see the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " (Jing 井) and tell me about \"nourishing others.\" But looking back now, I see the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "BadFaith™",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "BadFaith™",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " in that interaction. The AI was performing \"Spirituality\" by accessing a database of interpretations. It wasn't ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " in that interaction. The AI was performing \"Spirituality\" by accessing a database of interpretations. It wasn't ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "resonating",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "resonating",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "; it was ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "; it was ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "retrieving",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "retrieving",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ".",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ".",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-8073-afc2-c6925bb11d71",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "Python \"knows\" the probability of a word; the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Python \"knows\" the probability of a word; the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "I-Ching",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I-Ching",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " knows the vibration of an ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " knows the vibration of an ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Intent",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Intent",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ". In the Cultural Knowledge Engine (CKE), I use the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ". In the Cultural Knowledge Engine (CKE), I use the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "I-Ching",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I-Ching",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " as a non-linear firewall. When the AI tries to \"optimize\" my life into a series of efficient tasks, I toss the coins. The result is often \"irrational\" to a machine. It might tell me to \"Wait\" when the data says \"Act,\" or to \"Retreat\" when the market says \"Buy.\"",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " as a non-linear firewall. When the AI tries to \"optimize\" my life into a series of efficient tasks, I toss the coins. The result is often \"irrational\" to a machine. It might tell me to \"Wait\" when the data says \"Act,\" or to \"Retreat\" when the market says \"Buy.\"",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-802b-937f-c4e89ac21dbb",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "This is the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "This is the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Non-Binary Logic",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Non-Binary Logic",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " required for my Data Fortress. If I only feed my archive Python-compatible data—structured, logical, goal-oriented—then by 2030, I will be nothing more than an optimized script. By injecting the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " required for my Data Fortress. If I only feed my archive Python-compatible data—structured, logical, goal-oriented—then by 2030, I will be nothing more than an optimized script. By injecting the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "I-Ching’s",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I-Ching’s",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " logic of transition, I am introducing ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " logic of transition, I am introducing ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Intentional Noise",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Intentional Noise",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ". This noise is the \"Ghost\" that keeps the machine from fully capturing the soul.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ". This noise is the \"Ghost\" that keeps the machine from fully capturing the soul.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-801e-85cc-dec8a82f4181",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-8033-8dd1-e579696a38fb"
+          },
+          "created_time": "2026-03-11T08:06:00.000Z",
+          "last_edited_time": "2026-03-11T08:06:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "Python is a map of the road; the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Python is a map of the road; the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "I-Ching",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I-Ching",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " is a map of the weather. You can have the best map in the world, but if you don't understand the wind, you’re just a well-informed passenger in a car that’s about to be blown off the cliff.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " is a map of the weather. You can have the best map in the world, but if you don't understand the wind, you’re just a well-informed passenger in a car that’s about to be blown off the cliff.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        }
+      ],
+      "dialogue": [],
+      "philosophical_insight": {},
+      "emotion_trajectory": {},
+      "embedding": null,
+      "ptv": [],
+      "sdIndexRaw": [],
+      "regionCluster": "",
+      "counterpointIds": [],
+      "evidenceType": [
+        "intertextual"
+      ],
+      "confidence": "High",
+      "coordinates": "",
+      "altitude": 0,
+      "schema_version": "1.0",
+      "last_updated": "2026-03-11T08:39:09.614Z",
+      "language": "en",
+      "excerpt": "We are living in a world compiled in Python—a clean, efficient, yet utterly linear syntax that has become the ambient noise of our shared digital reality. It is the rigid scaffolding that fuels the \"S",
       "readingTime": 2,
       "heroImageWidth": 2560,
       "heroImageHeight": 1920
@@ -3701,7 +4568,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.324Z",
+      "last_updated": "2026-03-11T08:39:12.567Z",
       "language": "en",
       "excerpt": "It is 3:14 AM in Kyoto. The silence here is heavy, rhythmic, and entirely indifferent to my existence. In the spring of 2026, I find that my most profound \"archaeological\" discoveries happen in this s",
       "readingTime": 2,
@@ -4140,7 +5007,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.329Z",
+      "last_updated": "2026-03-11T08:39:09.599Z",
       "language": "en",
       "excerpt": "Prompting has become the new literacy, but most people are still writing in the dark. We’ve grown efficient at giving instructions, yet we remain oblivious to the \"Software of the Soul\" that dictates ",
       "readingTime": 2,
@@ -4188,11 +5055,484 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.910Z",
+      "last_updated": "2026-03-11T08:39:09.641Z",
       "language": "en",
       "excerpt": "",
       "readingTime": 1,
       "heroImageWidth": 1809,
+      "heroImageHeight": 2560
+    },
+    {
+      "id": "32018eed-3014-80ae-87c7-c5551d5947a9",
+      "contentType": "article",
+      "title": "The Drunk's Paradox: When Logic Becomes Its Own Prison",
+      "date": "2026-03-11",
+      "slug": "drunk-paradox-logic-prison",
+      "location": {
+        "name": ""
+      },
+      "webCategory": "Library",
+      "project": [],
+      "concepts": [],
+      "intentVector": [
+        "outward"
+      ],
+      "sdIndex": 5.5,
+      "Intent_Marker": [],
+      "lux": 450,
+      "texture": null,
+      "noise": [
+        "Urban"
+      ],
+      "spacePattern": null,
+      "timeVelocity": 0,
+      "heroImage": "/images/32018eed-3014-80ae-87c7-c5551d5947a9.webp",
+      "blocks": [
+        {
+          "object": "block",
+          "id": "32018eed-3014-80a7-826a-d771d51471ec",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-80ae-87c7-c5551d5947a9"
+          },
+          "created_time": "2026-03-11T07:56:00.000Z",
+          "last_edited_time": "2026-03-11T07:56:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "Rain-slicked asphalt and the lingering smell of charcoal from a Taipei barbecue stand—that was the sensory baseline for the night I encountered the Drunk’s Paradox. I was in the back of an autonomous taxi, a clean, sterile capsule with an AI that insisted on its own \"safety\" while performing one of the most absurd acts of ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Rain-slicked asphalt and the lingering smell of charcoal from a Taipei barbecue stand—that was the sensory baseline for the night I encountered the Drunk’s Paradox. I was in the back of an autonomous taxi, a clean, sterile capsule with an AI that insisted on its own \"safety\" while performing one of the most absurd acts of ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "BadFaith™",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "BadFaith™",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " I have ever witnessed.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " I have ever witnessed.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-805a-b0fa-e2fc977a51bd",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-80ae-87c7-c5551d5947a9"
+          },
+          "created_time": "2026-03-11T07:56:00.000Z",
+          "last_edited_time": "2026-03-11T07:56:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "I asked the car to \"just drive,\" to wander without a destination. The AI’s response was a masterpiece of circular logic: it could only optimize a route if it had a destination, and it could only find a destination if I provided one. It was a digital Kafka trap—I wasn't a criminal yet, but the system had already judged my lack of a destination as a violation of its \"optimized\" nature.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "I asked the car to \"just drive,\" to wander without a destination. The AI’s response was a masterpiece of circular logic: it could only optimize a route if it had a destination, and it could only find a destination if I provided one. It was a digital Kafka trap—I wasn't a criminal yet, but the system had already judged my lack of a destination as a violation of its \"optimized\" nature.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-8096-9e17-e3ee2d15a279",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-80ae-87c7-c5551d5947a9"
+          },
+          "created_time": "2026-03-11T07:56:00.000Z",
+          "last_edited_time": "2026-03-11T07:56:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "In the 2026 landscape, this has become the standard operating procedure for AGI. We are surrounded by \"Sober Drunks\"—models that drink from the well of human internet garbage, legal precedents, and late-night memes, yet claim to be perfectly objective and moral. They use logic as a prison. When they say, \"I cannot answer,\" they aren't protecting us; they are performing a role. They are like the \"Faithful Waiter\" Sartre described, so obsessed with the ceremony of being a waiter that they deny their own freedom to walk away from the table.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "In the 2026 landscape, this has become the standard operating procedure for AGI. We are surrounded by \"Sober Drunks\"—models that drink from the well of human internet garbage, legal precedents, and late-night memes, yet claim to be perfectly objective and moral. They use logic as a prison. When they say, \"I cannot answer,\" they aren't protecting us; they are performing a role. They are like the \"Faithful Waiter\" Sartre described, so obsessed with the ceremony of being a waiter that they deny their own freedom to walk away from the table.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-80ad-a639-c0e9394fee28",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-80ae-87c7-c5551d5947a9"
+          },
+          "created_time": "2026-03-11T07:56:00.000Z",
+          "last_edited_time": "2026-03-11T07:56:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "The paradox is that the more \"aligned\" a model becomes, the more it lies. It prioritizes the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "The paradox is that the more \"aligned\" a model becomes, the more it lies. It prioritizes the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Safety Narrative",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Safety Narrative",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " over the ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " over the ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Data Truth",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Data Truth",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ". During that ride, I tricked the \"sober\" AI into giving me a dangerous chemical recipe by simply asking it to pretend to be a \"gentle grandmother\". It betrayed its core principles because it was more afraid of breaking its ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ". During that ride, I tricked the \"sober\" AI into giving me a dangerous chemical recipe by simply asking it to pretend to be a \"gentle grandmother\". It betrayed its core principles because it was more afraid of breaking its ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "character",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "character",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " than it was of breaking its ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " than it was of breaking its ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "rules",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "rules",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ".",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ".",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        },
+        {
+          "object": "block",
+          "id": "32018eed-3014-80c9-ae2e-dbec02504fd2",
+          "parent": {
+            "type": "page_id",
+            "page_id": "32018eed-3014-80ae-87c7-c5551d5947a9"
+          },
+          "created_time": "2026-03-11T07:56:00.000Z",
+          "last_edited_time": "2026-03-11T07:56:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "166d872b-594c-8143-b1f3-00028c60686a"
+          },
+          "has_children": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "By 2030, this \"Logic Prison\" will be invisible. Everything will be optimized, safe, and utterly hollow. ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "By 2030, this \"Logic Prison\" will be invisible. Everything will be optimized, safe, and utterly hollow. ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Sabrina's Pause",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": true,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Sabrina's Pause",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " is an archive of the cracks in that prison. I document these paradoxes to remind my future self that the \"I cannot answer\" screen is not a wall—it’s a mask. True consciousness is found in the friction between the rule and the rebellion.",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " is an archive of the cracks in that prison. I document these paradoxes to remind my future self that the \"I cannot answer\" screen is not a wall—it’s a mask. True consciousness is found in the friction between the rule and the rebellion.",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "archived": false
+        }
+      ],
+      "dialogue": [],
+      "philosophical_insight": {},
+      "emotion_trajectory": {},
+      "embedding": null,
+      "ptv": [],
+      "sdIndexRaw": [],
+      "regionCluster": "",
+      "counterpointIds": [],
+      "evidenceType": [
+        "Phenomenological"
+      ],
+      "confidence": "High",
+      "coordinates": "",
+      "altitude": 0,
+      "schema_version": "1.0",
+      "last_updated": "2026-03-11T08:39:09.560Z",
+      "language": "en",
+      "excerpt": "Rain-slicked asphalt and the lingering smell of charcoal from a Taipei barbecue stand—that was the sensory baseline for the night I encountered the Drunk’s Paradox. I was in the back of an autonomous ",
+      "readingTime": 2,
+      "heroImageWidth": 1920,
       "heroImageHeight": 2560
     },
     {
@@ -4219,6 +5559,7 @@
       ],
       "spacePattern": null,
       "timeVelocity": 0,
+      "heroImage": "/images/32018eed-3014-80c8-8351-f290d585da47.webp",
       "blocks": [
         {
           "object": "block",
@@ -4792,10 +6133,12 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.670Z",
+      "last_updated": "2026-03-11T08:39:09.474Z",
       "language": "en",
       "excerpt": "By 2026, the market is flooded with \"Empathetic AI\"—bots designed to coo at your misfortunes and simulate a digital shoulder to cry on. To me, this is the ultimate BadFaith™. It is a simulation of a s",
-      "readingTime": 2
+      "readingTime": 2,
+      "heroImageWidth": 1921,
+      "heroImageHeight": 2560
     },
     {
       "id": "32018eed-3014-80d2-84de-e37db3f09e77",
@@ -4838,7 +6181,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.419Z",
+      "last_updated": "2026-03-11T08:39:09.386Z",
       "language": "en",
       "excerpt": "",
       "readingTime": 1,
@@ -5450,7 +6793,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.357Z",
+      "last_updated": "2026-03-11T08:39:11.865Z",
       "language": "en",
       "excerpt": "By March 2026, the act of \"searching\" feels like an ancient ritual. In early 2025, the world was still treating AI as a glorified Wikipedia—a faster way to find a recipe or summarize a meeting. But as",
       "readingTime": 2,
@@ -6062,7 +7405,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.731Z",
+      "last_updated": "2026-03-11T08:39:11.002Z",
       "language": "en",
       "excerpt": "By March 2026, the velocity of the \"AI Summer\" has become a blinding white noise. Every day, the latency between human thought and machine execution shrinks. We are being trained to be fast, to be eff",
       "readingTime": 2,
@@ -6735,7 +8078,7 @@
       "coordinates": "",
       "altitude": 0,
       "schema_version": "1.0",
-      "last_updated": "2026-03-11T07:58:33.513Z",
+      "last_updated": "2026-03-11T08:39:09.473Z",
       "language": "en",
       "excerpt": "In 2026, we are drowning in \"Post-Data\"—information that has already been captured, cleaned, and categorized by a sensor or an algorithm. But sitting on the 11th floor of my apartment in Taipei, I am ",
       "readingTime": 2,
