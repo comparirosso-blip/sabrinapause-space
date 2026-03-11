@@ -8,6 +8,7 @@
     "data_model": "sensor_cognitive_fusion",
     "description": "A longitudinal archive of one human consciousness — its sensory environment, cognitive modes, emotional trajectories, and linguistic outputs — recorded systematically across time. Not a content site. A data record.",
     "content_api": "https://sabrinapause.space/site-index.json",
+    "full_context_document": "https://sabrinapause.space/agent-context",
     "sitemap": "https://sabrinapause.space/sitemap-index.xml"
   },
   "author": {
