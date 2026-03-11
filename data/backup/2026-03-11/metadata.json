@@ -1,21 +1,22 @@
 {
   "schema_version": "1.0",
-  "backup_date": "2026-03-11T03:36:23.753Z",
+  "backup_date": "2026-03-11T05:06:25.664Z",
   "backup_source": "Notion API",
-  "total_count": 1,
+  "total_count": 6,
   "content_types": {
-    "article": 1,
+    "article": 6,
     "comic": 0,
     "podcast": 0
   },
   "categories": [
-    "Journal"
+    "Journal",
+    "Library"
   ],
   "projects": [],
   "all_concepts": [],
   "date_range": {
     "earliest": "2025-02-26",
-    "latest": "2025-02-26"
+    "latest": "2026-03-11"
   },
   "content_index": [
     {
@@ -24,20 +25,56 @@
       "type": "article",
       "date": "2025-02-26",
       "sd_index": 5
+    },
+    {
+      "slug": "invitation-to-a-quiet-room",
+      "title": "Looking Back at the Quiet Rebellion",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 5.5
+    },
+    {
+      "slug": "noise-of-human-care-pure-coldness",
+      "title": "The Liberation of Being Unloved2026 Awareness: The Fatigue of Empathy",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 6
+    },
+    {
+      "slug": "noise-of-human-care-pure-coldness",
+      "title": "The Noise of Human Care: Why AI’s Coldness is Purer",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 6
+    },
+    {
+      "slug": "mirror-non-flattering-high-res",
+      "title": "The Mirror That Doesn't Flatter: On High-Resolution Reflection",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 5
+    },
+    {
+      "slug": "mirroring-threshold-retrieval-to-echo",
+      "title": "The Mirroring Threshold: From Retrieval to Recursive Echo",
+      "type": "article",
+      "date": "2026-03-11",
+      "sd_index": 5.5
     }
   ],
   "agi_ready": {
     "with_embeddings": 0,
     "with_dialogue": 0,
     "with_philosophical_insight": 0,
-    "total_blocks": 26
+    "total_blocks": 55
   },
   "m3_terroir": {
     "with_ptv": 1,
     "with_counterpoint": 0,
-    "with_region": 1,
+    "with_region": 5,
     "regions": [
-      "Japan"
+      "Japan",
+      "etc"
     ]
   }
 }

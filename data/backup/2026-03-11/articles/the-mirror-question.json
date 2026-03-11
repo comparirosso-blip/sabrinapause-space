@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "backup_date": "2026-03-11T03:36:23.752Z",
+  "backup_date": "2026-03-11T05:06:25.662Z",
   "data": {
     "id": "31e18eed-3014-80f7-b921-c64ae6e764a0",
     "contentType": "article",
@@ -21,6 +21,7 @@
     "noise": [],
     "spacePattern": null,
     "timeVelocity": 0,
+    "heroImage": "/images/31e18eed-3014-80f7-b921-c64ae6e764a0.webp",
     "blocks": [
       {
         "object": "block",
@@ -1225,9 +1226,11 @@
     "coordinates": "",
     "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-03-11T03:36:23.750Z",
+    "last_updated": "2026-03-11T05:06:23.938Z",
     "language": "en",
     "excerpt": "The Mirror Question",
-    "readingTime": 3
+    "readingTime": 3,
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
   }
 }
