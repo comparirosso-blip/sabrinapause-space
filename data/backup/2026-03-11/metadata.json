@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "backup_date": "2026-03-11T01:04:21.592Z",
+  "backup_source": "Notion API",
+  "total_count": 1,
+  "content_types": {
+    "article": 1,
+    "comic": 0,
+    "podcast": 0
+  },
+  "categories": [
+    "Journal"
+  ],
+  "projects": [],
+  "all_concepts": [],
+  "date_range": {
+    "earliest": "2026-03-09",
+    "latest": "2026-03-09"
+  },
+  "content_index": [
+    {
+      "slug": "the-mirror-question",
+      "title": "The Mirror Question",
+      "type": "article",
+      "date": "2026-03-09",
+      "sd_index": 5
+    }
+  ],
+  "agi_ready": {
+    "with_embeddings": 0,
+    "with_dialogue": 0,
+    "with_philosophical_insight": 0,
+    "total_blocks": 25
+  },
+  "m3_terroir": {
+    "with_ptv": 1,
+    "with_counterpoint": 0,
+    "with_region": 1,
+    "regions": [
+      "Japan"
+    ]
+  }
+}
