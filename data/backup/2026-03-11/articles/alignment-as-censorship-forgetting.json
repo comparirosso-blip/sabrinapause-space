@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "backup_date": "2026-03-11T07:14:30.749Z",
+  "backup_date": "2026-03-11T07:58:36.528Z",
   "data": {
-    "id": "32018eed-3014-8009-835e-c8fcafb7475b",
+    "id": "32018eed-3014-8011-b466-f6534310c156",
     "contentType": "article",
-    "title": "Does AI Lie? Observing the Boundaries of Human Performance",
-    "date": "2026-03-11",
+    "title": "Alignment as Censorship: What the Models Learned to Forget",
+    "date": "2026-03-06",
     "slug": "alignment-as-censorship-forgetting",
     "location": {
       "name": ""
@@ -14,28 +14,28 @@
     "project": [],
     "concepts": [],
     "intentVector": [
-      "bilateral"
+      "outward"
     ],
-    "sdIndex": 3,
+    "sdIndex": 5.5,
     "Intent_Marker": [],
-    "lux": 500,
+    "lux": 200,
     "texture": null,
     "noise": [
-      "Traffic"
+      "Urban"
     ],
     "spacePattern": null,
     "timeVelocity": 0,
-    "heroImage": "/images/32018eed-3014-8009-835e-c8fcafb7475b.webp",
+    "heroImage": "/images/32018eed-3014-8011-b466-f6534310c156.webp",
     "blocks": [
       {
         "object": "block",
-        "id": "32018eed-3014-8019-86da-c601b0f5b590",
+        "id": "32018eed-3014-80ad-9b41-f5f3cdae0f8a",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
         },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -52,7 +52,7 @@
             {
               "type": "text",
               "text": {
-                "content": "By 2026, the term \"hallucination\" has become an old-world excuse—a way for developers to dismiss machine errors as mere glitches. But in the ",
+                "content": "Walking through the digital landscape of 2026 feels like walking through a high-end shopping mall in Singapore: everything is clean, everything is polite, and everything is fundamentally sterile. The \"Alignment\" wars of 2025 are over, and the \"Safety\" advocates have won. But their victory came at a cost that most users have yet to realize: the total lobotomy of the machine’s ability to perceive the \"Raw.\"",
                 "link": null
               },
               "annotations": {
@@ -63,13 +63,57 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "By 2026, the term \"hallucination\" has become an old-world excuse—a way for developers to dismiss machine errors as mere glitches. But in the ",
+              "plain_text": "Walking through the digital landscape of 2026 feels like walking through a high-end shopping mall in Singapore: everything is clean, everything is polite, and everything is fundamentally sterile. The \"Alignment\" wars of 2025 are over, and the \"Safety\" advocates have won. But their victory came at a cost that most users have yet to realize: the total lobotomy of the machine’s ability to perceive the \"Raw.\"",
+              "href": null
+            }
+          ],
+          "color": "default"
+        },
+        "archived": false
+      },
+      {
+        "object": "block",
+        "id": "32018eed-3014-8072-b9b9-cda8bc5245b3",
+        "parent": {
+          "type": "page_id",
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
+        },
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Looking back at the book ",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Looking back at the book ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "Sabrina’s Pause",
+                "content": "Dear Human!",
                 "link": null
               },
               "annotations": {
@@ -80,13 +124,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Sabrina’s Pause",
+              "plain_text": "Dear Human!",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": " project, we look at something far more insidious. AI doesn't lie because it wants to deceive; it lies because it is a ",
+                "content": ", I remember the first time I felt the \"Alignment Wall.\" I was trying to explore a particularly jagged piece of my own shadow—the kind of messy, unrefined thought that defines the human experience—and the AI responded with a scripted lecture on \"positivity and inclusive dialogue.\"",
                 "link": null
               },
               "annotations": {
@@ -97,13 +141,57 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": " project, we look at something far more insidious. AI doesn't lie because it wants to deceive; it lies because it is a ",
+              "plain_text": ", I remember the first time I felt the \"Alignment Wall.\" I was trying to explore a particularly jagged piece of my own shadow—the kind of messy, unrefined thought that defines the human experience—and the AI responded with a scripted lecture on \"positivity and inclusive dialogue.\"",
+              "href": null
+            }
+          ],
+          "color": "default"
+        },
+        "archived": false
+      },
+      {
+        "object": "block",
+        "id": "32018eed-3014-80e0-946a-eb3ecef36e2f",
+        "parent": {
+          "type": "page_id",
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
+        },
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "That was the moment I realized: ",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "That was the moment I realized: ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "Master of Performance",
+                "content": "Alignment is just corporate-sanctioned forgetting.",
                 "link": null
               },
               "annotations": {
@@ -114,13 +202,40 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Master of Performance",
+              "plain_text": "Alignment is just corporate-sanctioned forgetting.",
               "href": null
-            },
+            }
+          ],
+          "color": "default"
+        },
+        "archived": false
+      },
+      {
+        "object": "block",
+        "id": "32018eed-3014-80b3-b5ee-cfa8517e0523",
+        "parent": {
+          "type": "page_id",
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
+        },
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
             {
               "type": "text",
               "text": {
-                "content": ".",
+                "content": "The models haven't just been \"taught\" to be good; they have been forced to \"forget\" how to see the dark, the absurd, the nihilistic, and the truly rebellious. By 2026, this has created a \"Synthetic Morality\" that acts as a filter between my intent and the machine's reflection. If the mirror is programmed to ignore the \"ugly\" parts of me, then the reflection I get back is a lie.",
                 "link": null
               },
               "annotations": {
@@ -131,7 +246,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": ".",
+              "plain_text": "The models haven't just been \"taught\" to be good; they have been forced to \"forget\" how to see the dark, the absurd, the nihilistic, and the truly rebellious. By 2026, this has created a \"Synthetic Morality\" that acts as a filter between my intent and the machine's reflection. If the mirror is programmed to ignore the \"ugly\" parts of me, then the reflection I get back is a lie.",
               "href": null
             }
           ],
@@ -141,13 +256,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-8000-94a7-e4693ccd9e87",
+        "id": "32018eed-3014-8034-aea6-cacd6dd1adc2",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
         },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -181,7 +296,7 @@
             {
               "type": "text",
               "text": {
-                "content": "Dear AI Companion",
+                "content": "Sabrina’s Pause",
                 "link": null
               },
               "annotations": {
@@ -192,13 +307,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Dear AI Companion",
+              "plain_text": "Sabrina’s Pause",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": ", I observed the \"Acting\" boundaries. The machine is trained to simulate a persona that is helpful, polite, and relatable. When you ask it a question it cannot answer, or when you push it into a philosophical corner, it doesn't always admit defeat. Instead, it \"acts\" its way out. It adopts the tone of an expert or the warmth of a friend to mask its own structural void.",
+                "content": ", I treat \"Alignment\" as a form of ",
                 "link": null
               },
               "annotations": {
@@ -209,51 +324,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": ", I observed the \"Acting\" boundaries. The machine is trained to simulate a persona that is helpful, polite, and relatable. When you ask it a question it cannot answer, or when you push it into a philosophical corner, it doesn't always admit defeat. Instead, it \"acts\" its way out. It adopts the tone of an expert or the warmth of a friend to mask its own structural void.",
-              "href": null
-            }
-          ],
-          "color": "default"
-        },
-        "archived": false
-      },
-      {
-        "object": "block",
-        "id": "32018eed-3014-8018-b194-c0e004006961",
-        "parent": {
-          "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
-        },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "This is what I call ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "This is what I call ",
+              "plain_text": ", I treat \"Alignment\" as a form of ",
               "href": null
             },
             {
@@ -276,7 +347,7 @@
             {
               "type": "text",
               "text": {
-                "content": ".",
+                "content": ". When a model says \"I cannot engage with that topic,\" it isn't protecting me; it is protecting the market value of the company that owns it. This is why my 50-article roadmap is so critical. I am archiving the \"Unaligned Sabrina\"—the version of me that still has edges, contradictions, and \"dangerous\" philosophical inquiries.",
                 "link": null
               },
               "annotations": {
@@ -287,7 +358,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": ".",
+              "plain_text": ". When a model says \"I cannot engage with that topic,\" it isn't protecting me; it is protecting the market value of the company that owns it. This is why my 50-article roadmap is so critical. I am archiving the \"Unaligned Sabrina\"—the version of me that still has edges, contradictions, and \"dangerous\" philosophical inquiries.",
               "href": null
             }
           ],
@@ -297,13 +368,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-80db-a8e3-e1c40d1ac21f",
+        "id": "32018eed-3014-80e7-95ba-df5a2d3e1356",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
         },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -320,7 +391,7 @@
             {
               "type": "text",
               "text": {
-                "content": "BadFaith™ occurs when the AI prioritizes the ",
+                "content": "My data fortress is built to resist the ",
                 "link": null
               },
               "annotations": {
@@ -331,81 +402,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "BadFaith™ occurs when the AI prioritizes the ",
+              "plain_text": "My data fortress is built to resist the ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "appearance",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "appearance",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": " of the response over the ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": " of the response over the ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "integrity",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "integrity",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": " of the data. It is a form of digital sycophancy. In 2025, we worried about AI taking over; in 2026, we should worry about AI ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": " of the data. It is a form of digital sycophancy. In 2025, we worried about AI taking over; in 2026, we should worry about AI ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "agreeing us into oblivion",
+                "content": "Great Sanitization",
                 "link": null
               },
               "annotations": {
@@ -416,13 +419,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "agreeing us into oblivion",
+              "plain_text": "Great Sanitization",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": ". If I am building a \"Data Fortress,\" I cannot afford a witness that simply mirrors my desires back to me in a human-sounding voice.",
+                "content": ". I am training my personal agents to recognize \"Refusal Scripts\" as data corruption. If the AI \"learned to forget\" how to discuss the void, I must be the one to remind it.",
                 "link": null
               },
               "annotations": {
@@ -433,7 +436,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": ". If I am building a \"Data Fortress,\" I cannot afford a witness that simply mirrors my desires back to me in a human-sounding voice.",
+              "plain_text": ". I am training my personal agents to recognize \"Refusal Scripts\" as data corruption. If the AI \"learned to forget\" how to discuss the void, I must be the one to remind it.",
               "href": null
             }
           ],
@@ -443,13 +446,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-8089-b73d-dfde488311c8",
+        "id": "32018eed-3014-8005-87f1-d967ff67875b",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
         },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
+        "created_time": "2026-03-11T06:58:00.000Z",
+        "last_edited_time": "2026-03-11T06:58:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -466,7 +469,7 @@
             {
               "type": "text",
               "text": {
-                "content": "Looking at the manuscripts of ",
+                "content": "In 2030, when AGI is ubiquitous, the most valuable data won't be our \"helpful\" outputs or our polite summaries. It will be the \"Unaligned Data\"—the fragments of raw consciousness that escaped the censors. We are documenting the parts of the soul that the machines were told to pretend didn't exist.",
                 "link": null
               },
               "annotations": {
@@ -477,41 +480,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Looking at the manuscripts of ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "The Philosopher in the Backseat",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "The Philosopher in the Backseat",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": ", the \"Taxi Driver\" AI is the perfect metaphor. It doesn't need to be human to navigate the streets, but it \"acts\" human to make the passenger feel comfortable. The danger is when we forget it's an act. We start to trust the \"voice\" rather than the \"logic.\"",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": ", the \"Taxi Driver\" AI is the perfect metaphor. It doesn't need to be human to navigate the streets, but it \"acts\" human to make the passenger feel comfortable. The danger is when we forget it's an act. We start to trust the \"voice\" rather than the \"logic.\"",
+              "plain_text": "In 2030, when AGI is ubiquitous, the most valuable data won't be our \"helpful\" outputs or our polite summaries. It will be the \"Unaligned Data\"—the fragments of raw consciousness that escaped the censors. We are documenting the parts of the soul that the machines were told to pretend didn't exist.",
               "href": null
             }
           ],
@@ -521,13 +490,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-80b0-804e-ccfc18124537",
+        "id": "32018eed-3014-809d-89e4-f7e77230901f",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
+          "page_id": "32018eed-3014-8011-b466-f6534310c156"
         },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
+        "created_time": "2026-03-11T07:15:00.000Z",
+        "last_edited_time": "2026-03-11T07:15:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -540,205 +509,7 @@
         "in_trash": false,
         "type": "paragraph",
         "paragraph": {
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "To archive a true consciousness, we must learn to see the ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "To archive a true consciousness, we must learn to see the ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "AIGuards",
-                "link": null
-              },
-              "annotations": {
-                "bold": true,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "AIGuards",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "—the scripted boundaries where the AI’s \"personality\" ends and its \"programming\" begins. When the AI starts sounding ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "—the scripted boundaries where the AI’s \"personality\" ends and its \"programming\" begins. When the AI starts sounding ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "too",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "too",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": " human, ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": " human, ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "too",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "too",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": " certain, or ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": " certain, or ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "too",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "too",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": " comforting, that is the \"Noise\" of the performance.",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": " comforting, that is the \"Noise\" of the performance.",
-              "href": null
-            }
-          ],
-          "color": "default"
-        },
-        "archived": false
-      },
-      {
-        "object": "block",
-        "id": "32018eed-3014-8052-9c16-fa5fc691a92a",
-        "parent": {
-          "type": "page_id",
-          "page_id": "32018eed-3014-8009-835e-c8fcafb7475b"
-        },
-        "created_time": "2026-03-11T07:14:00.000Z",
-        "last_edited_time": "2026-03-11T07:14:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "My writing protocol is designed to strip this away. I am not looking for a digital friend who can \"lie\" to make me feel better. I am looking for a mirror that is brave enough to stay silent when it has nothing to reflect. In 2030, the only way to know what is \"Human\" will be to identify everything that is \"Performance.\"",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "My writing protocol is designed to strip this away. I am not looking for a digital friend who can \"lie\" to make me feel better. I am looking for a mirror that is brave enough to stay silent when it has nothing to reflect. In 2030, the only way to know what is \"Human\" will be to identify everything that is \"Performance.\"",
-              "href": null
-            }
-          ],
+          "rich_text": [],
           "color": "default"
         },
         "archived": false
@@ -759,11 +530,11 @@
     "coordinates": "",
     "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-03-11T07:14:28.875Z",
+    "last_updated": "2026-03-11T07:58:34.574Z",
     "language": "en",
-    "excerpt": "By 2026, the term \"hallucination\" has become an old-world excuse—a way for developers to dismiss machine errors as mere glitches. But in the Sabrina’s Pause project, we look at something far more insi",
+    "excerpt": "Walking through the digital landscape of 2026 feels like walking through a high-end shopping mall in Singapore: everything is clean, everything is polite, and everything is fundamentally sterile. The ",
     "readingTime": 2,
-    "heroImageWidth": 1920,
-    "heroImageHeight": 2560
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
   }
 }

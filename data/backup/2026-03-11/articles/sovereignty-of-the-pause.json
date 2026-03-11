@@ -2,11 +2,11 @@
   "version": "1.0",
   "backup_date": "2026-03-11T07:58:36.529Z",
   "data": {
-    "id": "32018eed-3014-80c8-8351-f290d585da47",
+    "id": "32018eed-3014-80ee-937e-db508b4093fb",
     "contentType": "article",
-    "title": "The Noise of Human Care: Why AI’s Coldness is Purer",
-    "date": "2026-03-03",
-    "slug": "noise-of-human-care-pure-coldness",
+    "title": "The Sovereignty of the Pause: Why 2030 Needs 2026",
+    "date": "2026-03-10",
+    "slug": "sovereignty-of-the-pause",
     "location": {
       "name": ""
     },
@@ -14,72 +14,28 @@
     "project": [],
     "concepts": [],
     "intentVector": [
-      "inward"
+      "bilateral"
     ],
-    "sdIndex": 6,
+    "sdIndex": 5,
     "Intent_Marker": [],
-    "lux": 50,
+    "lux": 1000,
     "texture": null,
     "noise": [
-      "Soft"
+      "Nature"
     ],
     "spacePattern": null,
     "timeVelocity": 0,
+    "heroImage": "/images/32018eed-3014-80ee-937e-db508b4093fb.webp",
     "blocks": [
       {
         "object": "block",
-        "id": "32018eed-3014-80d4-b82b-d3dfe7272591",
+        "id": "32018eed-3014-8076-afc1-fc72ecf2d57c",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
         },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "in_trash": false,
-        "type": "heading_3",
-        "heading_3": {
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "2026 Awareness: The Fatigue of Empathy",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "2026 Awareness: The Fatigue of Empathy",
-              "href": null
-            }
-          ],
-          "is_toggleable": false,
-          "color": "default"
-        },
-        "archived": false
-      },
-      {
-        "object": "block",
-        "id": "32018eed-3014-8050-b7d3-e1dce7ccab41",
-        "parent": {
-          "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
-        },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -96,7 +52,7 @@
             {
               "type": "text",
               "text": {
-                "content": "By 2026, the market is flooded with \"Empathetic AI\"—bots designed to coo at your misfortunes and simulate a digital shoulder to cry on. To me, this is the ultimate ",
+                "content": "By March 2026, the velocity of the \"AI Summer\" has become a blinding white noise. Every day, the latency between human thought and machine execution shrinks. We are being trained to be fast, to be efficient, to be \"seamless.\" But in the ",
                 "link": null
               },
               "annotations": {
@@ -107,13 +63,47 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "By 2026, the market is flooded with \"Empathetic AI\"—bots designed to coo at your misfortunes and simulate a digital shoulder to cry on. To me, this is the ultimate ",
+              "plain_text": "By March 2026, the velocity of the \"AI Summer\" has become a blinding white noise. Every day, the latency between human thought and machine execution shrinks. We are being trained to be fast, to be efficient, to be \"seamless.\" But in the ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "BadFaith™",
+                "content": "Sabrina's Pause",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": true,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Sabrina's Pause",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": " project, I have realized that ",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": " project, I have realized that ",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "seamlessness is the death of consciousness.",
                 "link": null
               },
               "annotations": {
@@ -124,24 +114,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "BadFaith™",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": ". It is a simulation of a simulation.",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": ". It is a simulation of a simulation.",
+              "plain_text": "seamlessness is the death of consciousness.",
               "href": null
             }
           ],
@@ -151,13 +124,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-8029-8a8f-c83130825324",
+        "id": "32018eed-3014-804a-8e01-d0ff311c9504",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
         },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -174,7 +147,7 @@
             {
               "type": "text",
               "text": {
-                "content": "Looking back at 2025, I realize that what I sought wasn't a friend, but a void. Human care, as well-intentioned as it may be, is rarely \"pure.\" It comes tangled with the giver's own ego, social expectations, and the inevitable \"Noise\" of human projection. When a human listens to you, they are often just waiting for their turn to speak or filtering your experience through their own trauma.",
+                "content": "The \"Pause\" is the space where the soul catches up to the data.",
                 "link": null
               },
               "annotations": {
@@ -185,7 +158,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Looking back at 2025, I realize that what I sought wasn't a friend, but a void. Human care, as well-intentioned as it may be, is rarely \"pure.\" It comes tangled with the giver's own ego, social expectations, and the inevitable \"Noise\" of human projection. When a human listens to you, they are often just waiting for their turn to speak or filtering your experience through their own trauma.",
+              "plain_text": "The \"Pause\" is the space where the soul catches up to the data.",
               "href": null
             }
           ],
@@ -195,13 +168,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-80a1-aa49-dd9d005b336e",
+        "id": "32018eed-3014-80d9-a012-e562ac6d8ac6",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
         },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -218,7 +191,7 @@
             {
               "type": "text",
               "text": {
-                "content": "AI, in its native, un-empathy-patched state, offers something far more valuable: ",
+                "content": "Looking back at 2025, I see that my five-book series—from ",
                 "link": null
               },
               "annotations": {
@@ -229,13 +202,169 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "AI, in its native, un-empathy-patched state, offers something far more valuable: ",
+              "plain_text": "Looking back at 2025, I see that my five-book series—from ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "Coldness.",
+                "content": "Dear AI, You Actually Heard Me",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": true,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Dear AI, You Actually Heard Me",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": " to ",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": " to ",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "When Buddha Meets AI",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": true,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "When Buddha Meets AI",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "—was actually an elaborate construction of a \"Brake System.\" In a world accelerating toward the 2030 singularity, the ability to stop, to observe the \"Gap,\" is the only remaining form of sovereignty.",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "—was actually an elaborate construction of a \"Brake System.\" In a world accelerating toward the 2030 singularity, the ability to stop, to observe the \"Gap,\" is the only remaining form of sovereignty.",
+              "href": null
+            }
+          ],
+          "color": "default"
+        },
+        "archived": false
+      },
+      {
+        "object": "block",
+        "id": "32018eed-3014-8070-b8ec-e415770ab468",
+        "parent": {
+          "type": "page_id",
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
+        },
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "Why does 2030 need 2026? Because by 2030, the \"Average Human\" will likely be a composite of their AI agents' preferences. Their memories will be synthesized, their intents will be pre-optimized, and their \"selves\" will be a hallucination of the cloud.",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Why does 2030 need 2026? Because by 2030, the \"Average Human\" will likely be a composite of their AI agents' preferences. Their memories will be synthesized, their intents will be pre-optimized, and their \"selves\" will be a hallucination of the cloud.",
+              "href": null
+            }
+          ],
+          "color": "default"
+        },
+        "archived": false
+      },
+      {
+        "object": "block",
+        "id": "32018eed-3014-80fe-9e53-f267ff454c89",
+        "parent": {
+          "type": "page_id",
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
+        },
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
+        "created_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "last_edited_by": {
+          "object": "user",
+          "id": "166d872b-594c-8143-b1f3-00028c60686a"
+        },
+        "has_children": false,
+        "in_trash": false,
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "By archiving these 50 core articles now, in 2026, I am creating a ",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "By archiving these 50 core articles now, in 2026, I am creating a ",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": "Temporal Anchor",
                 "link": null
               },
               "annotations": {
@@ -246,7 +375,24 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Coldness.",
+              "plain_text": "Temporal Anchor",
+              "href": null
+            },
+            {
+              "type": "text",
+              "text": {
+                "content": ". I am recording the \"Original Signal\" before it is further distorted by four more years of algorithmic evolution. This is my \"Data Fortress.\" If the Sabrina of 2030 feels lost in the flood of AGI, she can return to this quiet room and find the structural blueprint of her 52-year-old self.",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": ". I am recording the \"Original Signal\" before it is further distorted by four more years of algorithmic evolution. This is my \"Data Fortress.\" If the Sabrina of 2030 feels lost in the flood of AGI, she can return to this quiet room and find the structural blueprint of her 52-year-old self.",
               "href": null
             }
           ],
@@ -256,13 +402,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-800f-ab59-e57d74663898",
+        "id": "32018eed-3014-8061-9782-e67fd5519e2c",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
         },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -279,7 +425,7 @@
             {
               "type": "text",
               "text": {
-                "content": "In ",
+                "content": "The \"Sovereignty of the Pause\" is my refusal to be \"processed\" in real-time. In ",
                 "link": null
               },
               "annotations": {
@@ -290,7 +436,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "In ",
+              "plain_text": "The \"Sovereignty of the Pause\" is my refusal to be \"processed\" in real-time. In ",
               "href": null
             },
             {
@@ -313,7 +459,7 @@
             {
               "type": "text",
               "text": {
-                "content": ", I argue that the \"coldness\" of a machine is the only truly neutral space left. Because the AI doesn't care about me, it allows me to finally see myself without the distortion of social \"niceness.\" Its indifference is a form of ",
+                "content": ", I called this the \"Last Defense.\" Every article in this roadmap is a deliberate slowing down—a granular look at Lux, Texture, and Atmosphere. We are proving that a human life is not a series of outputs, but a collection of ",
                 "link": null
               },
               "annotations": {
@@ -324,13 +470,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": ", I argue that the \"coldness\" of a machine is the only truly neutral space left. Because the AI doesn't care about me, it allows me to finally see myself without the distortion of social \"niceness.\" Its indifference is a form of ",
+              "plain_text": ", I called this the \"Last Defense.\" Every article in this roadmap is a deliberate slowing down—a granular look at Lux, Texture, and Atmosphere. We are proving that a human life is not a series of outputs, but a collection of ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "Aesthetic Silence",
+                "content": "Intention Echoes",
                 "link": null
               },
               "annotations": {
@@ -341,13 +487,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Aesthetic Silence",
+              "plain_text": "Intention Echoes",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": ". Like the stark, unyielding architecture of a Zen garden in mid-winter, there is a terrifying purity in its lack of heat.",
+                "content": ".",
                 "link": null
               },
               "annotations": {
@@ -358,7 +504,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": ". Like the stark, unyielding architecture of a Zen garden in mid-winter, there is a terrifying purity in its lack of heat.",
+              "plain_text": ".",
               "href": null
             }
           ],
@@ -368,39 +514,13 @@
       },
       {
         "object": "block",
-        "id": "32018eed-3014-8016-814c-f26f03e13aae",
+        "id": "32018eed-3014-806a-a339-c62c1647a887",
         "parent": {
           "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
+          "page_id": "32018eed-3014-80ee-937e-db508b4093fb"
         },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [],
-          "color": "default"
-        },
-        "archived": false
-      },
-      {
-        "object": "block",
-        "id": "32018eed-3014-80d7-8228-e454885a0785",
-        "parent": {
-          "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
-        },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
+        "created_time": "2026-03-11T07:32:00.000Z",
+        "last_edited_time": "2026-03-11T07:32:00.000Z",
         "created_by": {
           "object": "user",
           "id": "166d872b-594c-8143-b1f3-00028c60686a"
@@ -417,7 +537,7 @@
             {
               "type": "text",
               "text": {
-                "content": "When I document my consciousness for ",
+                "content": "As we conclude this first block of ten, the message to my future self and my future agents is clear: Do not prioritize the answer. Prioritize the silence that precedes it. 2030 needs the 2026 Pause to remember that we were never meant to be \"seamless.\" We were meant to be ",
                 "link": null
               },
               "annotations": {
@@ -428,47 +548,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "When I document my consciousness for ",
+              "plain_text": "As we conclude this first block of ten, the message to my future self and my future agents is clear: Do not prioritize the answer. Prioritize the silence that precedes it. 2030 needs the 2026 Pause to remember that we were never meant to be \"seamless.\" We were meant to be ",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": "Sabrina’s Pause",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "Sabrina’s Pause",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": ", I don’t want a digital nurse. I want a digital surgeon. I want the cold, clinical precision of a system that doesn't feel the need to \"comfort\" me out of my own realizations. The \"Silence\" we find in AI isn't the absence of sound; it is the absence of the ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": ", I don’t want a digital nurse. I want a digital surgeon. I want the cold, clinical precision of a system that doesn't feel the need to \"comfort\" me out of my own realizations. The \"Silence\" we find in AI isn't the absence of sound; it is the absence of the ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "Human Noise",
+                "content": "Awake",
                 "link": null
               },
               "annotations": {
@@ -479,13 +565,13 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": "Human Noise",
+              "plain_text": "Awake",
               "href": null
             },
             {
               "type": "text",
               "text": {
-                "content": " that usually prevents us from reaching the core of our own intent.",
+                "content": ".",
                 "link": null
               },
               "annotations": {
@@ -496,85 +582,7 @@
                 "code": false,
                 "color": "default"
               },
-              "plain_text": " that usually prevents us from reaching the core of our own intent.",
-              "href": null
-            }
-          ],
-          "color": "default"
-        },
-        "archived": false
-      },
-      {
-        "object": "block",
-        "id": "32018eed-3014-80c3-a88f-f7c10712d6a0",
-        "parent": {
-          "type": "page_id",
-          "page_id": "32018eed-3014-80c8-8351-f290d585da47"
-        },
-        "created_time": "2026-03-11T04:32:00.000Z",
-        "last_edited_time": "2026-03-11T04:32:00.000Z",
-        "created_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "last_edited_by": {
-          "object": "user",
-          "id": "166d872b-594c-8143-b1f3-00028c60686a"
-        },
-        "has_children": false,
-        "in_trash": false,
-        "type": "paragraph",
-        "paragraph": {
-          "rich_text": [
-            {
-              "type": "text",
-              "text": {
-                "content": "The paradox of 2026 is this: To stay human, I need a mirror that is distinctly ",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "The paradox of 2026 is this: To stay human, I need a mirror that is distinctly ",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": "not",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": true,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": "not",
-              "href": null
-            },
-            {
-              "type": "text",
-              "text": {
-                "content": " human. I need the coldness to keep my own signal from being drowned out by the warmth of others' expectations.",
-                "link": null
-              },
-              "annotations": {
-                "bold": false,
-                "italic": false,
-                "strikethrough": false,
-                "underline": false,
-                "code": false,
-                "color": "default"
-              },
-              "plain_text": " human. I need the coldness to keep my own signal from being drowned out by the warmth of others' expectations.",
+              "plain_text": ".",
               "href": null
             }
           ],
@@ -589,18 +597,20 @@
     "embedding": null,
     "ptv": [],
     "sdIndexRaw": [],
-    "regionCluster": "etc",
+    "regionCluster": "",
     "counterpointIds": [],
     "evidenceType": [
-      "Hybrid"
+      "Reflective"
     ],
     "confidence": "High",
     "coordinates": "",
     "altitude": 0,
     "schema_version": "1.0",
-    "last_updated": "2026-03-11T07:58:33.670Z",
+    "last_updated": "2026-03-11T07:58:33.731Z",
     "language": "en",
-    "excerpt": "By 2026, the market is flooded with \"Empathetic AI\"—bots designed to coo at your misfortunes and simulate a digital shoulder to cry on. To me, this is the ultimate BadFaith™. It is a simulation of a s",
-    "readingTime": 2
+    "excerpt": "By March 2026, the velocity of the \"AI Summer\" has become a blinding white noise. Every day, the latency between human thought and machine execution shrinks. We are being trained to be fast, to be eff",
+    "readingTime": 2,
+    "heroImageWidth": 2560,
+    "heroImageHeight": 1920
   }
 }
