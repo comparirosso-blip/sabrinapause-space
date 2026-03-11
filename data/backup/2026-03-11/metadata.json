@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "backup_date": "2026-03-11T01:04:21.592Z",
+  "backup_date": "2026-03-11T03:36:23.753Z",
   "backup_source": "Notion API",
   "total_count": 1,
   "content_types": {
@@ -14,15 +14,15 @@
   "projects": [],
   "all_concepts": [],
   "date_range": {
-    "earliest": "2026-03-09",
-    "latest": "2026-03-09"
+    "earliest": "2025-02-26",
+    "latest": "2025-02-26"
   },
   "content_index": [
     {
       "slug": "the-mirror-question",
       "title": "The Mirror Question",
       "type": "article",
-      "date": "2026-03-09",
+      "date": "2025-02-26",
       "sd_index": 5
     }
   ],
@@ -30,7 +30,7 @@
     "with_embeddings": 0,
     "with_dialogue": 0,
     "with_philosophical_insight": 0,
-    "total_blocks": 25
+    "total_blocks": 26
   },
   "m3_terroir": {
     "with_ptv": 1,
